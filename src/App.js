@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import logo from './images/logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import CategoryList from "./components/CategoryList";
+
+import * as firebase from "firebase";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    var config = {
+      apiKey: "AIzaSyBAxI9siULiEKvdcxXOm1Wow3XZXN0q0Nk",
+      authDomain: "berkeley-sprout.firebaseapp.com",
+      databaseURL: "https://berkeley-sprout.firebaseio.com",
+      projectId: "berkeley-sprout",
+      storageBucket: "berkeley-sprout.appspot.com",
+      messagingSenderId: "723781488882"
+    };
+    firebase.initializeApp(config);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <CategoryList db={firebase} />
       </div>
     );
   }
