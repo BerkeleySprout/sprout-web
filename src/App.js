@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import CategoryList from "./components/CategoryList";
+import ReactDOM from "react-dom"
+import Collection from "./components/Collection";
 
 import * as firebase from "firebase";
 
@@ -21,10 +22,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <CategoryList db={firebase} />
+        <Collection db={firebase} />
       </div>
     );
   }
 }
+
+ReactDOM.render(React.createElement(App, null), document.querySelector("#root"));
 
 export default App;
