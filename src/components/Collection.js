@@ -31,7 +31,7 @@ class Collection extends Component {
         img: "https://unsplash.it/1200/1200/?image=815"
       },
       { 
-        name: "forgiveness",
+        name: "compassion",
         img: "https://unsplash.it/1200/1200/?image=1025"
       }
       ]

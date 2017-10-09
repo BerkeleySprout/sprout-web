@@ -91,14 +91,14 @@ class CategoryBlock extends Component {
 
     let activityNodes = this.state.activities.map(activity => {
       return (
-        <Activity activity={activity} onClick={() => this.handleClick()} />
+        <Activity shiftLeft={this.props.shiftLeft} activity={activity} onClick={() => this.handleClick()} />
       );
     });
 
     return (
       <li className={classes} style={styles.item}>
         <div className="category--content">
-          <h2>{this.props.category.name}</h2>
+          <h2>{this.props.category.name} {this.state.score}</h2>
           <Scrollbars style={{ width: 500, height: 400 }}>
             <div className="project-list">
               <ul className="menu vertical">{activityNodes}</ul>
