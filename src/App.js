@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 import Collection from "./components/Collection";
 
 import * as firebase from "firebase";
@@ -28,6 +28,9 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(React.createElement(App, null), document.querySelector("#root"));
+ReactDOM.render(
+  React.createElement(App, null),
+  document.querySelector("#root")
+);
 
 export default App;
