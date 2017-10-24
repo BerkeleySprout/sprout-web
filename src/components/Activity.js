@@ -49,7 +49,6 @@ class Activity extends Component {
   }
 
   render() {
-    console.log(this.props.isLast)
     let title = this.props.activity.title;
     let description = this.props.activity.description;
     

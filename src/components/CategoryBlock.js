@@ -24,8 +24,7 @@ class CategoryBlock extends Component {
       "value",
       function(snapshot) {
         let category = this.props.category.name;
-        console.log(this.props);
-
+        
         let filtered = snapshot.val().filter(
           function(item) {
             return item.categories.includes(category);
@@ -94,9 +93,8 @@ class CategoryBlock extends Component {
         <Activity isLast={this.props.isLast} activity={activity} onClick={() => this.handleClick()} />
       );
     });
-    console.log(this.props.category.name)
-    console.log(shiftLeft)
 
+    console.log(this.activityNodes)
     return (
       <li className={classes} style={styles.item}>
         <div className="category--content">
