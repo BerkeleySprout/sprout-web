@@ -72,22 +72,14 @@ class Collection extends Component {
   }
 
   createCategoryBlock(cat, i) {
-    let isLast =
-      i === this.state.categories.length - 1 ||
-      i === this.state.categories.length - 2;
-    let shiftLeft = i < this.state.activeIndex;
-
     return (
       <CategoryBlock
-        category={cat}
+        category={cat['name']}
         key={"cat-" + i}
         handleClick={this.handleClick}
-        active={i === this.state.activeIndex}
-        focusOff={this.focusOff}
-        focused={this.state.open}
-        shiftLeft={shiftLeft}
-        Index={i}
-        isLast={isLast}
+
+        score={this.props.scores[cat['name']]}
+
         db={this.props.db}
         updateScore={() => this.updateScore()}
       />

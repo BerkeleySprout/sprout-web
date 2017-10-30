@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       user: null,
       page: 0,
-      scores: [ 
+      scores: { 
       "awe" : 0,
       "compassion": 0,
       "connection": 0,
@@ -29,7 +29,7 @@ class App extends Component {
       "mindfulness": 0,
       "optimism": 0,
       "resilience": 0
-      ]
+      }
 
                
 
@@ -80,11 +80,12 @@ class App extends Component {
       let newScores = Object.assign({}, this.state.scores)
         for (let i = 0; i < categories.length; i++){
           let category = categories[i]
-          newScores[categories[i]] += 1     
+          newScores[category] += 1 
+          console.log(newScores)    
     } 
         this.setState({scores : newScores})
 
-    console.log(this.state.scores)
+    
   }
 
   render() {

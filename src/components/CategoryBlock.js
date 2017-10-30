@@ -54,7 +54,7 @@ class CategoryBlock extends Component {
 
   render() {
     let { active, focused, shiftLeft, isLast } = this.props;
-    let score = this.state.score + 1;
+    let score = this.props.score + 1;
     let styles = {
       container: {
         transform: (function() {
