@@ -6,6 +6,8 @@ import Menu from "./components/Menu";
 
 import FriendList from "./components/FriendList";
 
+import Collection from "./components/Collection";
+
 import firebase, { auth, provider, database } from "./firebase.js";
 
 class App extends Component {
@@ -128,10 +130,6 @@ class App extends Component {
         </nav>]
 
         {display}
-
-
-        </nav>
-        <Collection db={firebase} />
 
       </div>
     );
