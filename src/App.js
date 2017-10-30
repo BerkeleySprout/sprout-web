@@ -16,11 +16,28 @@ class App extends Component {
 
     this.state = {
       user: null,
-      page: 0
+      page: 0,
+      scores: [ 
+      "awe" : 0,
+      "compassion": 0,
+      "connection": 0,
+      "empathy": 0,
+      "forgiveness": 0,
+      "gratitude": 0,
+      "happiness": 0,
+      "kindness": 0,
+      "mindfulness": 0,
+      "optimism": 0,
+      "resilience": 0
+      ]
+
+               
+
     };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this); 
+    this.updateScores = this.updateScores.bind(this); 
     this.handleClick = this.handleClick.bind(this); 
 
   }
@@ -55,6 +72,19 @@ class App extends Component {
         this.setState({ user });
       }
     });
+  
+    }
+
+
+    updateScores(categories) {
+      let newScores = Object.assign({}, this.state.scores)
+        for (let i = 0; i < categories.length; i++){
+          let category = categories[i]
+          newScores[categories[i]] += 1     
+    } 
+        this.setState({scores : newScores})
+
+    console.log(this.state.scores)
   }
 
   render() {
@@ -73,10 +103,10 @@ class App extends Component {
     var display
 
     if (this.state.page == 0) {
-      display = <Collection db={firebase} />
+      display = <Collection scores={this.state.scores} db={firebase} />
     } 
     else if (this.state.page == 1) {
-      display = <Menu />
+      display = <Menu updateScores={this.updateScores}/>
     }
     else if (this.state.page == 2) {
       display = <FriendList />

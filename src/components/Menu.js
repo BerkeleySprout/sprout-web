@@ -17,48 +17,41 @@ class Menu extends Component {
             isMounted: false,
             categories: [
                 {
-                    name: "awe",
-                    img: "https://unsplash.it/1200/1200/?image=974"
+                    name: "awe"
                 },
                 {
-                    name: "empathy",
-                    img: "https://unsplash.it/1200/1200/?image=1074"
+                    name: "compassion"
                 },
                 {
-                    name: "connection",
-                    img: "https://unsplash.it/1200/1200/?image=1066"
+                    name: "connection"
                 },
                 {
-                    name: "kindness",
-                    img: "https://unsplash.it/1200/1200/?image=815"
+                    name: "empathy"
                 },
                 {
-                    name: "compassion",
-                    img: "https://unsplash.it/1200/1200/?image=1025"
+                    name: "forgiveness"
                 },
-
                 {
-                    name: "optimism",
-                    img: "https://unsplash.it/1200/1200/?image=1025"
+                    name: "gratitude"
                 },
-
                 {
-                    name: "happiness",
-                    img: "https://unsplash.it/1200/1200/?image=1025"
+                    name: "happiness"
                 },
-
                 {
-                    name: "gratitude",
-                    img: "https://unsplash.it/1200/1200/?image=1025"
+                    name: "kindness"
                 },
-
                 {
-                    name: "mindfulness",
-                    img: "https://unsplash.it/1200/1200/?image=1025"
+                    name: "mindfulness"
+                },
+                {
+                    name: "optimism"
+                },
+                {
+                    name: "resilience"
                 }
             ]
         };
-
+        this.render = this.render.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.getActivities = this.getActivities.bind(this);
         this.updateActiveActivities = this.updateActiveActivities.bind(this);
@@ -120,10 +113,6 @@ class Menu extends Component {
         );
     }
 
-    updateScore() {
-        let score = this.state.score + 1;
-        this.setState({ score: score });
-    }
 
     componentDidMount() {
         this.setState({ isMounted: true });
@@ -162,12 +151,32 @@ class Menu extends Component {
                             <div class="col-md-8">
                                 <p> {activity.description} </p>
                             </div>
-                             <div class="col-md-4">
-                             <div className="btn-group mx-auto" role="group">
-                             <button type="button" className="btn btn-primary">Sad</button>
-                             <button type="button" className="btn btn-success">Happy</button>
-                             </div>
-                                <p> {activity.description} </p>
+                            <div class="col-md-4 ml-auto">
+                                <div
+                                    className="btn-group  "
+                                    role="group"
+                                >
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary" 
+                                        onClick={() => this.props.updateScores(activity.categories)}
+                                    >
+                                        Complete
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-success"
+                                    >
+                                        Explore
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-warning"
+                                    >
+                                        Share
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>

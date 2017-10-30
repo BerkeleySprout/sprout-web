@@ -32,46 +32,7 @@ class FriendBlock extends Component {
   }
 
   render() {
-    let { active, focused, shiftLeft, isLast } = this.props;
-
-    let styles = {
-      container: {
-        transform: (function() {
-          return active
-            ? "scale(1.1) translate3d(0, 0, 0)"
-            : "scale(1) translate3d(0, 0, 0)";
-        })()
-      },
-      item: {
-        transform: (function() {
-          //let direction = shiftLeft ? "-" : "";
-          let transform =
-            focused && !active
-              ? "translate3d(0, 0, 0)"
-              : "translate3d(0, 0, 0)";
-          return transform;
-        })()
-      },
-      background: {
-        backgroundSize: "cover",
-        height: "500px",
-        width: this.getWidth(active)
-      },
-      block: {
-        background: "rgb(230, 255, 230)",
-        backgroundSize: "cover",
-        height: "150px",
-        width: this.getWidth(active)
-      }
-    };
     
-    let classes = classNames({
-      category: true,
-      isActive: active,
-      isLast,
-      shiftLeft
-    });
-
   
     return (
       <div className="container" style={{paddingTop:"20px"}}>
