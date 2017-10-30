@@ -8,6 +8,8 @@ class CategoryBlock extends Component {
   constructor(props) {
     super(props);
 
+    console.log(this.props)
+
     this.state = {
       score: 0,
       activities: []
@@ -54,8 +56,8 @@ class CategoryBlock extends Component {
 
   render() {
     let { active, focused, shiftLeft, isLast } = this.props;
-\
-    let score = this.state.score + 1;
+
+    let score = this.props.score + 1;
     let green = 0;
     if (score > 100) {
       green = score - 100;
@@ -117,7 +119,7 @@ class CategoryBlock extends Component {
         >
         
         <div className="category--image" style={styles.block}>
-          <h3>{this.props.category.name}</h3>
+          <h3>{this.props.category}</h3>
         </div>
         
         </div>
