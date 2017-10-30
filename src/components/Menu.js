@@ -17,37 +17,37 @@ class Menu extends Component {
             isMounted: false,
             categories: [
                 {
-                    name: "awe"
+                    name: "Awe"
                 },
                 {
-                    name: "compassion"
+                    name: "Compassion"
                 },
                 {
-                    name: "connection"
+                    name: "Connection"
                 },
                 {
-                    name: "empathy"
+                    name: "Empathy"
                 },
                 {
-                    name: "forgiveness"
+                    name: "Forgiveness"
                 },
                 {
-                    name: "gratitude"
+                    name: "Gratitude"
                 },
                 {
-                    name: "happiness"
+                    name: "Happiness"
                 },
                 {
-                    name: "kindness"
+                    name: "Kindness"
                 },
                 {
-                    name: "mindfulness"
+                    name: "Mindfulness"
                 },
                 {
-                    name: "optimism"
+                    name: "Optimism"
                 },
                 {
-                    name: "resilience"
+                    name: "Resilience"
                 }
             ]
         };

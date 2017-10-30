@@ -56,7 +56,6 @@ class CategoryBlock extends Component {
 
   render() {
     let { active, focused, shiftLeft, isLast } = this.props;
-
     let score = this.props.score + 1;
     let green = 0;
     if (score > 100) {
