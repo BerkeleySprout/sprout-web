@@ -17,12 +17,14 @@ class GGIASpider(scrapy.Spider):
             link = article.css('a::attr(href)').extract_first()
             title = article.css('div.article__content h4::text').extract_first()
             description = article.css('div.article__content p::text').extract_first()
+            img = "https://ggia.berkeley.edu" + article.css('img::attr(src)').extract_first()
 
 
             yield {
                 "title": title,
                 "description": description,
                 "link": link,
+                "img": img,
                 "categories": categories,
                 "duration": duration,
                 "frequency": frequency,

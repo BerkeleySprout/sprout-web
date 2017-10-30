@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import ReactDOM from "react-dom";
 import Collection from "./components/Collection";
+import Menu from "./components/Menu";
 import firebase, { auth, provider, database } from "./firebase.js";
 
 class App extends Component {
@@ -9,11 +10,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: null
+      user: null,
+      page: 0
     };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this); 
+    this.handleClick = this.handleClick.bind(this); 
+
+  }
+
+  handleClick(page) {
+    this.setState({"page" : page})
 
   }
 
@@ -45,25 +53,38 @@ class App extends Component {
   }
 
   render() {
-    console.log(auth.currentUser)
+    
         var login = this.state.user ? (
-                  <a class="nav-link" onClick={this.logout} href="#">
+                  <a className="nav-link" onClick={this.logout} href="#">
                     Sign Out
                   </a>
                 ) : (
-                  <a class="nav-link" onClick={this.login} href="#">
+                  <a className="nav-link" onClick={this.login} href="#">
                     Sign In
                   </a>
                 )
 
+
+    var display
+
+    if (this.state.page == 0) {
+      display = <Collection db={firebase} />
+    } 
+    else if (this.state.page == 1) {
+      display = <Menu />
+    }
+    else if (this.state.page == 2) {
+      display = <Collection db={firebase} />
+    }
+
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-light">
-          <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-light">
+          <a className="navbar-brand" href="#">
             Sprout 
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNavAltMarkup"
@@ -71,35 +92,36 @@ class App extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon" />
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item active">
+                <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
                   Home
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => this.handleClick(1)} href="#">
                   Activities
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
                   Friends
                 </a>
               </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
                 { login }
               </li>
             </ul>
           </div>
-        </nav>
+        </nav>]
 
-        <Collection db={firebase} />
+        {display}
+
       </div>
     );
   }

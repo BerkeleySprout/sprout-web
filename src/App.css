@@ -2,11 +2,14 @@ html, body {
   background-color: #373D20;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-a, h1, h2, h3, h4, h5, h6 {
-  color: white;
+.card-img-left {
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-top-left-radius: calc(.25rem - 1px);
+  float: left;
+  padding-right: 1em;
+  margin-bottom: -1.25em;
 }
 
 a:hover, a:hover > * {
