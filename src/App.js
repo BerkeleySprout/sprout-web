@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import ReactDOM from "react-dom";
 import Collection from "./components/Collection";
+import FriendList from "./components/FriendList";
 import firebase, { auth, provider, database } from "./firebase.js";
 
 class App extends Component {
@@ -77,7 +78,7 @@ class App extends Component {
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="#">
-                  Home
+                  Tree
                 </a>
               </li>
               <li class="nav-item">
@@ -86,7 +87,7 @@ class App extends Component {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#FriendList">
                   Friends
                 </a>
               </li>
@@ -98,8 +99,8 @@ class App extends Component {
             </ul>
           </div>
         </nav>
-
         <Collection db={firebase} />
+        
       </div>
     );
   }

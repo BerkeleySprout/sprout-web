@@ -4,38 +4,17 @@ import Activity from "./Activity";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
-class CategoryBlock extends Component {
+class FriendBlock extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       score: 0,
-      activities: []
     };
     this.setActive = this.setActive.bind(this);
-    this.getActivities = this.getActivities.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.getActivities();
   }
 
-  getActivities() {
-    let app = this.props.db.database().ref("activities");
-
-    app.on(
-      "value",
-      function(snapshot) {
-        let category = this.props.category.name;
-        
-        let filtered = snapshot.val().filter(
-          function(item) {
-            return item.categories.includes(category);
-          }
-        );
-
-        this.setState({ activities: filtered });
-      }.bind(this)
-    );
-  }
 
   setActive() {
     this.props.handleClick(this.props.Index);
@@ -74,8 +53,6 @@ class CategoryBlock extends Component {
         })()
       },
       background: {
-        background:
-          "url(" + this.props.category.img + ") no-repeat center",
         backgroundSize: "cover",
         height: "500px",
         width: this.getWidth(active)
@@ -95,33 +72,34 @@ class CategoryBlock extends Component {
       shiftLeft
     });
 
-    let activityNodes = this.state.activities.map(activity => {
-      return (
-        <Activity isLast={this.props.isLast} activity={activity} onClick={() => this.handleClick()} />
-      );
-    });
-
   
     return (
-      <ul className="container">
-        
-        <div
-          className="category--image-container"
-          onClick={this.handleClick}
-          style={styles.container}
-        >
-        
-        <div className="category--image" style={styles.block} />
-        </div>
+      <div className="container" style={{paddingTop:"20px"}}>
         <div className="category--content">
-          <h2>{this.props.category.name} {this.state.score}</h2>
+          <Scrollbars style={{ width: 500, height: 430}}>
+            <div className="project-list">
+              <ul className="menu vertical"></ul>
+            </div>
+          </Scrollbars>
         </div>
+        <div className="row">
+          <div className="col-lg-3">
+            <img src="http://www.qygjxz.com/data/out/190/5691490-profile-pictures.png"
+            className="no-padding"/>
+          </div>
+          <div className="col-lg-9">
+            <h3 style={{color:"black"}}> Tao Ong</h3>
+            <h6 style={{color:"black"}}> Berkeley, CA</h6>
+          </div>
+          
+          </div>
         <div className="category--closeButton">
           <a onClick={this.props.focusOff}>Back</a>
         </div>
-      </ul>
+        <hr/>
+      </div>
     );
   }
 }
 
-export default CategoryBlock;
+export default FriendBlock;
