@@ -24,12 +24,11 @@ class CategoryBlock extends Component {
       "value",
       function(snapshot) {
         let category = this.props.category.name;
-        console.log(this.props);
-
+        
         let filtered = snapshot.val().filter(
           function(item) {
             return item.categories.includes(category);
-          }.bind(this)
+          }
         );
 
         this.setState({ activities: filtered });
@@ -65,17 +64,17 @@ class CategoryBlock extends Component {
       },
       item: {
         transform: (function() {
-          let direction = shiftLeft ? "-" : "";
+          //let direction = shiftLeft ? "-" : "";
           let transform =
             focused && !active
-              ? "translate3d(" + direction + "100%, 0, 0)"
+              ? "translate3d(0, 0, 0)"
               : "translate3d(0, 0, 0)";
           return transform;
         })()
       },
       background: {
         background:
-          "url(" + this.props.category.img + ") no-repeat center center",
+          "url(" + this.props.category.img + ") no-repeat center",
         backgroundSize: "cover",
         height: "500px",
         width: this.getWidth(active)
@@ -91,15 +90,16 @@ class CategoryBlock extends Component {
 
     let activityNodes = this.state.activities.map(activity => {
       return (
-        <Activity shiftLeft={this.props.shiftLeft} activity={activity} onClick={() => this.handleClick()} />
+        <Activity isLast={this.props.isLast} activity={activity} onClick={() => this.handleClick()} />
       );
     });
 
+  
     return (
       <li className={classes} style={styles.item}>
         <div className="category--content">
           <h2>{this.props.category.name} {this.state.score}</h2>
-          <Scrollbars style={{ width: 500, height: 400 }}>
+          <Scrollbars style={{ width: 500, height: 430}}>
             <div className="project-list">
               <ul className="menu vertical">{activityNodes}</ul>
             </div>
@@ -114,10 +114,10 @@ class CategoryBlock extends Component {
           </div>
         
         <div className="category--name">
-          <h6>{this.props.category.name}</h6>
+          <h6>{this.props.category.name}: {this.state.score}</h6>
         </div>
         <div className="category--closeButton">
-          <a onClick={this.props.focusOff} href="#">Back</a>
+          <a onClick={this.props.focusOff}>Back</a>
         </div>
       </li>
     );

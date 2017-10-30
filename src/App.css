@@ -133,6 +133,20 @@ ul.categories {
   font-family: 'Nothing You Could Do', sans-serif;
 }
 
+.projectlist--explore {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Nothing You Could Do', sans-serif;
+  color: #BCBD8B;
+}
+
+.projectlist--complete {
+  font-size: 12px;
+  font-weight: bold;
+  color:#EFF1ED;
+  font-family: 'Nothing You Could Do', sans-serif;
+}
+
 /*last item content*/
 .isLast .category--content {
   right: initial;
