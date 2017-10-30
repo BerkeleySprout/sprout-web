@@ -15,24 +15,40 @@ class Collection extends Component {
       open: false,
       activityIndex: null,
       categories: [ { 
-        name: "awe",
-        img: "https://unsplash.it/1200/1200/?image=974"
+        name: "awe"
       },
       { 
-        name: "empathy",
-        img: "https://unsplash.it/1200/1200/?image=1074"
+        name: "compassion"
       },
       { 
-        name: "connection",
-        img: "https://unsplash.it/1200/1200/?image=1066"
+        name: "connection"
       },
       { 
-        name: "kindness",
-        img: "https://unsplash.it/1200/1200/?image=815"
+        name: "empathy"
       },
       { 
-        name: "compassion",
-        img: "https://unsplash.it/1200/1200/?image=1025"
+        name: "forgiveness"
+      },
+      { 
+        name: "gratitude"
+      },
+      { 
+        name: "happiness"
+      },
+      { 
+        name: "kindness"
+      },
+      { 
+        name: "mindfulness"
+      },
+      { 
+        name: "optimism"
+      },
+      { 
+        name: "resilience"
+      },
+      { 
+        name: "self-compassion"
       }
       ]
     };
@@ -91,10 +107,29 @@ class Collection extends Component {
 
     return (
       
-      <div className={"categories--menu-container " + classes} 
-        style={{ height: window.innerHeight }}
+      <div className={"" + classes} 
+        style={{ height: window.innerHeight + 100 }}
       >
-        <ul className="categories menu">{categoryNodes}</ul>
+      <div className="container" style={{marginTop: "50px"}}>
+        <div className="row no-gutters">
+        <div className="col-lg-3">{categoryNodes[0]}</div>
+        <div className="col-lg-3">{categoryNodes[1]}</div>
+        <div className="col-lg-3">{categoryNodes[2]}</div>
+        <div className="col-lg-3">{categoryNodes[3]}</div>
+        </div>
+        <div className="row no-gutters">
+        <div className="col-lg-3">{categoryNodes[4]}</div>
+        <div className="col-lg-3">{categoryNodes[5]}</div>
+        <div className="col-lg-3">{categoryNodes[6]}</div>
+        <div className="col-lg-3">{categoryNodes[7]}</div>
+        </div>
+        <div className="row no-gutters">
+        <div className="col-lg-3">{categoryNodes[8]}</div>
+        <div className="col-lg-3">{categoryNodes[9]}</div>
+        <div className="col-lg-3">{categoryNodes[10]}</div>
+        <div className="col-lg-3">{categoryNodes[11]}</div>
+        </div>
+      </div>
       </div>
     );
   }

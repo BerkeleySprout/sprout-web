@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import ReactDOM from "react-dom";
-import Collection from "./components/Collection";
+
 import Menu from "./components/Menu";
+
+import FriendList from "./components/FriendList";
+
 import firebase, { auth, provider, database } from "./firebase.js";
 
 class App extends Component {
@@ -74,7 +77,7 @@ class App extends Component {
       display = <Menu />
     }
     else if (this.state.page == 2) {
-      display = <Collection db={firebase} />
+      display = <FriendList />
     }
 
     return (
@@ -94,11 +97,13 @@ class App extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
+
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
                   Home
+
                 </a>
               </li>
               <li className="nav-item">
@@ -108,6 +113,7 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
+
                   Friends
                 </a>
               </li>
@@ -118,9 +124,14 @@ class App extends Component {
               </li>
             </ul>
           </div>
+
         </nav>]
 
         {display}
+
+
+        </nav>
+        <Collection db={firebase} />
 
       </div>
     );
