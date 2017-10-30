@@ -132,7 +132,7 @@ class Menu extends Component {
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
-                    aria-pressed="false"
+                    aria-pressed="true"
                     autocomplete="off"
                 >
                     {category.name}
@@ -143,15 +143,19 @@ class Menu extends Component {
         var activities = this.state.currentActivities.map(activity => {
             return (
                 <div className="card">
+                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Single toggle
+</button>
+
                     <div className="card-body">
                         <div class="row">
-                            <h4> {activity.title} </h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
+                             <div class="col-md-8 ml-auto">
+                                <h4> {activity.title} </h4>
+       
                                 <p> {activity.description} </p>
                             </div>
-                            <div class="col-md-4 ml-auto">
+                            <div class="col-md-4">
+                     
                                 <div
                                     className="btn-group  "
                                     role="group"
@@ -163,12 +167,13 @@ class Menu extends Component {
                                     >
                                         Complete
                                     </button>
-                                    <button
+                                    <a
                                         type="button"
                                         className="btn btn-success"
+                                        href={activity.link}
                                     >
                                         Explore
-                                    </button>
+                                    </a>
                                     <button
                                         type="button"
                                         className="btn btn-warning"
