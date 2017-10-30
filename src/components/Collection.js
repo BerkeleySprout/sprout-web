@@ -107,9 +107,7 @@ class Collection extends Component {
 
     return (
       
-      <div className={"" + classes} 
-        style={{ height: window.innerHeight + 100 }}
-      >
+      
       <div className="container" style={{marginTop: "50px"}}>
         <div className="row no-gutters">
         <div className="col-lg-3">{categoryNodes[0]}</div>
@@ -130,7 +128,7 @@ class Collection extends Component {
         <div className="col-lg-3">{categoryNodes[11]}</div>
         </div>
       </div>
-      </div>
+      
     );
   }
 }

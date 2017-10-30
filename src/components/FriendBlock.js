@@ -32,7 +32,7 @@ class FriendBlock extends Component {
   }
 
   render() {
-    
+
   
     return (
       <div className="container" style={{paddingTop:"20px"}}>
@@ -57,7 +57,7 @@ class FriendBlock extends Component {
         <div className="category--closeButton">
           <a onClick={this.props.focusOff}>Back</a>
         </div>
-        <hr/>
+        <hr style={{marginBottom:"0px"}}/>
       </div>
     );
   }

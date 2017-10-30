@@ -114,7 +114,7 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-green">
           <a className="navbar-brand" href="#">
             Sprout 
           </a>
@@ -157,7 +157,7 @@ class App extends Component {
             </ul>
           </div>
 
-        </nav>]
+        </nav>
 
         {display}
 
