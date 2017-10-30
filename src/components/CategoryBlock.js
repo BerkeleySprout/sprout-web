@@ -94,7 +94,7 @@ class CategoryBlock extends Component {
       );
     });
 
-    console.log(this.activityNodes)
+  
     return (
       <li className={classes} style={styles.item}>
         <div className="category--content">

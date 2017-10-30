@@ -12,8 +12,8 @@ class GGIASpider(scrapy.Spider):
             categories = article.root.attrib['data-filter'].split()
             difficulty = article.css("span.article-difficulty::text").extract_first()
             rating = article.css("span.rating-value::text").extract_first()
-            frequency = article.css("p::text").extract_first()
-            duration = article.css("p::text").extract()[1]
+            frequency = article.css("p::text").extract_first()[11:].strip().split("/")
+            duration = article.css("p::text").extract()[1][11:].strip().split(" ")
             link = article.css('a::attr(href)').extract_first()
             title = article.css('div.article__content h4::text').extract_first()
             description = article.css('div.article__content p::text').extract_first()
