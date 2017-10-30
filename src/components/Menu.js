@@ -128,7 +128,7 @@ class Menu extends Component {
             return (
                 <button
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-outline-success"
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
@@ -143,13 +143,14 @@ class Menu extends Component {
         var activities = this.state.currentActivities.map(activity => {
             return (
                 <div className="card">
-                
+
                     <div className="card-body">
                         <div class="row">
                              <div class="col-md-8 ml-auto">
-                                <h4> {activity.title} </h4>
-       
+                                <h4> {activity.title}  </h4>
+                                <p> Rating: {activity.rating} </p>
                                 <p> {activity.description} </p>
+                                <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
                             </div>
                             <div class="col-md-4">
                      
@@ -159,21 +160,21 @@ class Menu extends Component {
                                 >
                                     <button
                                         type="button"
-                                        className="btn btn-primary" 
+                                        className="btn btn-outline-primary" 
                                         onClick={() => this.props.updateScores(activity.categories)}
                                     >
                                         Complete
                                     </button>
                                     <a
                                         type="button"
-                                        className="btn btn-success"
+                                        className="btn btn-outline-success"
                                         href={activity.link}
                                     >
                                         Explore
                                     </a>
                                     <button
                                         type="button"
-                                        className="btn btn-warning"
+                                        className="btn btn-outline-warning"
                                     >
                                         Share
                                     </button>

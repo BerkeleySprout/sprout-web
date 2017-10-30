@@ -37,20 +37,22 @@ class FriendBlock extends Component {
     return (
       <div className="container" style={{paddingTop:"20px"}}>
         <div className="category--content">
+          <Scrollbars style={{ width: 500, height: 430}}>
+            <div className="project-list">
+              <ul className="menu vertical"></ul>
+            </div>
+          </Scrollbars>
         </div>
         <div className="row">
           <div className="col-lg-3">
             <img src="http://www.qygjxz.com/data/out/190/5691490-profile-pictures.png"
             className="no-padding"/>
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-9">
             <h3 style={{color:"black"}}> Tao Ong</h3>
             <h6 style={{color:"black"}}> Berkeley, CA</h6>
           </div>
-          <div className="col-lg-4">
-            <img src="https://i.imgur.com/OEURIKH.png"
-            className="no-padding full"/>
-          </div>
+          
           </div>
         <div className="category--closeButton">
           <a onClick={this.props.focusOff}>Back</a>
