@@ -54,7 +54,7 @@ class CategoryBlock extends Component {
 
   render() {
     let { active, focused, shiftLeft, isLast } = this.props;
-
+    let score = this.state.score + 1;
     let styles = {
       container: {
         transform: (function() {
@@ -81,7 +81,7 @@ class CategoryBlock extends Component {
         width: this.getWidth(active)
       },
       block: {
-        background: "rgb(230, 255, 230)",
+        background: "rgb(" + (255-score*20).toString() +", 255," + (255-score*6).toString(),
         backgroundSize: "cover",
         height: "150px",
         width: this.getWidth(active)
@@ -103,7 +103,7 @@ class CategoryBlock extends Component {
 
   
     return (
-      <ul className="container">
+      <div className="container">
         
         <div
           className="category--image-container"
@@ -119,7 +119,7 @@ class CategoryBlock extends Component {
         <div className="category--closeButton">
           <a onClick={this.props.focusOff}>Back</a>
         </div>
-      </ul>
+      </div>
     );
   }
 }

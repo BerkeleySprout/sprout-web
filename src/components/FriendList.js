@@ -49,6 +49,11 @@ class FriendList extends Component {
         <FriendBlock />
         <FriendBlock />
         <FriendBlock />
+        <FriendBlock />
+        <FriendBlock />
+        <FriendBlock />
+        <FriendBlock />
+        <FriendBlock />
       </div>
     );
   }
