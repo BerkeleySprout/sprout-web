@@ -15,40 +15,40 @@ class Collection extends Component {
       open: false,
       activityIndex: null,
       categories: [ { 
-        name: "Awe"
+        name: "awe"
       },
       { 
-        name: "Compassion"
+        name: "compassion"
       },
       { 
-        name: "Connection"
+        name: "connection"
       },
       { 
-        name: "Empathy"
+        name: "empathy"
       },
       { 
-        name: "Forgiveness"
+        name: "forgiveness"
       },
       { 
-        name: "Gratitude"
+        name: "gratitude"
       },
       { 
-        name: "Happiness"
+        name: "happiness"
       },
       { 
-        name: "Kindness"
+        name: "kindness"
       },
       { 
-        name: "Mindfulness"
+        name: "mindfulness"
       },
       { 
-        name: "Optimism"
+        name: "optimism"
       },
       { 
-        name: "Resilience"
+        name: "resilience"
       },
       { 
-        name: "Self-compassion"
+        name: "self-compassion"
       }
       ]
     };

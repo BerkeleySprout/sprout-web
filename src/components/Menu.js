@@ -143,10 +143,7 @@ class Menu extends Component {
         var activities = this.state.currentActivities.map(activity => {
             return (
                 <div className="card">
-                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-  Single toggle
-</button>
-
+                
                     <div className="card-body">
                         <div class="row">
                              <div class="col-md-8 ml-auto">
