@@ -44,7 +44,7 @@ class CategoryBlock extends Component {
   }
 
   getWidth(isActive) {
-    let w = !isActive ? "calc(20vw - 20px)" : "500px";
+    let w = !isActive ? "calc(20vw - 100px)" : "100px";
     return w;
   }
 
@@ -89,8 +89,13 @@ class CategoryBlock extends Component {
       block: {
         background: "rgb(" + (235-score*20).toString() + ", " + ((255-score)+green).toString() +"," + (235-score*8).toString(),
         backgroundSize: "cover",
-        height: "150px",
+        height: "350px",
         width: this.getWidth(active)
+      },
+      activities: {
+        textAlign: "center", 
+        paddingTop: "15px", 
+        fontSize: "15px"
       }
     };
     
@@ -118,13 +123,11 @@ class CategoryBlock extends Component {
         >
         
         <div className="category--image" style={styles.block}>
-          <h3>{this.props.category}</h3>
+          <h6 style={styles.activities}>Recent activities
+          <hr style={{margin: 0}}/>
+          </h6>
         </div>
         
-        </div>
-        
-        <div className="category--closeButton">
-          <a onClick={this.props.focusOff}>Back</a>
         </div>
       </ul>
     );

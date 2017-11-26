@@ -18,22 +18,7 @@ class Collection extends Component {
         name: "awe"
       },
       { 
-        name: "compassion"
-      },
-      { 
-        name: "connection"
-      },
-      { 
-        name: "empathy"
-      },
-      { 
-        name: "forgiveness"
-      },
-      { 
         name: "gratitude"
-      },
-      { 
-        name: "happiness"
       },
       { 
         name: "kindness"
@@ -42,13 +27,7 @@ class Collection extends Component {
         name: "mindfulness"
       },
       { 
-        name: "optimism"
-      },
-      { 
         name: "resilience"
-      },
-      { 
-        name: "self-compassion"
       }
       ]
     };
@@ -100,24 +79,24 @@ class Collection extends Component {
     return (
       
       
-      <div className="container" style={{marginTop: "50px"}}>
+      <div className="container" style={{marginTop: "50px", }}>
         <div className="row no-gutters">
-        <div className="col-lg-3">{categoryNodes[0]}</div>
-        <div className="col-lg-3">{categoryNodes[1]}</div>
-        <div className="col-lg-3">{categoryNodes[2]}</div>
-        <div className="col-lg-3">{categoryNodes[3]}</div>
+          <div className="col-lg-1"></div>
+          <div className="col-lg-2" style={{left: "20px"}}>Awe</div>
+          <div className="col-lg-2" style={{left: "20px"}}>Gratitude</div>
+          <div className="col-lg-2" style={{left: "20px"}}>Kindness</div>
+          <div className="col-lg-2" style={{left: "20px"}}>Mindfulness</div>
+          <div className="col-lg-2" style={{left: "20px"}}>Resilience</div>
+          <div className="col-lg-1"></div>
         </div>
         <div className="row no-gutters">
-        <div className="col-lg-3">{categoryNodes[4]}</div>
-        <div className="col-lg-3">{categoryNodes[5]}</div>
-        <div className="col-lg-3">{categoryNodes[6]}</div>
-        <div className="col-lg-3">{categoryNodes[7]}</div>
-        </div>
-        <div className="row no-gutters">
-        <div className="col-lg-3">{categoryNodes[8]}</div>
-        <div className="col-lg-3">{categoryNodes[9]}</div>
-        <div className="col-lg-3">{categoryNodes[10]}</div>
-        <div className="col-lg-3">{categoryNodes[11]}</div>
+          <div className="col-lg-1"></div>
+          <div className="col-lg-2">{categoryNodes[0]}</div>
+          <div className="col-lg-2">{categoryNodes[1]}</div>
+          <div className="col-lg-2">{categoryNodes[2]}</div>
+          <div className="col-lg-2">{categoryNodes[3]}</div>
+          <div className="col-lg-2">{categoryNodes[4]}</div>
+          <div className="col-lg-1"></div>
         </div>
       </div>
       

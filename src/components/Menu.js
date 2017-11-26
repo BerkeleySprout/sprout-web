@@ -20,31 +20,13 @@ class Menu extends Component {
                     name: "Awe"
                 },
                 {
-                    name: "Compassion"
-                },
-                {
-                    name: "Connection"
-                },
-                {
-                    name: "Empathy"
-                },
-                {
-                    name: "Forgiveness"
-                },
-                {
                     name: "Gratitude"
-                },
-                {
-                    name: "Happiness"
                 },
                 {
                     name: "Kindness"
                 },
                 {
                     name: "Mindfulness"
-                },
-                {
-                    name: "Optimism"
                 },
                 {
                     name: "Resilience"

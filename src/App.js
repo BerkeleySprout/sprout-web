@@ -19,15 +19,9 @@ class App extends Component {
       page: 0,
       scores: { 
       "awe" : 0,
-      "compassion": 0,
-      "connection": 0,
-      "empathy": 0,
-      "forgiveness": 0,
       "gratitude": 0,
-      "happiness": 0,
       "kindness": 0,
       "mindfulness": 0,
-      "optimism": 0,
       "resilience": 0
       }
 
@@ -115,9 +109,9 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-green">
+        <nav className="navbar navbar-main navbar-expand-lg navbar-light navbar-toggleable-md bg-green">
           <a className="navbar-brand" href="#">
-            Sprout 
+            <img alt="Sprout" src="https://image.ibb.co/gqC9yR/sprout_logo_icon.png"/>
           </a>
           <button
             className="navbar-toggler"
@@ -136,7 +130,6 @@ class App extends Component {
               <li className="nav-item active">
                 <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
                   Home
-
                 </a>
               </li>
               <li className="nav-item">
@@ -146,7 +139,6 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
-
                   Friends
                 </a>
               </li>
