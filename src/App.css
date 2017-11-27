@@ -211,6 +211,11 @@ li.category {
   transition: all 500ms ease;
 }
 
+.category--miniimage-container {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
 /*active states*/
 li.category.isActive {
   z-index: 99;
@@ -227,6 +232,13 @@ li.category.isActive {
 }
 
 /*image states*/
+
+.category--miniimage {
+  opacity: 1;
+  margin: 0;
+  display: inline-block;
+}
+
 .category--image:hover, .category--image:focus, .focused .category--image:hover, .focused .category--image:focus {
   opacity: 1;
   cursor: pointer;
@@ -400,7 +412,7 @@ li.category.isActive {
 
 .btn-warning {
   color: #000;
-  background: rgb(255,255, 245);
+  background: rgb(255,255,245);
 }
 
 .btn-warning:hover {
@@ -409,7 +421,7 @@ li.category.isActive {
 
 .btn-primary {
   color: #000;
-  background: rgb(245,245, 255);
+  background: rgb(245,245,255);
 }
 
 .btn-outline-dark {
