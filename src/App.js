@@ -140,7 +140,7 @@ class App extends Component {
 
     firebase.database().ref("users/" + this.state.user.uid + "/scores").on("value", (snapshot) => 
       {    
-
+        
 
         this.setState({scores : snapshot.val()}) } )
 
