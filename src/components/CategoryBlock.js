@@ -58,8 +58,8 @@ class CategoryBlock extends Component {
     if (this.props.category == "gratitude") {
       color = {
         background: "rgb(" + 255 + ", " + 
-                             (255-score*15) + "," + 
-                             (255-score*15).toString(),
+                             (250-score*15) + "," + 
+                             (250-score*15).toString(),
         backgroundSize: "cover",
         height: "350px"
       }
