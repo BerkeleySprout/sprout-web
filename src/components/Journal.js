@@ -67,12 +67,14 @@ class Journal extends Component {
     render() {
        
 
-        var sessionBlocks = this.state.sessions != null ? this.state.sessions.map(session => <SessionBlock session={sessions}/>) : null
+        var sessionBlocks = this.state.sessions.length > 0 ? this.state.sessions.map(session => <SessionBlock session={session} />) : null
 
         return (
 
+<div class="container">
+                {sessionBlocks}
 
-                {sessions}
+                </div>
             
         );
     }

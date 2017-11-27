@@ -58,7 +58,7 @@ class EntryForm extends React.Component {
     updates['sessions/' + pushKey] = entry;
     updates['users/' + current_uid + '/sessions/' + pushKey] = entry;
 
-  return firebase.database().ref().update(updates);
+  return firebase.database().ref().update(updates)
 
   }
 

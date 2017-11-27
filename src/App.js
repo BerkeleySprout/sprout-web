@@ -85,7 +85,6 @@ class App extends Component {
         "mindfulness": 0
       }
     }
-
     firebase.database().ref('users/' + this.state.user.uid).set(new_user)
 
   }
