@@ -10,39 +10,29 @@ class EntryForm extends React.Component {
       memo: "",
       durationAmount: this.props.activity.duration[0],
       durationUnit: "",
-      datetime: "",
-      moods: [],
-
+      datetime: "2017-11-27T14:00:00",
+      moods: []
     };
 
-    console.log("" + this.props.activity.duration[0] + "")
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
-
   handleChange(e) {
-
     this.setState({ [e.target.id]: e.target.value });
   }
 
-  handleClick(e) {
+  handleClick(mood) {
+    var current_moods = this.state.moods.slice();
 
-    var current_moods = this.state.moods.slice()
-
-    var mood = e.target.name
-
-    var exists = current_moods.includes(mood)
+    var exists = current_moods.includes(mood);
 
     if (exists) {
-
       var i = current_moods.indexOf(mood);
       current_moods.splice(i, 1);
-
     } else {
-      current_moods.append(e.target.name)
+      current_moods.push(mood);
     }
 
     this.setState({ moods: current_moods });
@@ -51,30 +41,32 @@ class EntryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-
+    var current_uid = firebase.auth().currentUser.uid
     var entry = {
-      memo : this.state.memo,
-      durationAmount : this.state.durationAmount,
+      owner: current_uid,
+      memo: this.state.memo,
+      durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
       datetime: this.state.datetime,
-      moods: this.state.mood,
-    }
+      moods: this.state.moods
+    };
 
-    console.log(entry)
+    var pushKey = firebase.database().ref("sessions/").push().key
 
-    
-  }
+    var updates = {};
 
-  handleClick(e) {
-    e.preventDefault();
+    updates['sessions/' + pushKey] = entry;
+    updates['users/' + current_uid + '/sessions/' + pushKey] = entry;
+
+  return firebase.database().ref().update(updates);
+
   }
 
   render() {
-    console.log(this.props.activity)
     return (
       <div class="card">
         <div className="card-body">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div class="form-row">
               <div class="form-group col-sm-11">
                 <textarea
@@ -88,13 +80,34 @@ class EntryForm extends React.Component {
               </div>
 
               <div class="btn-group-vertical col-sm-1" role="group">
-                <button type="button" onClick={this.handleClick} name="happy" class="btn btn-outline-warning">
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.handleClick("happy");
+                  }}
+                  name="happy"
+                  class="btn btn-outline-warning"
+                >
                   <i class="em em-smile" />
                 </button>
-                <button type="button" name="sad" class="btn btn-outline-primary">
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.handleClick("sad");
+                  }}
+                  name="sad"
+                  class="btn btn-outline-primary"
+                >
                   <i class="em em-cry" />
                 </button>
-                <button type="button" name="angry" class="btn btn-outline-danger">
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.handleClick("angry");
+                  }}
+                  name="angry"
+                  class="btn btn-outline-danger"
+                >
                   <i class="em em-angry" />
                 </button>
               </div>
@@ -105,7 +118,6 @@ class EntryForm extends React.Component {
                 <input
                   type="text"
                   onChange={this.handleChange}
-       
                   value={this.state.durationAmount}
                   id="durationAmount"
                   placeholder="Duration"
@@ -113,7 +125,12 @@ class EntryForm extends React.Component {
               </div>
 
               <div className="col-sm-4 form-group">
-                <select class="form-control" onChange={this.handleChange} value={this.state.durationUnit.value} id="durationUnit">
+                <select
+                  class="form-control"
+                  onChange={this.handleChange}
+                  value={this.state.durationUnit}
+                  id="durationUnit"
+                >
                   <option>Minutes</option>
                   <option>Hours</option>
                 </select>
@@ -130,7 +147,16 @@ class EntryForm extends React.Component {
               </div>
             </div>
 
-             <button type="submit" style={{width:"100%"}} class="btn btn-outline-success">Complete <i class="fa fa-check" style={{marginLeft: "5px"}}></i> </button>
+            <button
+              type="submit"
+              onstyle={{ width: "100%" }}
+              class="btn btn-outline-success"
+            >
+              Complete <i
+                class="fa fa-check"
+                style={{ marginLeft: "5px" }}
+              />{" "}
+            </button>
           </form>
         </div>
       </div>
