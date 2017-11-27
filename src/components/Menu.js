@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
+import ActivityBlock from "./ActivityBlock";
 import classNames from "classnames";
+import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
 
 class Menu extends Component {
@@ -89,7 +91,7 @@ class Menu extends Component {
     }
 
     getActivities() {
-        let app = database.ref("activities");
+        let app = database.ref("activities/");
 
         app.on(
             "value",
@@ -114,6 +116,18 @@ class Menu extends Component {
         this.setState({ isMounted: false });
     }
 
+   /* postSession() {
+        session = {
+            activity: activity,
+            memo: memo,
+            date: date,
+            duration: duration,
+            friends: friends
+        }
+
+    }
+    */
+
     render() {
         var categoryButtons = this.state.categories.map(category => {
             return (
@@ -132,65 +146,12 @@ class Menu extends Component {
             );
         });
 
-        var activities = this.state.currentActivities.map(activity => {
-            return (
-                <div className="card">
+        var activities = this.state.currentActivities.map(activity => <ActivityBlock activity={activity}/>)
+                
 
-                    <div className="card-body">
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">
-                                <img src={activity.img} />
-                            </div>
-                            
-                            <div class="col-md-6 ml-auto">
-                                <h4> {activity.title} </h4>
-                                <p> Rating: {activity.rating} </p>
-                                <p> {activity.description} </p>
-                                <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
-                            </div>
-
-                            <div class="col-md-3">
-                                <br/>
-                                <div className="row">
-                                    <button
-                                        type="button"
-                                        className="btn btn-lg btn-success"
-                                        href="#article"
-                                        onClick={() => this.props.updateScores(activity.categories)}
-                                    >
-                                        Complete 
-                                        <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                </div>
-                                
-                                <br/>
-                                <div className="row">
-                                    <button
-                                        type="button"
-                                        className="btn btn-warning"
-                                        style={{marginRight: "10px"}}
-                                        href={activity.link}
-                                    >
-                                        Explore
-                                        <i class="fa fa-search" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-primary"
-                                    >
-                                        Share
-                                        <i class="fa fa-share-alt" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        });
 
         return (
+
             <div className="container">
                 <nav className="navbar navbar-light bg-faded">
                     <div className="btn-group mx-auto " role="group">

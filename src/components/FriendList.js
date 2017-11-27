@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import FriendForm from "./FriendForm";
 import FriendBlock from "./FriendBlock";
 import Popup from "./Popup";
-import MyForm from "./MyForm";
 import classNames from "classnames";
+
+import firebase, { auth, provider, database } from "../firebase.js";
 
 class FriendList extends Component {
   constructor(props) {
@@ -10,19 +12,53 @@ class FriendList extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.focusOff = this.focusOff.bind(this);
-    
+    this.addNewFriend = this.addNewFriend.bind(this);
 
     this.state = {
-      score: 0,
-      open: false,
-      activityIndex: null
+      isPopupVisible: false,
+      friendList: []
     };
+
+    this.getFriends = this.getFriends.bind(this);
+
+    this.getFriends();
+
+
   }
 
-  handleClick(i) {
+  getFriends() {
+    let app = database.ref(
+      "users/" + firebase.auth().currentUser.uid + "/friends"
+    );
+
+    app.on(
+      "value",
+      function(snapshot) {
+        var exists = snapshot.val() !== null;
+
+        if (exists) {
+          let friendsToFetch = Object.keys(snapshot.val());
+
+          const friendPromises = friendsToFetch.map(function(uid) {
+            return database
+              .ref("users/")
+              .child(uid)
+              .once("value").then(function(s) {
+                return s.val();
+              });
+          });
+
+          Promise.all(friendPromises).then(friendList => {
+            this.setState({ friendList: friendList }, () => {console.log(this.state.friendList)});
+          });
+        }
+      }.bind(this)
+    );
+  }
+
+  handleClick(e) {
     this.setState({
-      activeIndex: i,
-      open: true
+      isPopupVisible: false
     });
   }
 
@@ -36,31 +72,68 @@ class FriendList extends Component {
     }
   }
 
-
   updateScore() {
     let score = this.state.score + 1;
     this.setState({ score: score });
   }
 
+  addNewFriend(email) {
+    function addFriend(friend_uid) {
+      var current_uid = firebase.auth().currentUser.uid;
+
+      var updates = {};
+
+      updates["users/" + current_uid + "/friends/" + friend_uid] = true;
+      updates["users/" + friend_uid + "/friends/" + current_uid] = true;
+
+      firebase
+        .database()
+        .ref()
+        .update(updates);
+    }
+
+    function checkIfExists(snapshot) {
+      var exists = snapshot.val() !== null;
+
+      if (exists) {
+        addFriend.bind(this)(Object.keys(snapshot.val())[0]);
+      } else {
+        console.log("User does not exist");
+      }
+    }
+
+    firebase
+      .database()
+      .ref("users/")
+      .orderByChild("email")
+      .equalTo(email)
+      .limitToFirst(1)
+      .once("value", checkIfExists.bind(this));
+  }
+
+  createFriendBlock(friend) {
+    return <FriendBlock user={friend}/>
+  }
+
   render() {
+    const isVisible = this.state.isPopupVisible;
+
+    if(this.state.friendList.length > 0) {
+
+    var friendBlocks = this.state.friendList.map(this.createFriendBlock)
+  }
 
     return (
       <div className="container">
-        <div className="container" style={{marginTop: "30px", marginBottom: "30px"}}> 
-          <MyForm />
+        <div
+          className="container"
+          style={{ marginTop: "30px", marginBottom: "30px" }}
+        >
+          <FriendForm addNewFriend={this.addNewFriend} />
         </div>
 
-        <div id="app-container" className="container">
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-          <FriendBlock />
-        </div>
+
+        {friendBlocks}
       </div>
     );
   }

@@ -4,18 +4,19 @@ import Activity from "./Activity";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
+import firebase, { auth, provider, database } from "../firebase.js";
+
 class FriendBlock extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      score: 0,
+      score: 0
     };
     this.setActive = this.setActive.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-
 
   setActive() {
     this.props.handleClick(this.props.Index);
@@ -32,58 +33,30 @@ class FriendBlock extends Component {
     this.props.updateScore();
   }
 
-  addNewFriend(email) {
-
-    function addFriend(friend_uid) {
-
-      current_uid = this.state.user.uid
-
-      updates['users/' + current_uid + '/friends/' + friend_uid] = true
-      updates['users/' + friend_uid + '/friends/' + current_uid] = true
-
-      firebase.database().ref().update(updates)
-    
-
-    }
-
-    firebase.database().ref('user/').orderByChild('email').equalTo(email).limitToFirst(1).once('value', function(snapshot) {
-        var exists = (snapshot.val() !== null);
-
-          if (exists) {
-            addFriend(snapshot.val().key)
-          };
-    });
-}
-
-
-
-  }
-
   render() {
-
-  
     return (
-       <div className="container" style={{paddingTop:"20px"}}>
-        <div className="category--content">
+      <div className="card">
+        <div className="card-body">
+          <div className="row">
+            <div className="col-lg-3">
+              <img
+                src={this.props.user.image}
+                className="no-padding"
+              />
+            </div>
+            <div className="col-lg-5">
+              <h3 style={{ color: "black" }}> {this.props.user.name}</h3>
+            </div>
+            <div className="col-lg-4">
+              <img
+                src=""
+                
+              />
+            </div>
+          </div>
+
+          <hr style={{ marginBottom: "0px" }} />
         </div>
-        <div className="row">
-          <div className="col-lg-3">
-            <img src="http://www.qygjxz.com/data/out/190/5691490-profile-pictures.png"
-            className="no-padding"/>
-          </div>
-          <div className="col-lg-5">
-            <h3 style={{color:"black"}}> Tao Ong</h3>
-            <h6 style={{color:"black"}}> Berkeley, CA</h6>
-          </div>
-          <div className="col-lg-4">
-            <img src="https://i.imgur.com/OEURIKH.png"
-            className="no-padding full"/>
-          </div>
-          </div>
-        <div className="category--closeButton">
-          <a onClick={this.props.focusOff}>Back</a>
-        </div>
-        <hr style={{marginBottom:"0px"}}/>
       </div>
     );
   }

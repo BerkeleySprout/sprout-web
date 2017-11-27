@@ -21,6 +21,10 @@ a:hover, a:hover > * {
   color: grey;
 }
 
+.largeform {
+  font-size: 40px;
+}
+
 .categories--menu-container {
   position: relative;
   height: 100%;
