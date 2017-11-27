@@ -48,7 +48,8 @@ class EntryForm extends React.Component {
       durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
       datetime: this.state.datetime,
-      moods: this.state.moods
+      moods: this.state.moods,
+      activity: this.props.activity
     };
 
     var pushKey = firebase.database().ref("sessions/").push().key

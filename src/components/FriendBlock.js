@@ -7,7 +7,7 @@ import firebase, { auth, provider, database } from "../firebase.js";
 class FriendBlock extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       score: 0
     };
