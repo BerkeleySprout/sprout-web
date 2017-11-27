@@ -95,6 +95,7 @@ class FriendBlock extends Component {
               <img
                 src={this.props.user.image}
                 className="no-padding"
+                style={{borderRadius: "50%"}}
               />
             </div>
             <div className="col-lg-6">

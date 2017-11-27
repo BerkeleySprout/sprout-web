@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import Popup from "./Popup";
+import AlertContainer from 'react-alert';
 import firebase, { auth, provider, database } from "../firebase.js";
 
 class EntryForm extends React.Component {
@@ -17,6 +18,22 @@ class EntryForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  alertOptions = {
+    offset: 14,
+    position: 'bottom right',
+    theme: 'dark',
+    time: 5000,
+    transition: 'scale'
+  }
+ 
+  showAlert = () => {
+    this.msg.show('Activity Completed!', {
+      time: 2000,
+      type: 'success',
+      icon: <img src="path/to/some/img/32x32.png" />
+    })
   }
 
   handleChange(e) {
@@ -155,11 +172,14 @@ class EntryForm extends React.Component {
               </div>
             </div>
 
+            <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
             <button
               type="submit"
               onstyle={{ width: "100%" }}
+              onClick={this.showAlert}
               class="btn btn-outline-success"
             >
+
               Complete <i
                 class="fa fa-check"
                 style={{ marginLeft: "5px" }}
