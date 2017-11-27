@@ -52,7 +52,8 @@ class CategoryBlock extends Component {
                             ((255-score)+offset).toString() + "," + 
                              (235-score*8).toString(),
         backgroundSize: "cover",
-        height: "350px"
+        height: "350px",
+        position: "relative"
       }
     }
     if (this.props.category == "gratitude") {
@@ -61,7 +62,8 @@ class CategoryBlock extends Component {
                              (250-score*15) + "," + 
                              (250-score*15).toString(),
         backgroundSize: "cover",
-        height: "350px"
+        height: "350px",
+        position: "relative"
       }
     }
     if (this.props.category == "kindness") {
@@ -70,7 +72,8 @@ class CategoryBlock extends Component {
                              255 + "," + 
                              (250-score*15).toString(),
         backgroundSize: "cover",
-        height: "350px"
+        height: "350px",
+        position: "relative"
       }
     }
     if (this.props.category == "mindfulness") {
@@ -79,7 +82,8 @@ class CategoryBlock extends Component {
                              (245-score*15) + "," + 
                              255,
         backgroundSize: "cover",
-        height: "350px"
+        height: "350px",
+        position: "relative"
       }
     }
     if (this.props.category == "resilience") {
@@ -88,7 +92,8 @@ class CategoryBlock extends Component {
                             ((255-20-score)+offset).toString() + "," + 
                              (235-score*20).toString(),
         backgroundSize: "cover",
-        height: "350px"
+        height: "350px",
+        position: "relative"
       }
     }
     let styles = {
@@ -103,6 +108,7 @@ class CategoryBlock extends Component {
         paddingTop: "280px",
         fontSize: "15px",
         color: "white",
+        opacity: "1"
       },
       score: {
         textAlign: "center", 
@@ -124,9 +130,12 @@ class CategoryBlock extends Component {
         <div className="category--image" style={color}>
             <h6 style={styles.scoreLabel}>Score</h6>
             <h6 style={styles.score}>{this.props.score}</h6>
+
+{/*
             <h6 style={styles.activities}>Recent activities
               <hr style={{marginTop: "5px", background: "white"}}/>
             </h6>
+*/}
         </div>
         
         </div>

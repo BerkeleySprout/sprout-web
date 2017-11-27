@@ -64,7 +64,7 @@ class Journal extends Component {
             <SessionBlock session={this.state.sessions[sessionKey]} />
         ));
 
-        return <div class="container">{sessionBlocks}</div>;
+        return <div class="container" style={{marginTop: "20px"}}>{sessionBlocks}</div>;
     }
 }
 
