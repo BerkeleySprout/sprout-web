@@ -15,32 +15,13 @@ class CategoryBlock extends Component {
       activities: []
     };
     this.setActive = this.setActive.bind(this);
-    this.getActivities = this.getActivities.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.getActivities();
 
     this.props.color
     this.setState
   }
 
-  getActivities() {
-    let app = this.props.db.database().ref("activities");
 
-    app.on(
-      "value",
-      function(snapshot) {
-        let category = this.props.category.name;
-        
-        let filtered = snapshot.val().filter(
-          function(item) {
-            return item.categories.includes(category);
-          }
-        );
-
-        this.setState({ activities: filtered });
-      }.bind(this)
-    );
-  }
 
   setActive() {
     this.props.handleClick(this.props.Index);
@@ -96,7 +77,7 @@ class CategoryBlock extends Component {
       color = {
         background: "rgb(" + 255 + ", " + 
                              255 + "," + 
-                             (255-score*15).toString(),
+                             (250-score*15).toString(),
         backgroundSize: "cover",
         height: "350px",
         width: this.getWidth(active)
@@ -139,13 +120,6 @@ class CategoryBlock extends Component {
               : "translate3d(0, 0, 0)";
           return transform;
         })()
-      },
-      background: {
-        background:
-          "url(" + this.props.category.img + ") no-repeat center",
-        backgroundSize: "cover",
-        height: "500px",
-        width: this.getWidth(active)
       },
       activities: {
         textAlign: "center", 

@@ -116,7 +116,7 @@ class Menu extends Component {
                     data-toggle="button"
                     aria-pressed="false"
                     autocomplete="off"
-                    style={{marginTop: "15px"}}
+                    style={{marginTop: "10px"}}
                 >
                     {category.name}
                 </button>
@@ -152,7 +152,7 @@ class Menu extends Component {
                                         <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
                                     </button>
                                 </div>
-                                
+
                                 <br/>
                                 <div className="row">
                                     <button

@@ -378,9 +378,6 @@ li.category.isActive {
   height: 100%;
 }
 
-.btn-outline-dark:active {
-  background-color: green;
-}
 
 .popup {
   border: 1px solid;
@@ -390,6 +387,30 @@ li.category.isActive {
   width: 200px;
   animation: fade 3000ms ease;
   animation-iteration-count:infinite;
+}
+
+.btn-success {
+  color: #000;
+  background: rgb(245,255,245);
+}
+
+.btn-warning {
+  color: #000;
+  background: rgb(255,255, 245);
+}
+
+.btn-warning:hover {
+  color: white;
+}
+
+.btn-primary {
+  color: #000;
+  background: rgb(245,245, 255);
+}
+
+.btn-outline-dark {
+  color: #000;
+  background: rgba(145,145,145, 0.05);
 }
 
 @keyframes fade {

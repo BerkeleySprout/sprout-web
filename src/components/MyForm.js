@@ -32,7 +32,9 @@ class MyForm extends React.Component {
             <input placeholder="Add friend by email"/>
             <br />
             <br />
-            <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Add Friend</button>
+            <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Add Friend
+            <i className="fa fa-user" style={{marginLeft: "7px"}}></i>
+            </button>
           </form>
           <Popup isPopupVisible={isVisible} />
         </div>
