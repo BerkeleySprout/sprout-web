@@ -109,7 +109,7 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-main navbar-expand-lg navbar-light navbar-toggleable-md bg-green">
+        <nav className="navbar navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197">
           <a className="navbar-brand" href="#">
             <img alt="Sprout" src="https://image.ibb.co/gqC9yR/sprout_logo_icon.png"/>
           </a>

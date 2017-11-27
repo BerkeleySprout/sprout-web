@@ -18,6 +18,9 @@ class CategoryBlock extends Component {
     this.getActivities = this.getActivities.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.getActivities();
+
+    this.props.color
+    this.setState
   }
 
   getActivities() {
@@ -56,10 +59,68 @@ class CategoryBlock extends Component {
 
   render() {
     let { active, focused, shiftLeft, isLast } = this.props;
+    let color = {
+        background: "rgb(" + (235-score*20).toString() + ", " + 
+                            ((255-score)+offset).toString() + "," + 
+                             (235-score*8).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
     let score = this.props.score + 1;
-    let green = 0;
+    let offset = 0;
     if (score > 100) {
-      green = score - 100;
+      offset = score - 100;
+    }
+    if (this.props.category == "awe") {
+      color = {
+        background: "rgb(" + (235-score*20).toString() + ", " + 
+                            ((255-score)+offset).toString() + "," + 
+                             (235-score*8).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
+    }
+    if (this.props.category == "gratitude") {
+      color = {
+        background: "rgb(" + 255 + ", " + 
+                             (255-score*15) + "," + 
+                             (255-score*15).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
+    }
+    if (this.props.category == "kindness") {
+      color = {
+        background: "rgb(" + 255 + ", " + 
+                             255 + "," + 
+                             (255-score*15).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
+    }
+    if (this.props.category == "mindfulness") {
+      color = {
+        background: "rgb(" + (245-score*15) + ", " + 
+                             (245-score*15) + "," + 
+                             255,
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
+    }
+    if (this.props.category == "resilience") {
+      color = {
+        background: "rgb(" + 255 + ", " + 
+                            ((255-20-score)+offset).toString() + "," + 
+                             (235-score*20).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      }
     }
     let styles = {
       container: {
@@ -86,16 +147,51 @@ class CategoryBlock extends Component {
         height: "500px",
         width: this.getWidth(active)
       },
-      block: {
-        background: "rgb(" + (235-score*20).toString() + ", " + ((255-score)+green).toString() +"," + (235-score*8).toString(),
+      aweBlock: {
+        background: "rgb(" + (235-score*20).toString() + ", " + 
+                            ((255-score)+offset).toString() + "," + 
+                             (235-score*8).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      },
+      gratitudeBlock: {
+        background: "rgb(" + 255 + ", " + 
+                             (255-score*15) + "," + 
+                             (255-score*15).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      },
+      kindnessBlock: {
+        background: "rgb(" + 255 + ", " + 
+                             255 + "," + 
+                             (255-score*15).toString(),
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      },
+      mindfulnessBlock: {
+        background: "rgb(" + (245-score*15) + ", " + 
+                             (245-score*15) + "," + 
+                             255,
+        backgroundSize: "cover",
+        height: "350px",
+        width: this.getWidth(active)
+      },
+      resilienceBlock: {
+        background: "rgb(" + 255 + ", " + 
+                            ((255-20-score)+offset).toString() + "," + 
+                             (235-score*20).toString(),
         backgroundSize: "cover",
         height: "350px",
         width: this.getWidth(active)
       },
       activities: {
         textAlign: "center", 
-        paddingTop: "15px", 
-        fontSize: "15px"
+        paddingTop: "20px", 
+        fontSize: "15px",
+        color: "white"
       }
     };
     
@@ -122,9 +218,9 @@ class CategoryBlock extends Component {
           style={styles.container}
         >
         
-        <div className="category--image" style={styles.block}>
+        <div className="category--image" style={color}>
           <h6 style={styles.activities}>Recent activities
-          <hr style={{margin: 0}}/>
+          <hr style={{marginTop: "5px", background: "white"}}/>
           </h6>
         </div>
         

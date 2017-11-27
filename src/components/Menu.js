@@ -17,19 +17,19 @@ class Menu extends Component {
             isMounted: false,
             categories: [
                 {
-                    name: "Awe"
+                    name: "awe"
                 },
                 {
-                    name: "Gratitude"
+                    name: "gratitude"
                 },
                 {
-                    name: "Kindness"
+                    name: "kindness"
                 },
                 {
-                    name: "Mindfulness"
+                    name: "mindfulness"
                 },
                 {
-                    name: "Resilience"
+                    name: "resilience"
                 }
             ]
         };
@@ -110,12 +110,13 @@ class Menu extends Component {
             return (
                 <button
                     type="button"
-                    className="btn btn-outline-success"
+                    className="btn btn-outline-dark"
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
                     aria-pressed="true"
                     autocomplete="off"
+                    style={{marginTop: "15px"}}
                 >
                     {category.name}
                 </button>
@@ -142,21 +143,21 @@ class Menu extends Component {
                                 >
                                     <button
                                         type="button"
-                                        className="btn btn-outline-primary" 
+                                        className="btn btn-outline-success" 
                                         onClick={() => this.props.updateScores(activity.categories)}
                                     >
                                         Complete
                                     </button>
-                                    <a
-                                        type="button"
-                                        className="btn btn-outline-success"
-                                        href={activity.link}
-                                    >
-                                        Explore
-                                    </a>
                                     <button
                                         type="button"
                                         className="btn btn-outline-warning"
+                                        href={activity.link}
+                                    >
+                                        Explore
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-primary"
                                     >
                                         Share
                                     </button>

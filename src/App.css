@@ -335,10 +335,10 @@ li.category.isActive {
   text-align: center;
   color: rgb(10, 30, 10);
   font-size: 1.3em;
-  -webkit-transition: background 0.5s ease-out;
-  -moz-transition: background 0.5s ease-out;
-  -o-transition: background 0.5s ease-out;
-  transition: background 0.5s ease-out;
+  -webkit-transition: background 0.3s ease-out;
+  -moz-transition: background 0.3s ease-out;
+  -o-transition: background 0.3s ease-out;
+  transition: background 0.3s ease-out;
   height: 1px; width: 1px; 
   overflow: hidden;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
@@ -352,7 +352,17 @@ li.category.isActive {
   height: 350px;
   overflow: auto;
   clip: auto;
-  background: rgba(0, 0, 0, 0.1)
+  background: rgba(0, 0, 0, 0.3)
+}
+
+.card {
+  -webkit-transition: background 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out;
+  -o-transition: background 0.2s ease-out;
+  transition: background 0.2s ease-out;
+}
+.card:hover {
+  background: rgba(0, 0, 0, 0.02)
 }
 
 .full {

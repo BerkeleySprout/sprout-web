@@ -79,7 +79,7 @@ class Collection extends Component {
     return (
       
       
-      <div className="container" style={{marginTop: "50px", }}>
+      <div className="container" style={{marginTop: "50px"}}>
         <div className="row no-gutters">
           <div className="col-lg-1"></div>
           <div className="col-lg-2" style={{left: "20px"}}>Awe</div>
