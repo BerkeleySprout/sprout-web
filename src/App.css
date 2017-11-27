@@ -352,7 +352,7 @@ li.category.isActive {
   height: 350px;
   overflow: auto;
   clip: auto;
-  background: rgba(0, 0, 0, 0.3)
+  background: rgba(0, 0, 0, 0.1)
 }
 
 .card {

@@ -192,6 +192,18 @@ class CategoryBlock extends Component {
         paddingTop: "20px", 
         fontSize: "15px",
         color: "white"
+      },
+      scoreLabel: {
+        textAlign: "center", 
+        paddingTop: "300px",
+        fontSize: "15px",
+        color: "white",
+      },
+      score: {
+        textAlign: "center", 
+        paddingTop: "320px",
+        fontSize: "15px",
+        color: "white",
       }
     };
     
@@ -219,9 +231,12 @@ class CategoryBlock extends Component {
         >
         
         <div className="category--image" style={color}>
-          <h6 style={styles.activities}>Recent activities
-          <hr style={{marginTop: "5px", background: "white"}}/>
-          </h6>
+
+            <h6 style={styles.scoreLabel}>Score</h6>
+            <h6 style={styles.score}>{this.props.score}</h6>
+            <h6 style={styles.activities}>Recent activities
+              <hr style={{marginTop: "5px", background: "white"}}/>
+            </h6>
         </div>
         
         </div>

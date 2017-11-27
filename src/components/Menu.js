@@ -136,30 +136,34 @@ class Menu extends Component {
                                 <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
                             </div>
                             <div class="col-md-4">
-                     
-                                <div
-                                    className="btn-group  "
-                                    role="group"
-                                >
+                                <br/>
+                                <div className="row">
                                     <button
                                         type="button"
-                                        className="btn btn-outline-success" 
+                                        className="btn btn-lg btn-success" 
                                         onClick={() => this.props.updateScores(activity.categories)}
                                     >
-                                        Complete
+                                        Complete 
+                                        <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
                                     </button>
+                                </div>
+                                <br/>
+                                <div className="row">
                                     <button
                                         type="button"
-                                        className="btn btn-outline-warning"
+                                        className="btn btn-warning"
+                                        style={{marginRight: "10px"}}
                                         href={activity.link}
                                     >
                                         Explore
+                                        <i class="fa fa-search" style={{marginLeft: "5px"}}></i>
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn btn-outline-primary"
+                                        className="btn btn-primary"
                                     >
                                         Share
+                                        <i class="fa fa-share-alt" style={{marginLeft: "5px"}}></i>
                                     </button>
                                 </div>
 
