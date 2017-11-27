@@ -144,13 +144,15 @@ class Menu extends Component {
                                 <div className="row">
                                     <button
                                         type="button"
-                                        className="btn btn-lg btn-success" 
+                                        className="btn btn-lg btn-success"
+                                        href="#article"
                                         onClick={() => this.props.updateScores(activity.categories)}
                                     >
                                         Complete 
                                         <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
                                     </button>
                                 </div>
+                                
                                 <br/>
                                 <div className="row">
                                     <button

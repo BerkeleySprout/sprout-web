@@ -147,46 +147,6 @@ class CategoryBlock extends Component {
         height: "500px",
         width: this.getWidth(active)
       },
-      aweBlock: {
-        background: "rgb(" + (235-score*20).toString() + ", " + 
-                            ((255-score)+offset).toString() + "," + 
-                             (235-score*8).toString(),
-        backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
-      },
-      gratitudeBlock: {
-        background: "rgb(" + 255 + ", " + 
-                             (255-score*15) + "," + 
-                             (255-score*15).toString(),
-        backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
-      },
-      kindnessBlock: {
-        background: "rgb(" + 255 + ", " + 
-                             255 + "," + 
-                             (255-score*15).toString(),
-        backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
-      },
-      mindfulnessBlock: {
-        background: "rgb(" + (245-score*15) + ", " + 
-                             (245-score*15) + "," + 
-                             255,
-        backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
-      },
-      resilienceBlock: {
-        background: "rgb(" + 255 + ", " + 
-                            ((255-20-score)+offset).toString() + "," + 
-                             (235-score*20).toString(),
-        backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
-      },
       activities: {
         textAlign: "center", 
         paddingTop: "20px", 

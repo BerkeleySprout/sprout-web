@@ -60,17 +60,42 @@ class App extends Component {
     });
   }
 
+  // updateScores(categories) {
+  //     let newScores = Object.assign({}, this.state.scores)
+  //       for (let i = 0; i < categories.length; i++){
+  //         let category = categories[i]
+  //         newScores[category] += 1 
+  //         console.log(newScores)    
+  //   } 
+
+  //     firebase.database().ref('users/' + this.state.user + '/scores').set(newScores);
+ 
+  // }
+
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(user => {
+  //     if (user) {
+  //       this.setState({ user });
+  //     }
+  //   });
+  //   var scores = firebase.database().ref('users/' + this.state.user + '/scores');
+  //   scores.on('value', function(snapshot) {
+  //     if (snapshot.val() != null) {
+  //       this.updateScores(snapshot.val());
+  //     }
+  //   });
+  //   }
+
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
       }
     });
-  
     }
 
 
-    updateScores(categories) {
+  updateScores(categories) {
       let newScores = Object.assign({}, this.state.scores)
         for (let i = 0; i < categories.length; i++){
           let category = categories[i]
@@ -79,7 +104,7 @@ class App extends Component {
     } 
         this.setState({scores : newScores})
 
-    
+   
   }
 
   render() {
