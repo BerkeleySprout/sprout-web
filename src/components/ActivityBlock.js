@@ -73,15 +73,15 @@ class ActivityBlock extends Component {
               <div class="col-md-4">
                 <br />
                 <div className="row">
-                  <button
+                  <a
                     type="button"
                     className="btn btn-outline-warning"
-                    style={{ marginRight: "6%", width: "47%" }}
+                    style={{ marginRight: "6%", width: "47%"}}
                     href={this.props.activity.link}
                   >
                     Explore
                     <i class="fa fa-search" style={{ marginLeft: "5px" }} />
-                  </button>
+                  </a>
                   <button
                     type="button"
                     style={{ width: "47%" }}
