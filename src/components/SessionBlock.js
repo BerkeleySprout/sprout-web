@@ -17,11 +17,11 @@ class SessionBlock extends Component {
       <div>
         <div className="card">
           <div className="card-body">
-            {this.props.session.datetime}
-            {this.props.session.moods}
+            <h1> {this.props.session.datetime} </h1>
 
-            {this.props.session.memo}
-            {this.props.session.memo}
+            <h2> {this.props.session.activity.title} </h2>
+            
+            <h5> {this.props.session.memo} </h5>
           </div>
         </div>
       </div>

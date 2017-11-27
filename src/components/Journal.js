@@ -46,25 +46,23 @@ class Journal extends Component {
 
         app.on(
             "value",
-            function(snapshot) {
+            (snapshot) => {
                 let filtered = snapshot.val();
-                this.setState({ sessions: filtered }, () => {
-                    console.log(this.state.sessions);
+
+                this.setState({ sessions: filtered })
                 });
-            }.bind(this)
-        );
-    }
+            }
 
     componentDidMount() {
         this.getSessions();
     }
 
     render() {
-        var sessionBlocks = Object.keys(this.state.sessions).map(sessionKey => (
-            <SessionBlock session={this.state.sessions[sessionKey]} />
-        ));
+        var sessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null) ? <div class="card"> <div class="card-body"><h2> You have no entries! </h2></div></div> : Object.keys(this.state.sessions).map(sessionKey => (
+            <SessionBlock session={this.state.sessions[sessionKey]} /> 
+        )) 
 
-        return <div class="container" style={{marginTop: "20px"}}>{sessionBlocks}</div>;
+        return (<div class="container" style={{marginTop: "20px"}}>{sessionBlocks}</div>)
     }
 }
 

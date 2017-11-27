@@ -7,7 +7,7 @@ import firebase, { auth, provider, database } from "../firebase.js";
 class FriendBlock extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       score: 0
     };
@@ -15,10 +15,6 @@ class FriendBlock extends Component {
     this.handleClick = this.handleClick.bind(this);
 
   }
-
-
-  
-
 
   setActive() {
     this.props.handleClick(this.props.Index);

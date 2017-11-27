@@ -65,7 +65,8 @@ class EntryForm extends React.Component {
       durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
       datetime: this.state.datetime,
-      moods: this.state.moods
+      moods: this.state.moods,
+      activity: this.props.activity
     };
 
     var pushKey = firebase.database().ref("sessions/").push().key
@@ -75,14 +76,26 @@ class EntryForm extends React.Component {
     updates['sessions/' + pushKey] = entry;
     updates['users/' + current_uid + '/sessions/' + pushKey] = entry;
 
-  return firebase.database().ref().update(updates).then(() => {
-    firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").on("value", function(snapshot) {
+   firebase.database().ref().update(updates).then(() => {
+    firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").once("value", (snapshot) => {
 
       var current_scores = snapshot.val()
-/*
+
+      var updates = {}
+
       for (var i = 0; i < this.props.activity.categories.length; i++) {
         var category = this.props.activity.categories[i]
-  */
+
+        if (Object.keys(current_scores).includes(category)) {
+          current_scores[category] = current_scores[category] + 1
+        }
+      }
+
+      console.log(current_scores)
+
+      firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").update(current_scores)
+
+
     })})}
 
   
