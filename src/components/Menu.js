@@ -42,6 +42,7 @@ class Menu extends Component {
     }
 
     handleClick(category) {
+
         let remove = function(array, element) {
             return array.filter(e => e !== element);
         };
@@ -64,18 +65,26 @@ class Menu extends Component {
     updateActiveActivities() {
         if (this.state.categoryFilter.length > 0) {
             let contain = function(element) {
+
                 return this.state.categoryFilter.includes(element);
-            };
+
+            }
+
+            let filtering = function(activity) {
+
+                return activity.categories.filter(contain.bind(this)).length > 0;
+
+            }
 
             var filtered = this.state.activities.filter(
-                function(item) {
-                    return item.categories.some(contain.bind(this));
-                }.bind(this)
+                filtering.bind(this)
             );
+
         } else {
             filtered = this.state.activities;
         }
 
+        
         this.setState({ currentActivities: filtered });
     }
 
@@ -139,6 +148,7 @@ class Menu extends Component {
                                 <p> {activity.description} </p>
                                 <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
                             </div>
+
                             <div class="col-md-3">
                                 <br/>
                                 <div className="row">
@@ -182,7 +192,7 @@ class Menu extends Component {
 
         return (
             <div className="container">
-                <nav class="navbar navbar-light bg-faded">
+                <nav className="navbar navbar-light bg-faded">
                     <div className="btn-group mx-auto " role="group">
                         {categoryButtons}
                     </div>
