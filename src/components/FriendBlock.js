@@ -39,45 +39,45 @@ class FriendBlock extends Component {
         width: "50px"
       }
     let aweColor = {
-      background: "rgb(" + (235-0*20).toString() + ", " + 
-                           (255-0).toString() + "," + 
-                           (235-0*8).toString(),
+      background: "rgb(" + (235-this.props.user.scores["awe"]*20).toString() + ", " + 
+                           (255-this.props.user.scores["awe"]).toString() + "," + 
+                           (235-this.props.user.scores["awe"]*8).toString(),
       backgroundSize: "cover",
       height: "150px",
       width: "50px"
     }
 
-  let gratitudeColor = {
+    let gratitudeColor = {
       background: "rgb(" + 255 + ", " + 
-                           (250-0*15) + "," + 
-                           (250-0*15).toString(),
+                           (250-this.props.user.scores["gratitude"]*15) + "," + 
+                           (250-this.props.user.scores["gratitude"]*15).toString(),
       backgroundSize: "cover",
       height: "150px",
       width: "50px"
     }
 
-  let kindnessColor = {
+    let kindnessColor = {
       background: "rgb(" + 255 + ", " + 
                            255 + "," + 
-                           (250-0*15).toString(),
+                           (250-this.props.user.scores["kindness"]*15).toString(),
       backgroundSize: "cover",
       height: "150px",
       width: "50px"
     }
 
-  let mindfulnessColor = {
-      background: "rgb(" + (245-0*15) + ", " + 
-                           (245-0*15) + "," + 
+    let mindfulnessColor = {
+      background: "rgb(" + (245-this.props.user.scores["mindfulness"]*15) + ", " + 
+                           (245-this.props.user.scores["mindfulness"]*15) + "," + 
                            255,
       backgroundSize: "cover",
       height: "150px",
       width: "50px"
     }
 
-  let resilienceColor = {
+    let resilienceColor = {
       background: "rgb(" + 255 + ", " + 
-                           (255-20-0).toString() + "," + 
-                           (235-0*20).toString(),
+                           (255-20-this.props.user.scores["resilience"]).toString() + "," + 
+                           (235-this.props.user.scores["resilience"]*20).toString(),
       backgroundSize: "cover",
       height: "150px",
       width: "50px"
