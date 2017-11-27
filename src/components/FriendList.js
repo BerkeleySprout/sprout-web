@@ -118,10 +118,8 @@ class FriendList extends Component {
   render() {
     const isVisible = this.state.isPopupVisible;
 
-    if(this.state.friendList.length > 0) {
-
-    var friendBlocks = this.state.friendList.map(this.createFriendBlock)
-  }
+    var friendBlocks = this.state.friendList.length > 0 ? this.state.friendList.map(this.createFriendBlock) : <div class="card"> <div class="card-body"><h2> You have no friends! Better ask your neighbor to be friends! </h2></div></div>
+  
 
     return (
       <div className="container">

@@ -60,9 +60,9 @@ class Journal extends Component {
     }
 
     render() {
-        var sessionBlocks = Object.keys(this.state.sessions).map(sessionKey => (
+        var sessionBlocks = this.state.session != null ? Object.keys(this.state.sessions).map(sessionKey => (
             <SessionBlock session={this.state.sessions[sessionKey]} />
-        ));
+        )) : <div class="card"> <div class="card-body"><h2> You have no entries! </h2></div></div>;
 
         return <div class="container">{sessionBlocks}</div>;
     }
