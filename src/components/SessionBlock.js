@@ -10,38 +10,20 @@ import firebase, { auth, provider, database } from "../firebase.js";
 class SessionBlock extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showForm: false
-    };
-
-    this.handleShowClick = this.handleShowClick.bind(this);
-  }
-
-  handleShowClick(e) {
-    e.preventDefault();
-
-    var current = this.state.showForm;
-
-    this.setState({
-      showForm: !current
-    });
   }
 
   render() {
-    var form = this.state.showForm ? (
-      <EntryForm activity={this.props.activity} />
-    ) : null;
-
     return (
       <div>
         <div className="card">
           <div className="card-body">
+            {this.props.session.datetime}
+            {this.props.session.moods}
 
-         {this.props.session.memo}
-            
-            </div>
-            </div>
+            {this.props.session.memo}
+            {this.props.session.memo}
+          </div>
+        </div>
       </div>
     );
   }

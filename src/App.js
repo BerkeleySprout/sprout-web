@@ -33,7 +33,7 @@ class App extends Component {
     };
 
     this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this); 
+    this.logout = this.logout.bind(this);
     this.updateScores = this.updateScores.bind(this); 
     this.handleClick = this.handleClick.bind(this); 
     this.createNewUser = this.createNewUser.bind(this); 

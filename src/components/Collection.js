@@ -72,9 +72,6 @@ class Collection extends Component {
 
   render() {
     let categoryNodes = this.state.categories.map(this.createCategoryBlock);
-    let classes = classNames({
-      focused: this.state.open
-    });
 
     return (
       

@@ -4,7 +4,7 @@ import SessionBlock from "./SessionBlock";
 import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
-import AlertContainer from 'react-alert'
+import AlertContainer from "react-alert";
 
 class Journal extends Component {
     constructor(props) {
@@ -36,47 +36,35 @@ class Journal extends Component {
     }
 
     handleClick(category) {
-
-        return
+        return;
     }
 
-    
     getSessions() {
-        let app = database.ref("users/" + firebase.auth().currentUser.uid + "/sessions/");
+        let app = database.ref(
+            "users/" + firebase.auth().currentUser.uid + "/sessions"
+        );
 
         app.on(
             "value",
             function(snapshot) {
                 let filtered = snapshot.val();
-
-                this.setState(
-                    { sessions: filtered }
-                );
+                this.setState({ sessions: filtered }, () => {
+                    console.log(this.state.sessions);
+                });
             }.bind(this)
         );
     }
 
-
     componentDidMount() {
-
         this.getSessions();
     }
 
-
-
     render() {
-       
+        var sessionBlocks = Object.keys(this.state.sessions).map(sessionKey => (
+            <SessionBlock session={this.state.sessions[sessionKey]} />
+        ));
 
-        var sessionBlocks = this.state.sessions.length > 0 ? this.state.sessions.map(session => <SessionBlock session={session} />) : null
-
-        return (
-
-<div class="container">
-                {sessionBlocks}
-
-                </div>
-            
-        );
+        return <div class="container">{sessionBlocks}</div>;
     }
 }
 
