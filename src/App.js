@@ -137,6 +137,7 @@ class App extends Component {
           let category = categories[i]
           newScores[category] += 1 
           console.log(newScores)    
+
     } 
     this.setState({scores : newScores})
 
@@ -170,7 +171,6 @@ var display
       else if (this.state.page == 2) {
         display = <FriendList />
       }
-
 
     return (
       <div>

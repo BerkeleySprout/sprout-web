@@ -139,17 +139,76 @@ class Menu extends Component {
                     data-toggle="button"
                     aria-pressed="false"
                     autocomplete="off"
-                    style={{marginTop: "15px"}}
+                    style={{marginTop: "10px"}}
                 >
                     {category.name}
                 </button>
             );
         });
 
+
         var activities = this.state.currentActivities.map(activity => <ActivityBlock activity={activity}/>)
                 
 
+/*
+        var activities = this.state.currentActivities.map(activity => {
+            return (
+                <div className="card">
 
+                    <div className="card-body">
+                        <div class="row">
+                            <div class="col-md-3 ml-auto">
+                                <img src={activity.img} />
+                            </div>
+                            
+                            <div class="col-md-6 ml-auto">
+                                <h4> {activity.title} </h4>
+                                <p> Rating: {activity.rating} </p>
+                                <p> {activity.description} </p>
+                                <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
+                            </div>
+
+                            <div class="col-md-3">
+                                <br/>
+                                <div className="row">
+                                    <button
+                                        type="button"
+                                        className="btn btn-lg btn-success"
+                                        href="#article"
+                                        onClick={() => this.props.updateScores(activity.categories)}
+                                    >
+                                        Complete 
+                                        <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
+                                    </button>
+                                </div>
+
+                                <br/>
+                                <div className="row">
+                                    <button
+                                        type="button"
+                                        className="btn btn-warning"
+                                        style={{marginRight: "10px"}}
+                                        href={activity.link}
+                                    >
+                                        Explore
+                                        <i class="fa fa-search" style={{marginLeft: "5px"}}></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                    >
+                                        Share
+                                        <i class="fa fa-share-alt" style={{marginLeft: "5px"}}></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+*/
         return (
 
             <div className="container">

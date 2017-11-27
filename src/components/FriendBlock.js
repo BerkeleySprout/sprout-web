@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Activity from "./Activity";
+import CategoryBlock from "./CategoryBlock";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
