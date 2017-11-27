@@ -13,6 +13,7 @@ class FriendBlock extends Component {
     };
     this.setActive = this.setActive.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -29,6 +30,33 @@ class FriendBlock extends Component {
     let score = this.state.score + 1;
     this.setState({ score: score });
     this.props.updateScore();
+  }
+
+  addNewFriend(email) {
+
+    function addFriend(friend_uid) {
+
+      current_uid = this.state.user.uid
+
+      updates['users/' + current_uid + '/friends/' + friend_uid] = true
+      updates['users/' + friend_uid + '/friends/' + current_uid] = true
+
+      firebase.database().ref().update(updates)
+    
+
+    }
+
+    firebase.database().ref('user/').orderByChild('email').equalTo(email).limitToFirst(1).once('value', function(snapshot) {
+        var exists = (snapshot.val() !== null);
+
+          if (exists) {
+            addFriend(snapshot.val().key)
+          };
+    });
+}
+
+
+
   }
 
   render() {
