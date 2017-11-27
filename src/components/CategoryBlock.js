@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Activity from "./Activity";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
@@ -8,7 +7,6 @@ class CategoryBlock extends Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props)
 
     this.state = {
       score: 0,
@@ -27,10 +25,6 @@ class CategoryBlock extends Component {
     this.props.handleClick(this.props.Index);
   }
 
-  getWidth(isActive) {
-    let w = !isActive ? "calc(20vw - 100px)" : "100px";
-    return w;
-  }
 
   handleClick() {
     let score = this.state.score + 1;
@@ -46,7 +40,6 @@ class CategoryBlock extends Component {
                              (235-score*8).toString(),
         backgroundSize: "cover",
         height: "350px",
-        width: this.getWidth(active)
       }
     let score = this.props.score + 1;
     let offset = 0;
@@ -59,8 +52,7 @@ class CategoryBlock extends Component {
                             ((255-score)+offset).toString() + "," + 
                              (235-score*8).toString(),
         backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
+        height: "350px"
       }
     }
     if (this.props.category == "gratitude") {
@@ -69,8 +61,7 @@ class CategoryBlock extends Component {
                              (255-score*15) + "," + 
                              (255-score*15).toString(),
         backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
+        height: "350px"
       }
     }
     if (this.props.category == "kindness") {
@@ -79,8 +70,7 @@ class CategoryBlock extends Component {
                              255 + "," + 
                              (250-score*15).toString(),
         backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
+        height: "350px"
       }
     }
     if (this.props.category == "mindfulness") {
@@ -89,8 +79,7 @@ class CategoryBlock extends Component {
                              (245-score*15) + "," + 
                              255,
         backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
+        height: "350px"
       }
     }
     if (this.props.category == "resilience") {
@@ -99,28 +88,10 @@ class CategoryBlock extends Component {
                             ((255-20-score)+offset).toString() + "," + 
                              (235-score*20).toString(),
         backgroundSize: "cover",
-        height: "350px",
-        width: this.getWidth(active)
+        height: "350px"
       }
     }
     let styles = {
-      container: {
-        transform: (function() {
-          return active
-            ? "scale(1.1) translate3d(0, 0, 0)"
-            : "scale(1) translate3d(0, 0, 0)";
-        })()
-      },
-      item: {
-        transform: (function() {
-          //let direction = shiftLeft ? "-" : "";
-          let transform =
-            focused && !active
-              ? "translate3d(0, 0, 0)"
-              : "translate3d(0, 0, 0)";
-          return transform;
-        })()
-      },
       activities: {
         textAlign: "center", 
         paddingTop: "20px", 
@@ -140,20 +111,6 @@ class CategoryBlock extends Component {
         color: "white",
       }
     };
-    
-    let classes = classNames({
-      category: true,
-      isActive: active,
-      isLast,
-      shiftLeft
-    });
-
-    let activityNodes = this.state.activities.map(activity => {
-      return (
-        <Activity isLast={this.props.isLast} activity={activity} onClick={() => this.handleClick()} />
-      );
-    });
-
   
     return (
       <ul className="container">

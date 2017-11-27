@@ -4,6 +4,7 @@ import ActivityBlock from "./ActivityBlock";
 import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
+import AlertContainer from 'react-alert'
 
 class Menu extends Component {
     constructor(props) {
@@ -11,12 +12,10 @@ class Menu extends Component {
 
         this.state = {
             score: 0,
-            open: false,
             activityIndex: null,
             activities: [],
             currentActivities: [],
             categoryFilter: [],
-            isMounted: false,
             categories: [
                 {
                     name: "awe"
@@ -40,7 +39,6 @@ class Menu extends Component {
         this.getActivities = this.getActivities.bind(this);
         this.updateActiveActivities = this.updateActiveActivities.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
-        this.componentWillUnmount = this.componentWillUnmount.bind(this);
     }
 
     handleClick(category) {
@@ -108,25 +106,10 @@ class Menu extends Component {
 
 
     componentDidMount() {
-        this.setState({ isMounted: true });
 
         this.getActivities();
     }
-    componentWillUnmount() {
-        this.setState({ isMounted: false });
-    }
 
-   /* postSession() {
-        session = {
-            activity: activity,
-            memo: memo,
-            date: date,
-            duration: duration,
-            friends: friends
-        }
-
-    }
-    */
 
     render() {
         var categoryButtons = this.state.categories.map(category => {

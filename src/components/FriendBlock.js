@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Activity from "./Activity";
 import CategoryBlock from "./CategoryBlock";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
@@ -16,7 +15,7 @@ class FriendBlock extends Component {
     };
     this.setActive = this.setActive.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+
   }
 
   setActive() {

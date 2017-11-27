@@ -8,6 +8,8 @@ import FriendList from "./components/FriendList";
 
 import Collection from "./components/Collection";
 
+import Journal from "./components/Journal";
+
 import firebase, { auth, provider, database } from "./firebase.js";
 
 class App extends Component {
@@ -169,6 +171,9 @@ var display
         display = <Menu updateScores={this.updateScores}/>
       }
       else if (this.state.page == 2) {
+        display = <Journal />
+      }
+      else if (this.state.page == 3) {
         display = <FriendList />
       }
 
@@ -204,12 +209,12 @@ var display
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(1)} href="#">
+                <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
                   Journal
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
+                <a className="nav-link" onClick={() => this.handleClick(3)} href="#">
                   Friends
                 </a>
               </li>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import ReactStars from "react-stars";
-import Activity from "./Activity";
 import EntryForm from "./EntryForm";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
