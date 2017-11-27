@@ -124,26 +124,29 @@ class App extends Component {
   //   }
 
   componentDidMount() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user }, this.updateScores.bind(this));
       }
-    });
+    })
     }
 
 
-  updateScores(categories) {
-      let newScores = Object.assign({}, this.state.scores)
-        for (let i = 0; i < categories.length; i++){
-          let category = categories[i]
-          newScores[category] += 1 
-          console.log(newScores)    
+  
 
-    } 
-    this.setState({scores : newScores})
 
-   
+
+  updateScores() {
+
+    firebase.database().ref("users/" + this.state.user.uid + "/scores").on("value", (snapshot) => 
+      {    
+
+
+        this.setState({scores : snapshot.val()}) } )
+
   }
+   
+  
 
   render() {
 
