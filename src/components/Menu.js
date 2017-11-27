@@ -114,7 +114,7 @@ class Menu extends Component {
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
-                    aria-pressed="true"
+                    aria-pressed="false"
                     autocomplete="off"
                     style={{marginTop: "15px"}}
                 >
@@ -129,13 +129,17 @@ class Menu extends Component {
 
                     <div className="card-body">
                         <div class="row">
-                             <div class="col-md-8 ml-auto">
-                                <h4> {activity.title}  </h4>
+                            <div class="col-md-3 ml-auto">
+                                <img src={activity.img} />
+                            </div>
+                            
+                            <div class="col-md-6 ml-auto">
+                                <h4> {activity.title} </h4>
                                 <p> Rating: {activity.rating} </p>
                                 <p> {activity.description} </p>
                                 <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <br/>
                                 <div className="row">
                                     <button

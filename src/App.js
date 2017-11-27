@@ -127,7 +127,7 @@ class App extends Component {
 
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
                   Home
                 </a>

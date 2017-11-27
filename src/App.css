@@ -324,6 +324,14 @@ li.category.isActive {
 .navbar-main {
 }
 
+.nav-item {
+  padding: 5px;
+}
+
+.nav-link:hover {
+  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #9eb120;
+}
+
 .category--image h6 {
   position: absolute;
   top: 0;
@@ -368,6 +376,10 @@ li.category.isActive {
 .full {
   width: 100%;
   height: 100%;
+}
+
+.btn-outline-dark:active {
+  background-color: green;
 }
 
 
