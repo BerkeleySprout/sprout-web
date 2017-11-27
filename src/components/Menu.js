@@ -20,34 +20,16 @@ class Menu extends Component {
                     name: "awe"
                 },
                 {
-                    name: "Compassion"
+                    name: "gratitude"
                 },
                 {
-                    name: "Connection"
+                    name: "kindness"
                 },
                 {
-                    name: "Empathy"
+                    name: "mindfulness"
                 },
                 {
-                    name: "Forgiveness"
-                },
-                {
-                    name: "Gratitude"
-                },
-                {
-                    name: "Happiness"
-                },
-                {
-                    name: "Kindness"
-                },
-                {
-                    name: "Mindfulness"
-                },
-                {
-                    name: "Optimism"
-                },
-                {
-                    name: "Resilience"
+                    name: "resilience"
                 }
             ]
         };
@@ -137,12 +119,13 @@ class Menu extends Component {
             return (
                 <button
                     type="button"
-                    className="btn btn-outline-success"
+                    className="btn btn-outline-dark"
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
-                    aria-pressed="true"
+                    aria-pressed="false"
                     autocomplete="off"
+                    style={{marginTop: "15px"}}
                 >
                     {category.name}
                 </button>
@@ -155,37 +138,48 @@ class Menu extends Component {
 
                     <div className="card-body">
                         <div class="row">
-                             <div class="col-md-8 ml-auto">
-                                <h4> {activity.title}  </h4>
+                            <div class="col-md-3 ml-auto">
+                                <img src={activity.img} />
+                            </div>
+                            
+                            <div class="col-md-6 ml-auto">
+                                <h4> {activity.title} </h4>
                                 <p> Rating: {activity.rating} </p>
                                 <p> {activity.description} </p>
                                 <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
                             </div>
-                            <div className="col-md-4">
-                     
-                                <div
-                                    className="btn-group  "
-                                    role="group"
-                                >
+
+                            <div class="col-md-3">
+                                <br/>
+                                <div className="row">
                                     <button
                                         type="button"
-                                        className="btn btn-outline-primary" 
+                                        className="btn btn-lg btn-success"
+                                        href="#article"
                                         onClick={() => this.props.updateScores(activity.categories)}
                                     >
-                                        Complete
+                                        Complete 
+                                        <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
                                     </button>
-                                    <a
+                                </div>
+                                
+                                <br/>
+                                <div className="row">
+                                    <button
                                         type="button"
-                                        className="btn btn-outline-success"
+                                        className="btn btn-warning"
+                                        style={{marginRight: "10px"}}
                                         href={activity.link}
                                     >
                                         Explore
-                                    </a>
+                                        <i class="fa fa-search" style={{marginLeft: "5px"}}></i>
+                                    </button>
                                     <button
                                         type="button"
-                                        className="btn btn-outline-warning"
+                                        className="btn btn-primary"
                                     >
                                         Share
+                                        <i class="fa fa-share-alt" style={{marginLeft: "5px"}}></i>
                                     </button>
                                 </div>
 

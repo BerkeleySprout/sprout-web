@@ -18,17 +18,12 @@ class App extends Component {
       user: null,
       page: 0,
       scores: { 
-        "awe" : 0,
-        "compassion": 0,
-        "connection": 0,
-        "empathy": 0,
-        "forgiveness": 0,
-        "gratitude": 0,
-        "happiness": 0,
-        "kindness": 0,
-        "mindfulness": 0,
-        "optimism": 0,
-        "resilience": 0
+      "awe" : 0,
+      "gratitude": 0,
+      "kindness": 0,
+      "mindfulness": 0,
+      "resilience": 0
+
       }
 
 
@@ -101,10 +96,37 @@ class App extends Component {
     });
   }
 
+  // updateScores(categories) {
+  //     let newScores = Object.assign({}, this.state.scores)
+  //       for (let i = 0; i < categories.length; i++){
+  //         let category = categories[i]
+  //         newScores[category] += 1 
+  //         console.log(newScores)    
+  //   } 
+
+  //     firebase.database().ref('users/' + this.state.user + '/scores').set(newScores);
+ 
+  // }
+
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(user => {
+  //     if (user) {
+  //       this.setState({ user });
+  //     }
+  //   });
+  //   var scores = firebase.database().ref('users/' + this.state.user + '/scores');
+  //   scores.on('value', function(snapshot) {
+  //     if (snapshot.val() != null) {
+  //       this.updateScores(snapshot.val());
+  //     }
+  //   });
+  //   }
+
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
+<<<<<<< HEAD
     }});
 
   }
@@ -116,10 +138,23 @@ class App extends Component {
       let category = categories[i]
       newScores[category] += 1 
       console.log(newScores)    
+=======
+      }
+    });
+    }
+
+
+  updateScores(categories) {
+      let newScores = Object.assign({}, this.state.scores)
+        for (let i = 0; i < categories.length; i++){
+          let category = categories[i]
+          newScores[category] += 1 
+          console.log(newScores)    
+>>>>>>> 67bc8f7e24390256bb07b1c5f02947a50e12805f
     } 
     this.setState({scores : newScores})
 
-    
+   
   }
 
   render() {
@@ -147,6 +182,7 @@ class App extends Component {
         display = <FriendList />
       }
 
+<<<<<<< HEAD
       return (
         <div>
         <nav className="navbar navbar-expand-lg navbar-light navbar-toggleable-md bg-green">
@@ -191,6 +227,50 @@ class App extends Component {
         </li>
         </ul>
         </div>
+=======
+    return (
+      <div>
+        <nav className="navbar navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197">
+          <a className="navbar-brand" href="#">
+            <img alt="Sprout" src="https://image.ibb.co/gqC9yR/sprout_logo_icon.png"/>
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => this.handleClick(1)} href="#">
+                  Activities
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => this.handleClick(2)} href="#">
+                  Friends
+                </a>
+              </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                { login }
+              </li>
+            </ul>
+          </div>
+>>>>>>> 67bc8f7e24390256bb07b1c5f02947a50e12805f
 
         </nav>
 

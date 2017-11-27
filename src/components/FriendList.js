@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import FriendBlock from "./FriendBlock";
+import Popup from "./Popup";
+import MyForm from "./MyForm";
 import classNames from "classnames";
 
 class FriendList extends Component {
@@ -43,17 +45,22 @@ class FriendList extends Component {
   render() {
 
     return (
-      
-      <div id="app-container" class="container">
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
-        <FriendBlock />
+      <div className="container">
+        <div className="container" style={{marginTop: "30px", marginBottom: "30px"}}> 
+          <MyForm />
+        </div>
+
+        <div id="app-container" className="container">
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+          <FriendBlock />
+        </div>
       </div>
     );
   }
