@@ -398,6 +398,7 @@ li.category.isActive {
 .popup {
   border: 1px solid;
   padding: 12px;
+  margin: 12px;
   background: #ccc;
   opacity: 1;
   width: 200px;
@@ -416,6 +417,18 @@ li.category.isActive {
 }
 
 .btn-warning:hover {
+  color: white;
+}
+
+.btn-outline-warning a {
+  color: rgb(255,195,0);
+}
+
+.btn-outline-warning a:hover {
+  color: white;
+}
+
+.btn-outline-warning:hover {
   color: white;
 }
 

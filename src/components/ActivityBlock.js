@@ -77,9 +77,8 @@ class ActivityBlock extends Component {
                     type="button"
                     className="btn btn-outline-warning"
                     style={{ marginRight: "6%", width: "47%"}}
-                    href={this.props.activity.link}
                   >
-                    <a href={this.props.activity.link} style={{color: "rgb(255,195,0)"}}>Explore</a>
+                    <a href={this.props.activity.link}>Explore</a>
                     <i class="fa fa-search" style={{ marginLeft: "5px" }} />
                   </button>
                   <button
