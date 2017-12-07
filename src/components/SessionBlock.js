@@ -12,6 +12,12 @@ class SessionBlock extends Component {
     super(props);
   }
 
+  getActivityTitle() {
+    if (this.props.session.activity) {
+      return this.props.session.activity.title;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -19,7 +25,7 @@ class SessionBlock extends Component {
           <div className="card-body">
             <h1> {this.props.session.datetime} </h1>
 
-            <h2> {this.props.session.activity.title} </h2>
+            <h2> {this.getActivityTitle()} </h2>
             
             <h5> {this.props.session.memo} </h5>
           </div>
