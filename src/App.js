@@ -191,7 +191,7 @@ var display
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto navbar-center">
               <li className="nav-item">
                 <a className="nav-link nav-text" onClick={() => this.handleClick(0)}href="#">
                   Home
