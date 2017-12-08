@@ -174,7 +174,7 @@ var display
 
     return (
       <div>
-        <nav className="navbar navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197">
+        <nav className="navbar sticky-top navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197">
           <a className="navbar-brand" href="#">
             <img alt="Sprout" src="https://image.ibb.co/gqC9yR/sprout_logo_icon.png"/>
           </a>
@@ -190,11 +190,10 @@ var display
           >
             <span className="navbar-toggler-icon" />
           </button>
-
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto navbar-center">
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(0)}href="#">
+                <a className="nav-link nav-text" onClick={() => this.handleClick(0)}href="#">
                   Home
                 </a>
               </li>
