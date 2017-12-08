@@ -327,6 +327,7 @@ li.category.isActive {
 
 .navbar {
   overflow: hidden;
+  color: rgba(0, 0, 0, 0);
   width: 100%;
     -webkit-box-shadow: 0 5px 6px -6px #999;
     -moz-box-shadow: 0 5px 6px -6px #999;
