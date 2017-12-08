@@ -132,21 +132,14 @@ class App extends Component {
     }
 
 
-  
-
-
-
   updateScores() {
 
     firebase.database().ref("users/" + this.state.user.uid + "/scores").on("value", (snapshot) => 
       {    
-        
-
-        this.setState({scores : snapshot.val()}) } )
-
+        this.setState({scores : snapshot.val()}) 
+      } 
+    )
   }
-   
-  
 
   render() {
 
