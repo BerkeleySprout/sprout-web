@@ -124,13 +124,11 @@ class FriendList extends Component {
     return (
       <div className="container">
         <div
-          className="container"
-          style={{ marginTop: "30px", marginBottom: "30px" }}
-        >
+          className="row"
+          style={{ marginTop: "30px", marginBottom: "30px"}}>
           <FriendForm addNewFriend={this.addNewFriend} />
         </div>
-
-
+        <hr/>
         {friendBlocks}
       </div>
     );

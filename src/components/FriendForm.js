@@ -72,22 +72,23 @@ class FriendForm extends React.Component {
   render() {
     const isVisible = this.state.isPopupVisible;
     return (
-      <div className="row">
-        
-          <form>
+      <div className="container">
+        <form className="row">
+          <div className="col-md-10">
             <input type="text" 
                    value={this.state.value} 
                    onChange={this.handleChange} 
-                   placeholder="Add friend by email"
-                   style={{display: "inline-block"}}/>
+                   placeholder="Add friend by email"/>
             <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+          </div>
+          <div className="col-md-2">
             <button className="btn btn-primary" 
                     onClick={this.handleClick.bind(this)}
-                    style={{marginBottom: "20px", display: "inline-block"}}>Add Friend</button>
-                    
-          </form>
-          
-        
+                    style={{marginBottom: "20px"}}>
+                    Add Friend
+            </button>
+          </div>
+        </form>
       </div>
     )
   }
