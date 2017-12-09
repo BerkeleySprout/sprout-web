@@ -174,9 +174,9 @@ var display
 
     return (
       <div>
-        <nav className="navbar sticky-top navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197">
+        <nav className="navbar sticky-top navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197" id="my-navbar">
           <a className="navbar-brand" href="#">
-            <img alt="Sprout" src="https://image.ibb.co/gqC9yR/sprout_logo_icon.png"/>
+            <img alt="Sprout" src="https://image.ibb.co/ihzJPb/sprout_logo_icon.png"/>
           </a>
            {greeting}
           <button

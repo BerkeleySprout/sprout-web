@@ -113,6 +113,8 @@ class Menu extends Component {
 
     render() {
         var categoryButtons = this.state.categories.map(category => {
+            // Making first letters uppercase
+            var name = category.name.charAt(0).toUpperCase() + category.name.slice(1);
             return (
                 <button
                     type="button"
@@ -122,9 +124,9 @@ class Menu extends Component {
                     data-toggle="button"
                     aria-pressed="false"
                     autocomplete="off"
-                    style={{marginTop: "10px"}}
+                    style={{marginTop: "20px", marginBottom: "20px"}}
                 >
-                    {category.name}
+                    {name}
                 </button>
             );
         });
