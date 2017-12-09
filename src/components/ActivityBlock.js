@@ -35,7 +35,7 @@ class ActivityBlock extends Component {
 
     return (
       <div>
-        <div className="card">
+        <div className="card" style={{padding: "10 25 10 10"}}>
           <div className="card-body">
             <div class="row">
               <div class="col-md-3 ml-auto">
@@ -73,18 +73,18 @@ class ActivityBlock extends Component {
               <div class="col-md-4">
                 <br />
                 <div className="row">
-                  <button
-                    type="button"
-                    className="btn btn-outline-warning"
+                  <a
+                    id="explore-button"
+                    className="btn btn-sprout-light"
                     style={{ marginRight: "6%", width: "47%"}}
-                  >
-                    <a href={this.props.activity.link}>Explore</a>
+                    href={this.props.activity.link}>
+                    Explore
                     <i class="fa fa-search" style={{ marginLeft: "5px" }} />
-                  </button>
+                  </a>
                   <button
                     type="button"
                     style={{ width: "47%" }}
-                    className="btn btn-outline-primary"
+                    className="btn btn-sprout-light"
                   >
                     Share
                     <i class="fa fa-share-alt" style={{ marginLeft: "5px" }} />
@@ -95,7 +95,7 @@ class ActivityBlock extends Component {
                 <div className="row">
                   <button
                     type="button"
-                    className="btn btn-lg btn-outline-success"
+                    className="btn btn-sprout-dark"
                     href="#article"
                     style={{ width: "100%" }}
                     onClick={this.handleShowClick}
