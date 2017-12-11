@@ -149,12 +149,9 @@ class App extends Component {
       Sign In
       </a>
       )
-var greeting = this.state.user ? (<nav className="navbar-brand"> Welcome {this.state.user.displayName} </nav>) : (<nav className="navbar-brand"> Welcome </nav>)
+    var greeting = this.state.user ? (<nav className="navbar-brand"> Welcome {this.state.user.displayName} </nav>) : (<nav className="navbar-brand"> Welcome </nav>)
 
-var display
-
-
-     
+    var display
 
       if (this.state.page == 0) {
         display = <Collection scores={this.state.scores} db={firebase} />

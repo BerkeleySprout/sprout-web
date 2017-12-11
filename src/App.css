@@ -354,7 +354,7 @@ li.category.isActive {
 }
 
 .nav-link:hover {
-  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #64af22;
+  box-shadow: inset 0 0px 0 white, inset 0 -4px 0 #64af22;
 }
 
 .category--image h6 {
@@ -591,6 +591,13 @@ li.category.isActive {
   margin: 0;
 }
 
+.tree-title {
+  text-align: center;
+  font-weight: 500;
+  color: rgba(55, 55, 55, 0.8);
+  margin-top: -5px;
+}
+
 .sprout-tree {
   background: url("./images/sprout-tree.png") no-repeat;
   background-position: center;
@@ -627,4 +634,31 @@ li.category.isActive {
   position: absolute;
   right: 475px;
   top: 90px;
+}
+
+.hr-star {
+  max-width: 15rem;
+  padding: 0;
+  text-align: center;
+  border: none;
+  border-top: solid 0.25rem;
+}
+
+.hr-star:after {
+  position: relative;
+  top: -.8em;
+  display: inline-block;
+  padding: 0 0.25em;
+  content: '\f005';
+  font-family: FontAwesome;
+  font-size: 1.5em; 
+}
+
+.hr-star {
+  border-color: rgba(55, 55, 55, 0.6);
+}
+
+.hr-star:after {
+  color: rgba(55, 55, 55, 0.7);
+  background-color: #e9ffde; 
 }

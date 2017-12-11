@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
 import classNames from "classnames";
 import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'react-shapes';
-import {Layer, Stage, Group} from 'react-konva';
+import {Layer, Stage, Group, Text} from 'react-konva';
 import TreeLeaf from "./TreeLeaf";
 
 class Collection extends Component {
@@ -87,27 +87,17 @@ class Collection extends Component {
 
     return (
       
-      <div class="jumbotron jumbotron-fluid"
+      <div className="jumbotron jumbotron-fluid"
            id="tree-jumbotron">
 
-        <h3 style={{textAlign: "center"}}>Tao's Tree</h3>
+        <h3 className="tree-title">Your Wellness Tree</h3>
         <div class="container sprout-tree">
-          <Stage width={700} height={400}>
-            <Layer>
+          <Stage width={1300} height={500}>
               <TreeLeaf category={'awe'} score={this.props.scores['awe']}/>
-            </Layer>
-            <Layer>
               <TreeLeaf category={'gratitude'} score={this.props.scores['gratitude']}/>
-            </Layer>
-            <Layer>
               <TreeLeaf category={'kindness'} score={this.props.scores['kindness']}/>
-            </Layer>
-            <Layer>
               <TreeLeaf category={'mindfulness'} score={this.props.scores['mindfulness']}/>
-            </Layer>
-            <Layer>
               <TreeLeaf category={'resilience'} score={this.props.scores['resilience']}/>
-            </Layer>
           </Stage>
         </div>
       </div>

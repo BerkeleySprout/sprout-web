@@ -128,7 +128,6 @@ class FriendList extends Component {
           style={{ marginTop: "30px", marginBottom: "30px"}}>
           <FriendForm addNewFriend={this.addNewFriend} />
         </div>
-        <hr/>
         {friendBlocks}
       </div>
     );
