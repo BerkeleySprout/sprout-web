@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
 import classNames from "classnames";
+import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'react-shapes';
+import {Layer, Stage, Group} from 'react-konva';
+import TreeLeaf from "./TreeLeaf";
 
 class Collection extends Component {
   constructor(props) {
@@ -56,9 +59,18 @@ class Collection extends Component {
         category={cat['name']}
         key={"cat-" + i}
         handleClick={this.handleClick}
-
         score={this.props.scores[cat['name']]}
+        db={this.props.db}
+        updateScore={() => this.updateScore()}
+      />
+    );
+  }
 
+  createTreeLeaf(cat, i) {
+    return (
+      <TreeLeaf
+        category={cat['name']}
+        score={this.props.scores[cat['name']]}
         db={this.props.db}
         updateScore={() => this.updateScore()}
       />
@@ -75,25 +87,28 @@ class Collection extends Component {
 
     return (
       
-      
-      <div className="container" style={{marginTop: "50px"}}>
-        <div className="row no-gutters">
-          <div className="col-lg-1"></div>
-          <div className="col-lg-2" style={{left: "20px"}}>Awe</div>
-          <div className="col-lg-2" style={{left: "20px"}}>Gratitude</div>
-          <div className="col-lg-2" style={{left: "20px"}}>Kindness</div>
-          <div className="col-lg-2" style={{left: "20px"}}>Mindfulness</div>
-          <div className="col-lg-2" style={{left: "20px"}}>Resilience</div>
-          <div className="col-lg-1"></div>
-        </div>
-        <div className="row no-gutters">
-          <div className="col-lg-1"></div>
-          <div className="col-lg-2">{categoryNodes[0]}</div>
-          <div className="col-lg-2">{categoryNodes[1]}</div>
-          <div className="col-lg-2">{categoryNodes[2]}</div>
-          <div className="col-lg-2">{categoryNodes[3]}</div>
-          <div className="col-lg-2">{categoryNodes[4]}</div>
-          <div className="col-lg-1"></div>
+      <div class="jumbotron jumbotron-fluid"
+           id="tree-jumbotron">
+
+        <h3 style={{textAlign: "center"}}>Tao's Tree</h3>
+        <div class="container sprout-tree">
+          <Stage width={700} height={400}>
+            <Layer>
+              <TreeLeaf category={'awe'} score={this.props.scores['awe']}/>
+            </Layer>
+            <Layer>
+              <TreeLeaf category={'gratitude'} score={this.props.scores['gratitude']}/>
+            </Layer>
+            <Layer>
+              <TreeLeaf category={'kindness'} score={this.props.scores['kindness']}/>
+            </Layer>
+            <Layer>
+              <TreeLeaf category={'mindfulness'} score={this.props.scores['mindfulness']}/>
+            </Layer>
+            <Layer>
+              <TreeLeaf category={'resilience'} score={this.props.scores['resilience']}/>
+            </Layer>
+          </Stage>
         </div>
       </div>
       

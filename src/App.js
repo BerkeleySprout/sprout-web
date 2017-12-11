@@ -25,10 +25,7 @@ class App extends Component {
       "kindness": 0,
       "mindfulness": 0,
       "resilience": 0
-
       }
-
-
 
     };
 
