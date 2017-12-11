@@ -190,7 +190,7 @@ class EntryForm extends React.Component {
               type="submit"
               onstyle={{ width: "100%" }}
               onClick={this.showAlert}
-              class="btn btn-outline-success"
+              class="btn btn-sprout-dark"
             >
 
               Complete <i

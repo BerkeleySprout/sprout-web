@@ -122,6 +122,7 @@ class Menu extends Component {
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
                     data-toggle="button"
+                    class-toggle="btn btn-outline-dark"
                     aria-pressed="false"
                     autocomplete="off"
                     style={{marginTop: "20px", marginBottom: "20px"}}
@@ -198,7 +199,7 @@ class Menu extends Component {
 
             <div className="container">
                 <nav className="navbar navbar-light bg-faded">
-                    <div className="btn-group mx-auto " role="group">
+                    <div className="btn-group mx-auto" role="group" data-toggle="buttons">
                         {categoryButtons}
                     </div>
                 </nav>

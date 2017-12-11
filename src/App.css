@@ -327,7 +327,6 @@ li.category.isActive {
 
 .navbar {
   overflow: hidden;
-  color: rgba(0, 0, 0, 0);
   width: 100%;
     -webkit-box-shadow: 0 5px 6px -6px #999;
     -moz-box-shadow: 0 5px 6px -6px #999;
@@ -335,7 +334,7 @@ li.category.isActive {
 }
 
 #my-navbar {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 1);
 }
 
 .navbar a img {
@@ -420,6 +419,12 @@ li.category.isActive {
   border-radius: 3px;
 }
 
+/* Removing default border when clicked */
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
 .btn-sprout-light {
   color: #9ecc3a;
   background: white;
@@ -481,7 +486,7 @@ li.category.isActive {
 
 .btn-outline-dark {
   color: #000;
-  background: rgba(145,145,145, 0.05);
+  background: rgba(145,145,145, 0.00);
   border-radius: 3px;
 }
 
@@ -580,3 +585,46 @@ li.category.isActive {
     }
 
 
+#tree-jumbotron {
+  background: #e9ffde;
+  height: 90%;
+  margin: 0;
+}
+
+.sprout-tree {
+  background: url("./images/sprout-tree.png") no-repeat;
+  background-position: center;
+  background-size: 17%;
+  height: 100%;
+  position: relative;
+}
+
+#awe-leaf {
+  position: absolute;
+  right: 605px;
+  top: 216px;
+}
+
+#gratitude-leaf {
+  position: absolute;
+  right: 605px;
+  top: 120px;
+}
+
+#kindness-leaf {
+  position: absolute;
+  right: 556px;
+  top: 35px;
+}
+
+#mindfulness-leaf {
+  position: absolute;
+  right: 465px;
+  top: 185px;
+}
+
+#resilience-leaf {
+  position: absolute;
+  right: 475px;
+  top: 90px;
+}
