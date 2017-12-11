@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
-
+import {Layer, Stage, Group, Text} from 'react-konva';
+import TreeLeaf from "./TreeLeaf";
 import firebase, { auth, provider, database } from "../firebase.js";
 
 class FriendBlock extends Component {
@@ -99,12 +100,25 @@ class FriendBlock extends Component {
             </div>
             <div className="col-lg-4">
               <div className="category--miniimage-container">
-          
+                <div class="container sprout-tree-mini">
+                <Stage width={500} height={300}>
+                    <TreeLeaf category={'awe'} score={this.props.user.scores['awe']} mini={1}/>
+                    <TreeLeaf category={'gratitude'} score={this.props.user.scores['gratitude']} mini={1}/>
+                    <TreeLeaf category={'kindness'} score={this.props.user.scores['kindness']} mini={1}/>
+                    <TreeLeaf category={'mindfulness'} score={this.props.user.scores['mindfulness']} mini={1}/>
+                    <TreeLeaf category={'resilience'} score={this.props.user.scores['resilience']} mini={1}/>
+                </Stage>
+              </div>
+
+
+                { /*
                 <div className="category--miniimage" style={aweColor}></div>
                 <div className="category--miniimage" style={gratitudeColor}></div>
                 <div className="category--miniimage" style={kindnessColor}></div>
                 <div className="category--miniimage" style={mindfulnessColor}></div>
                 <div className="category--miniimage" style={resilienceColor}></div>
+                */}
+                
                 
               
               </div>

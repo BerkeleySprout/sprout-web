@@ -45,7 +45,7 @@ class ActivityBlock extends Component {
               <div class="col-md-5 ml-auto">
                 <div class="row">
                   <div class="col-md-8">
-                    <h3> {this.props.activity.title} </h3>
+                    <h3 className="title"> {this.props.activity.title} </h3>
                   </div>
                   <div class="col-md-4">
                     <ReactStars
