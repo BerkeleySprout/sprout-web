@@ -11,7 +11,7 @@ class EntryForm extends React.Component {
       memo: "",
       durationAmount: this.props.activity.duration[0],
       durationUnit: "",
-      datetime: "2017-11-27T14:00:00",
+      datetime: new Date(),
       moods: []
     };
 
@@ -59,12 +59,15 @@ class EntryForm extends React.Component {
     e.preventDefault();
 
     var current_uid = firebase.auth().currentUser.uid
+    var date = this.state.datetime.getFullYear() + '-' + 
+              (this.state.datetime.getMonth() + 1) + '-' + 
+              this.state.datetime.getDate();
     var entry = {
       owner: current_uid,
       memo: this.state.memo,
       durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
-      datetime: this.state.datetime,
+      datetime: date,
       moods: this.state.moods,
       activity: this.props.activity
     };

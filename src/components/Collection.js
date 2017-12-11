@@ -93,11 +93,11 @@ class Collection extends Component {
         <h3 className="tree-title">Your Wellness Tree</h3>
         <div class="container sprout-tree">
           <Stage width={1300} height={500}>
-              <TreeLeaf category={'awe'} score={this.props.scores['awe']}/>
-              <TreeLeaf category={'gratitude'} score={this.props.scores['gratitude']}/>
-              <TreeLeaf category={'kindness'} score={this.props.scores['kindness']}/>
-              <TreeLeaf category={'mindfulness'} score={this.props.scores['mindfulness']}/>
-              <TreeLeaf category={'resilience'} score={this.props.scores['resilience']}/>
+              <TreeLeaf category={'awe'} score={this.props.scores['awe']} mini={0}/>
+              <TreeLeaf category={'gratitude'} score={this.props.scores['gratitude']} mini={0}/>
+              <TreeLeaf category={'kindness'} score={this.props.scores['kindness']} mini={0}/>
+              <TreeLeaf category={'mindfulness'} score={this.props.scores['mindfulness']} mini={0}/>
+              <TreeLeaf category={'resilience'} score={this.props.scores['resilience']} mini={0}/>
           </Stage>
         </div>
       </div>

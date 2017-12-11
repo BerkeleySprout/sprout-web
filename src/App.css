@@ -7,6 +7,7 @@ html, body {
 
 h1, h2, h3, h4, h5, h6, p, a {
   font-family: 'Khula', 'Catamaran', 'Open Sans', 'Lato', Helvetica;
+  color: rgba(50, 50, 50, 0.8);
 }
 
 .card-img-left {
@@ -606,6 +607,14 @@ li.category.isActive {
   position: relative;
 }
 
+.sprout-tree-mini {
+  background: url("./images/sprout-tree.png") no-repeat;
+  background-position: center;
+  background-size: 22.67%;
+  height: 25%;
+  position: relative;
+}
+
 #awe-leaf {
   position: absolute;
   right: 605px;
@@ -661,4 +670,8 @@ li.category.isActive {
 .hr-star:after {
   color: rgba(55, 55, 55, 0.7);
   background-color: #e9ffde; 
+}
+
+.title {
+  font-weight: 500;
 }
