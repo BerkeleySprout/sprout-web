@@ -69,8 +69,7 @@ class ActivityForm extends React.Component {
     firebase
       .database()
       .ref()
-      .update(updates)
-      
+      .update(updates);
   }
 
   render() {
@@ -81,16 +80,17 @@ class ActivityForm extends React.Component {
         <img src="http://drpattydental.com/wp-content/uploads/2017/05/placeholder.png" />
       );
 
-
     return (
       <div class="card " style={{ width: "35rem" }}>
         <div className="card-body">
           <h4> Create Activity </h4>
-          <form onSubmit={this.handleSubmit}>
-            <div class="form-row">
-              <div className="form-group col-md-12">
-                <label for="category"> Title </label>
+          <form  onSubmit={this.handleSubmit}>
 
+            <div class="form-group row">
+              <div className="col-md-3">
+                <label for="category"> Title </label>
+              </div>
+              <div className="col-md-9">
                 <input
                   type="text"
                   onChange={this.handleChange}
@@ -100,10 +100,14 @@ class ActivityForm extends React.Component {
                 />
               </div>
             </div>
-            <div class="form-row">
-              <div className="form-group col-md-12">
+
+            <div class="form-group row">
+              <div className="col-md-3">
                 <label for="category"> Category </label>
+              </div>
+              <div className="col-md-9">
                 <select
+              
                   class="form-control"
                   onChange={this.handleChange}
                   value={this.state.category}
@@ -118,9 +122,11 @@ class ActivityForm extends React.Component {
               </div>
             </div>
 
-            <div class="form-row">
-              <div className="form-group col-md-12">
+            <div class="form-group row">
+              <div className="col-md-3">
                 <label> Description </label>
+              </div>
+              <div className="col-md-9">
                 <textarea
                   onChange={this.handleChange}
                   value={this.state.description}
@@ -131,9 +137,11 @@ class ActivityForm extends React.Component {
               </div>
             </div>
 
-            <div class="form-row">
-              <div className="form-group col-md-12">
+            <div class="form-group row">
+              <div className="col-md-3">
                 <label> Link</label>
+                </div>
+                <div className="col-md-9">
                 <input
                   type="text"
                   onChange={this.handleChange}
@@ -144,9 +152,11 @@ class ActivityForm extends React.Component {
               </div>
             </div>
 
-            <div class="form-row">
-              <div className="form-group col-md-12">
+            <div class="form-group row">
+              <div className="col-md-3">
                 <label> Image URL </label>
+                </div>
+                <div className="col-md-9">
                 <input
                   type="text"
                   onChange={this.handleChange}
@@ -164,10 +174,8 @@ class ActivityForm extends React.Component {
               onClick={this.showAlert}
               class="btn btn-sprout-dark"
             >
-              Create Activity <i
-                class="fa fa-check"
-                style={{ marginLeft: "5px" }}
-              />{" "}
+              Create Activity{" "}
+              <i class="fa fa-check" style={{ marginLeft: "5px" }} />{" "}
             </button>
           </form>
         </div>

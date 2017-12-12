@@ -32,57 +32,29 @@ class FriendBlock extends Component {
     this.props.updateScore();
   }
 
+  getUserImage() {
+    if (this.props.user != null) {
+      return this.props.user.image;
+    }
+    return ""
+  }
+
+  getUserName() {
+    if (this.props.user != null) {
+      return this.props.user.name;
+    }
+    return ""
+  }
+
+  getUserScores() {
+    if (this.props.user != null) {
+      return this.props.user.scores;
+    }
+    return ""
+  }
+
   render() {
-    let testColor = {
-        background: "rgb(20,20,20)",
-        backgroundSize: "cover",
-        height: "150px",
-        width: "50px"
-      }
-    let aweColor = {
-      background: "rgb(" + (235-this.props.user.scores["awe"]*20).toString() + ", " + 
-                           (255-this.props.user.scores["awe"]).toString() + "," + 
-                           (235-this.props.user.scores["awe"]*8).toString(),
-      backgroundSize: "cover",
-      height: "150px",
-      width: "50px"
-    }
-
-    let gratitudeColor = {
-      background: "rgb(" + 255 + ", " + 
-                           (250-this.props.user.scores["gratitude"]*15) + "," + 
-                           (250-this.props.user.scores["gratitude"]*15).toString(),
-      backgroundSize: "cover",
-      height: "150px",
-      width: "50px"
-    }
-
-    let kindnessColor = {
-      background: "rgb(" + 255 + ", " + 
-                           255 + "," + 
-                           (250-this.props.user.scores["kindness"]*15).toString(),
-      backgroundSize: "cover",
-      height: "150px",
-      width: "50px"
-    }
-
-    let mindfulnessColor = {
-      background: "rgb(" + (245-this.props.user.scores["mindfulness"]*15) + ", " + 
-                           (245-this.props.user.scores["mindfulness"]*15) + "," + 
-                           255,
-      backgroundSize: "cover",
-      height: "150px",
-      width: "50px"
-    }
-
-    let resilienceColor = {
-      background: "rgb(" + 255 + ", " + 
-                           (255-20-this.props.user.scores["resilience"]).toString() + "," + 
-                           (235-this.props.user.scores["resilience"]*20).toString(),
-      backgroundSize: "cover",
-      height: "150px",
-      width: "50px"
-    }
+    
 
     return (
       <div className="card">
@@ -90,23 +62,23 @@ class FriendBlock extends Component {
           <div className="row">
             <div className="col-lg-2">
               <img
-                src={this.props.user.image}
+                src={this.getUserImage()}
                 className="no-padding"
                 style={{borderRadius: "50%"}}
               />
             </div>
             <div className="col-lg-6">
-              <h3 style={{ color: "black" }}> {this.props.user.name}</h3>
+              <h3 style={{ color: "black" }}> {this.getUserName()}</h3>
             </div>
             <div className="col-lg-4">
               <div className="category--miniimage-container">
                 <div class="container sprout-tree-mini">
                 <Stage width={500} height={300}>
-                    <TreeLeaf category={'awe'} score={this.props.user.scores['awe']} mini={1}/>
-                    <TreeLeaf category={'gratitude'} score={this.props.user.scores['gratitude']} mini={1}/>
-                    <TreeLeaf category={'kindness'} score={this.props.user.scores['kindness']} mini={1}/>
-                    <TreeLeaf category={'mindfulness'} score={this.props.user.scores['mindfulness']} mini={1}/>
-                    <TreeLeaf category={'resilience'} score={this.props.user.scores['resilience']} mini={1}/>
+                    <TreeLeaf category={'awe'} score={this.getUserScores()['awe']} mini={1}/>
+                    <TreeLeaf category={'gratitude'} score={this.getUserScores()['awe']} mini={1}/>
+                    <TreeLeaf category={'kindness'} score={this.getUserScores()['awe']} mini={1}/>
+                    <TreeLeaf category={'mindfulness'} score={this.getUserScores()['awe']} mini={1}/>
+                    <TreeLeaf category={'resilience'} score={this.getUserScores()['awe']} mini={1}/>
                 </Stage>
               </div>
 
