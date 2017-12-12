@@ -95,7 +95,7 @@ class ActivityBlock extends React.Component {
         </div>
 
         <Modal open={this.state.showForm} onClose={this.onCloseModal} little>
-           <EntryForm activity={this.props.activity} />
+           <EntryForm friends={this.props.friends} activity={this.props.activity} />
         </Modal>
       </div>
     );

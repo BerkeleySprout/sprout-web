@@ -27,6 +27,7 @@ class Menu extends Component {
             currentuseractivities: [],
             categoryFilter: [],
             showForm: false,
+            friendlist: [],
             categories: [
                 {
                     name: "awe"
@@ -79,6 +80,36 @@ class Menu extends Component {
             );
         }
     }
+
+    getFriends = () => {
+    let app = database.ref(
+      "users/" + firebase.auth().currentUser.uid + "/friends"
+    );
+
+    app.on(
+      "value",
+      function(snapshot) {
+        var exists = snapshot.val() !== null;
+
+        if (exists) {
+          let friendsToFetch = Object.keys(snapshot.val());
+
+          const friendPromises = friendsToFetch.map(function(uid) {
+            return database
+              .ref("users/")
+              .child(uid)
+              .once("value").then(function(s) {
+                return s.val();
+              });
+          });
+
+          Promise.all(friendPromises).then(friendList => {
+            this.setState({ friendList: friendList }, () => {console.log(this.state.friendList)});
+          });
+        }
+      }.bind(this)
+    );
+  }
 
     updateActiveActivities() {
         if (this.state.categoryFilter.length > 0) {
@@ -136,6 +167,7 @@ class Menu extends Component {
 
     componentDidMount() {
         this.getActivities();
+        this.getFriends();
     }
 
     render() {
@@ -157,14 +189,15 @@ class Menu extends Component {
             );
         });
 
-        console.log(this.state.currentActivities);
+
         var activities = this.state.showrec ? this.state.currentActivities.map(activity => (
-            <ActivityBlock activity={activity} />
+            <ActivityBlock friends={this.state.friendlist} activity={activity} />
         )) : null
 
         var useractivities = this.state.showuser ? this.state.currentuseractivities.map(activity => (
-            <ActivityBlock activity={activity} user={true}/>
+            <ActivityBlock friends={this.state.friendlist} activity={activity} user={true}/>
         )) : null
+
 
         
 

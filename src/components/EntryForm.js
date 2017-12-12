@@ -9,7 +9,7 @@ class EntryForm extends React.Component {
     super(props);
     this.state = {
       memo: "",
-      durationAmount: this.props.activity.duration[0],
+      durationAmount: 5,
       durationUnit: "",
       datetime: new Date().toString(),
       moods: []
@@ -27,13 +27,33 @@ class EntryForm extends React.Component {
     time: 5000,
     transition: 'scale'
   }
+
+   alertOptionsB = {
+    offset: 14,
+    position: 'bottom right',
+    theme: 'green',
+    time: 5000,
+    transition: 'scale'
+  }
  
-  showAlert = () => {
+
+ showAlertB = () => {
+
+    for(var i = 0; i < this.props.activity.categories.length; i++) {
+      this.msg.show(this.props.activity.categories[i].toUpperCase + " + 1!", {
+      time: 5000,
+      type: 'success'
+    })
+
+  }}
+  showAlert = () => { 
+
     this.msg.show('Activity Completed!', {
-      time: 2000,
+      time: 5000,
       type: 'success',
       icon: <img src="path/to/some/img/32x32.png" />
     })
+
   }
 
   handleChange(e) {
@@ -105,10 +125,13 @@ class EntryForm extends React.Component {
   
 
   render() {
+    var friends = this.props.friends.map(friend => {<option> friend.user.name </option>})
+
+
     return (
       <div class="card">
-      <div class="card-header text-center">
-    <h1> {this.props.activity.title} </h1>
+      <div class="card-header text-center" >
+    <h2> {this.props.activity.title} </h2>
   </div>
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
@@ -124,7 +147,8 @@ class EntryForm extends React.Component {
                 />
               </div>
 
-              <div class="btn-group-vertical col-sm-1" role="group">
+              <div class="btn-group-vertical col-sm-1"  role="group"
+                        data-toggle="buttons">
                 <button
                   type="button"
                   onClick={() => {
@@ -156,7 +180,8 @@ class EntryForm extends React.Component {
                   <i class="em em-angry" />
                 </button>
               </div>
-            </div>
+           </div>
+       
 
             <div class="form-row">
               <div className="col-sm-4 form-group">
@@ -193,21 +218,23 @@ class EntryForm extends React.Component {
             </div>
 
             <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+            <AlertContainer ref={a => this.msg = a} {...this.alertOptionsB} />
             <button
               type="submit"
               onstyle={{ width: "100%" }}
-              onClick={this.showAlert}
+              onClick={() => {this.showAlert(); this.showAlertB()}}
               class="btn btn-sprout-dark"
             >
 
               Complete <i
                 class="fa fa-check"
                 style={{ marginLeft: "5px" }}
-              />{" "}
+              />
             </button>
           </form>
         </div>
       </div>
+
     );
   }
 }
