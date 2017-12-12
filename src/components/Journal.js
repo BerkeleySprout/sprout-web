@@ -5,6 +5,7 @@ import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
 import AlertContainer from "react-alert";
+import AbosluteGrid from "../../node_modules/react-absolute-grid/lib/AbsoluteGrid.jsx";
 
 class Journal extends Component {
     constructor(props) {
@@ -62,7 +63,16 @@ class Journal extends Component {
             <SessionBlock session={this.state.sessions[sessionKey]} /> 
         )) 
 
-        return (<div class="container" style={{marginTop: "20px"}}>{sessionBlocks}</div>)
+        var sampleItems = [
+          {key: 1, name: 'Test', sort: 0, filtered: 0},
+          {key: 2, name: 'Test 1', sort: 1, filtered: 0},
+        ];
+
+        return (
+            <div class="container" style={{marginTop: "20px"}}>
+                {sessionBlocks}
+            </div>
+        )
     }
 }
 

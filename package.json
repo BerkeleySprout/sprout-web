@@ -7,6 +7,7 @@
     "firebase": "^4.5.0",
     "konva": "^1.7.6",
     "react": "^16.2.0",
+    "react-absolute-grid": "^3.0.0",
     "react-alert": "^2.4.0",
     "react-bootstrap": "^0.31.3",
     "react-custom-scrollbars": "^4.1.2",
