@@ -20,7 +20,7 @@ class SessionBlock extends Component {
 
   render() {
     var date = this.props.session.datetime.toString();
-    date = date.toString();
+    date = date.split(" ")[4];
     var mood = this.props.session.moods;
     var emoji;
     if (mood == "happy") {
