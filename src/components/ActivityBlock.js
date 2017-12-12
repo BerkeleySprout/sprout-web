@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 
 import ReactStars from "react-stars";
+
 import EntryForm from "./EntryForm";
 import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
+import Modal from 'react-responsive-modal';
+
 import firebase, { auth, provider, database } from "../firebase.js";
 
-class ActivityBlock extends Component {
+class ActivityBlock extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,6 +20,14 @@ class ActivityBlock extends Component {
 
     this.handleShowClick = this.handleShowClick.bind(this);
   }
+
+  onOpenModal = () => {
+    this.setState({ showForm: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ showForm: false });
+  };
 
   handleShowClick(e) {
     e.preventDefault();
@@ -32,83 +43,60 @@ class ActivityBlock extends Component {
     var form = this.state.showForm ? (
       <EntryForm activity={this.props.activity} />
     ) : null;
+   var credit = this.props.user ?  <h6> Created by: {this.props.activity.username} </h6> : null  
 
     return (
       <div>
-        <div className="card" style={{padding: "10 25 10 10"}}>
+        <div
+          className="card" 
+          style={{ width: "rem" }}
+        >
+          <img class="card-img-top" src={this.props.activity.img} />
+
           <div className="card-body">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src={this.props.activity.img} />
-              </div>
+            <h4 className="card-title"> {this.props.activity.title} </h4>
 
-              <div class="col-md-5 ml-auto">
-                <div class="row">
-                  <div class="col-md-8">
-                    <h3 className="title"> {this.props.activity.title} </h3>
-                  </div>
-                  <div class="col-md-4">
-                    <ReactStars
-                      count={5}
-                      value={Math.ceil(this.props.activity.rating / 20)}
-                      size={20}
-                      color2={"#ffd700"}
-                    />
-                  </div>
-                </div>
-                <h5> {this.props.activity.description} </h5>
-                <h6>
-                  {" "}
-                  Recommended Frequency: {this.props.activity.frequency.join("/")}
-                </h6>
-
-                <h6>
-                  {" "}
-                  Recommended Duration: {this.props.activity.duration.join(" ")}
-                </h6>
-
-                
-              </div>
-
-              <div class="col-md-4">
-                <br />
-                <div className="row">
-                  <a
-                    id="explore-button"
-                    className="btn btn-sprout-light"
-                    style={{ marginRight: "6%", width: "47%"}}
-                    href={this.props.activity.link}>
-                    Explore
-                    <i class="fa fa-search" style={{ marginLeft: "5px" }} />
-                  </a>
-                  <button
-                    type="button"
-                    style={{ width: "47%" }}
-                    className="btn btn-sprout-light"
-                  >
-                    Share
-                    <i class="fa fa-share-alt" style={{ marginLeft: "5px" }} />
-                  </button>
-                </div>
-
-                <br />
-                <div className="row">
-                  <button
-                    type="button"
-                    className="btn btn-sprout-dark"
-                    href="#article"
-                    style={{ width: "100%" }}
-                    onClick={this.handleShowClick}
-                  >
-                    Begin
-                  </button>
-                </div>
-              </div>
+            <div className="card-text">
+              <h6> {this.props.activity.description} </h6>
+              {credit}
             </div>
+          </div>
+
+          <div className="card-footer">
+            <div style={{ width: "35%", margin: "0 auto" }}>
+              <ReactStars
+                count={5}
+                value={Math.ceil(this.props.activity.rating / 20)}
+                size={20}
+                color2={"#ffd700"}
+              />
+            </div>
+
+            <a
+              id="explore-button"
+              className="btn btn-sprout-light"
+              style={{ width: "100%" }}
+              href={this.props.activity.link}
+            >
+              Explore
+              <i class="fa fa-search" style={{ marginLeft: "5px" }} />
+            </a>
+
+            <button
+              type="button"
+              className="btn btn-sprout-dark"
+              href="#article"
+              style={{ width: "100%" }}
+              onClick={this.onOpenModal}
+            >
+              Complete
+            </button>
           </div>
         </div>
 
-        {form}
+        <Modal open={this.state.showForm} onClose={this.onCloseModal} little>
+           <EntryForm activity={this.props.activity} />
+        </Modal>
       </div>
     );
   }
