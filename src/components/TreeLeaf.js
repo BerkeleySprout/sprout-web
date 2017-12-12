@@ -102,7 +102,7 @@ class TreeLeaf extends React.Component {
           <Text x={textX} 
                 y={textY}
                 fontSize={this.state.isMouseInside && !this.props.mini ? 25 : 0}
-                fontFamily={'Khula'}
+                fontFamily={'Khula, Catamaran, Open Sans, Lato'}
                 fill={"rgba(55, 55, 55, 0.7)"}
                 align='center'
                 text={categoryCaps + ": " + this.props.score} />
