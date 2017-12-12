@@ -10,7 +10,7 @@ class EntryForm extends React.Component {
       memo: "",
       durationAmount: this.props.activity.duration[0],
       durationUnit: "",
-      datetime: new Date().toString(),
+      datetime: new Date(),
       moods: ""
     };
 

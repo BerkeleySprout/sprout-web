@@ -61,14 +61,24 @@ class Journal extends Component {
     }
 
     getFilteredSessions(date) {
-
+        var filteredSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
+         ?  <div class="card"> 
+                <div class="card-body">
+                    <h2> You have no entries on this day! </h2>
+                </div>
+            </div> 
+         :  Object.keys(this.state.sessions)
+         .filter(sessionKey => this.state.sessions.datetime == date)
+         .map(sessionKey => (
+                <SessionBlock session={this.state.sessions[sessionKey]} /> 
+            )); 
     }
 
     render() {
         var allSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
          ?  <div class="card"> 
                 <div class="card-body">
-                    <h2> You have no entries on this day! </h2>
+                    <h2> You have no entries!</h2>
                 </div>
             </div> 
          :  Object.keys(this.state.sessions).map(sessionKey => (
@@ -76,6 +86,15 @@ class Journal extends Component {
             )); 
 
         var today = new Date();
+
+        var allDates = [];
+        if (this.state.sessions != null) {
+            var keys = Object.keys(this.state.sessions);
+            for (var i = 0; i < keys.length; i++) {
+                allDates.push(this.state.sessions[keys[i]].datetime.substring(0, 10));
+            }
+        }
+        
 
         return (
             <div className="container container-fluid" style={{marginTop: "20px"}}>
@@ -99,7 +118,7 @@ class Journal extends Component {
                             width={(window.innerWidth <= 450) ? window.innerWidth : 450}
                             height={window.innerHeight - 300}
                             rowHeight={70}
-                            selected={today}
+                            selected={allDates}
                             min={new Date(2017, 11, 1)}
                             minDate={new Date(2017, 11, 1)}
                             max={new Date(2018, 12, 13)}
@@ -109,6 +128,7 @@ class Journal extends Component {
                     </div>
                     <div className="col-lg-6 mx-auto">
                         {allSessionBlocks}
+                        {allDates}
                     </div>
                 </div>
             </div>
