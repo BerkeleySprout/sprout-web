@@ -41,24 +41,43 @@ class Journal extends Component {
         return;
     }
 
-    getSessions() {
-        let app = database.ref(
-            "users/" + firebase.auth().currentUser.uid + "/sessions"
-        );
-
-        app.on(
-            "value",
-            (snapshot) => {
-                let filtered = snapshot.val();
-
-                this.setState({ sessions: filtered })
-                });
-            }
+   
 
     componentDidMount() {
-        this.getSessions();
+        var start = new Date();
+        start.setHours(0,0,0,0);
+        this.getFilteredSessions(start)
+        
     }
 
+    getFilteredSessions(date) {
+
+        var min = date
+        var max = date + 86400000
+
+        console.log(min.getTime())
+
+        database.ref(
+            "users/" + firebase.auth().currentUser.uid + "/sessions"
+        ).orderByChild("datetime").startAt(min.getTime()).endAt(max).on("value", (snapshot) => {
+            console.log(snapshot.val())
+
+            if (snapshot.val() != null){
+
+                this.setState({sessions: snapshot.val()})
+
+            } else {
+
+                this.setState({sessions: null})
+            }
+
+        })
+    }
+
+
+    
+
+/*
     getFilteredSessions(date) {
         var filteredSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
          ?  <div class="card"> 
@@ -72,6 +91,7 @@ class Journal extends Component {
                 <SessionBlock session={this.state.sessions[sessionKey]} /> 
             )); 
     }
+    */
 
     render() {
         var allSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
@@ -141,7 +161,7 @@ class Journal extends Component {
                             minDate={new Date(2017, 11, 1)}
                             max={new Date(2018, 12, 13)}
                             maxDate={new Date(2018, 12, 13)}
-                            onSelect={this.getFilteredSessions()}
+                            onSelect={(date) => {this.getFilteredSessions(date)}}
                         />
                     </div>
                     <div className="col-lg-6 mx-auto">

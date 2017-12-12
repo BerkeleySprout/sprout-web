@@ -19,8 +19,16 @@ class SessionBlock extends Component {
   }
 
   render() {
-    var date = this.props.session.datetime.toString();
-    date = date.split(" ")[4];
+    var date = new Date(this.props.session.datetime)
+    var hours   = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+
+    var timeString = "" + ((hours > 12) ? hours - 12 : hours);
+    timeString  += ((minutes < 10) ? ":0" : ":") + minutes;
+     timeString  += (hours >= 12) ? " PM" : " AM";
+
     var mood = this.props.session.moods;
     var emoji;
     if (mood == "happy") {
@@ -37,14 +45,27 @@ class SessionBlock extends Component {
       <div>
         <div className="card">
           <div className="card-body">
-            <h5> {date} </h5>
-            <h2> {this.getActivityTitle()}</h2>
-            <h5> {emoji} </h5>
+          <div class="row">
+            <div class="col-md-4">
+            <h1> {timeString} </h1>
+            </div>
+            <div class="col">
+            {emoji}
+            </div>
+
+            </div>
+            <h4> {this.getActivityTitle()}</h4>
+
+
+        
             <h5> {this.props.session.memo} </h5>
+
+            <h6> Duration: {this.props.session.durationAmount} Minutes </h6>
+            </div>
             
           </div>
         </div>
-      </div>
+      
     );
   }
 }

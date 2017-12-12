@@ -10,7 +10,7 @@ class EntryForm extends React.Component {
       memo: "",
       durationAmount: 5,
       durationUnit: "",
-      datetime: new Date().toString(),
+      datetime: new Date().getTime(),
       moods: ""
     };
 
@@ -39,7 +39,7 @@ class EntryForm extends React.Component {
  showAlertB = () => {
 
     for(var i = 0; i < this.props.activity.categories.length; i++) {
-      this.msg.show(this.props.activity.categories[i].toUpperCase + " + 1!", {
+      this.msg.show(this.props.activity.categories[i].toUpperCase() + " + 1!", {
       time: 5000,
       type: 'success'
     })
@@ -67,12 +67,13 @@ class EntryForm extends React.Component {
     e.preventDefault();
 
     var current_uid = firebase.auth().currentUser.uid;
+    
     var entry = {
       owner: current_uid,
       memo: this.state.memo,
       durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
-      datetime: this.state.datetime,
+      datetime: new Date(this.state.datetime).getTime(),
       moods: this.state.moods,
       activity: this.props.activity
     };
@@ -169,7 +170,7 @@ class EntryForm extends React.Component {
        
 
             <div class="form-row">
-              <div className="col-sm-4 form-group">
+              <div className="col-sm-3 form-group">
                 <input
                   type="text"
                   onChange={this.handleChange}
@@ -179,7 +180,7 @@ class EntryForm extends React.Component {
                 />
               </div>
 
-              <div className="col-sm-4 form-group">
+              <div className="col-sm-3 form-group">
                 <select
                   class="form-control"
                   onChange={this.handleChange}
@@ -191,7 +192,7 @@ class EntryForm extends React.Component {
                 </select>
               </div>
 
-              <div className="col-sm-4 form-group">
+              <div className="col-sm-6 form-group">
                 <input
                   class="form-control"
                   onChange={this.handleChange}
