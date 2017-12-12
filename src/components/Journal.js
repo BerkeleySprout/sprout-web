@@ -6,7 +6,7 @@ import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
 import AlertContainer from "react-alert";
 import InfiniteCalendar from 'react-infinite-calendar';
-import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
+import 'react-infinite-calendar/styles.css';
 
 class Journal extends Component {
     constructor(props) {
@@ -91,13 +91,14 @@ class Journal extends Component {
                                weekdayColor: '#64af22',
                                headerColor: '#64af22',
                                floatingNav: {
-                                 background: '#64af22',
+                                 background: '#006400',
                                  color: '#FFF',
                                  chevron: '#FFA726'
                                }
                             }}
-                            width={400}
-                            height={400}
+                            width={(window.innerWidth <= 450) ? window.innerWidth : 450}
+                            height={window.innerHeight - 300}
+                            rowHeight={70}
                             selected={today}
                             min={new Date(2017, 11, 1)}
                             minDate={new Date(2017, 11, 1)}

@@ -11,7 +11,7 @@ class EntryForm extends React.Component {
       durationAmount: this.props.activity.duration[0],
       durationUnit: "",
       datetime: new Date().toString(),
-      moods: []
+      moods: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,18 +40,7 @@ class EntryForm extends React.Component {
   }
 
   handleClick(mood) {
-    var current_moods = this.state.moods.slice();
-
-    var exists = current_moods.includes(mood);
-
-    if (exists) {
-      var i = current_moods.indexOf(mood);
-      current_moods.splice(i, 1);
-    } else {
-      current_moods.push(mood);
-    }
-
-    this.setState({ moods: current_moods });
+    this.setState({ moods: mood });
   }
 
   handleSubmit(e) {
@@ -116,7 +105,7 @@ class EntryForm extends React.Component {
                 />
               </div>
 
-              <div class="btn-group-vertical col-sm-1" role="group">
+              <div class="col-sm-1" role="group">
                 <button
                   type="button"
                   onClick={() => {
