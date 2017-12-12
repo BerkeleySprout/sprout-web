@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-import Popup from "./Popup";
 import AlertContainer from "react-alert";
 import firebase, { auth, provider, database } from "../firebase.js";
 

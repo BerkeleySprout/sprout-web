@@ -19,15 +19,29 @@ class SessionBlock extends Component {
   }
 
   render() {
+    var date = this.props.session.datetime.toString();
+    date = date.split(" ")[4];
+    var mood = this.props.session.moods;
+    var emoji;
+    if (mood == "happy") {
+      emoji = <i class="em em-smile" />
+    }
+    if (mood == "sad") {
+      emoji = <i class="em em-cry" />
+    }
+    if (mood == "angry") {
+      emoji = <i class="em em-angry" />
+    }
+
     return (
       <div>
         <div className="card">
           <div className="card-body">
-            <h1> {this.props.session.datetime} </h1>
-
-            <h2> {this.getActivityTitle()} </h2>
-            
+            <h5> {date} </h5>
+            <h2> {this.getActivityTitle()}</h2>
+            <h5> {emoji} </h5>
             <h5> {this.props.session.memo} </h5>
+            
           </div>
         </div>
       </div>
