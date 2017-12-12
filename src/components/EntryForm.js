@@ -91,6 +91,9 @@ class EntryForm extends React.Component {
   render() {
     return (
       <div class="card">
+      <div class="card-header text-center">
+    <h1> {this.props.activity.title} </h1>
+  </div>
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
             <div class="form-row">

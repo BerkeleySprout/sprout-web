@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
+import ActivityForm from "./ActivityForm";
 import ActivityBlock from "./ActivityBlock";
+import createAbsoluteGrid from "./AbsoluteGrid";
+import Masonry from "react-masonry-component";
+import Modal from "react-responsive-modal";
 import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
-import AlertContainer from 'react-alert'
+import AlertContainer from "react-alert";
+import SampleDisplay from "./SampleDisplay";
+import Infinite from "react-infinite";
 
 class Menu extends Component {
     constructor(props) {
@@ -13,9 +19,14 @@ class Menu extends Component {
         this.state = {
             score: 0,
             activityIndex: null,
+            showrec:true,
+            showuser:false,
             activities: [],
             currentActivities: [],
+            useractivities: [],
+            currentuseractivities: [],
             categoryFilter: [],
+            showForm: false,
             categories: [
                 {
                     name: "awe"
@@ -41,8 +52,15 @@ class Menu extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
     }
 
-    handleClick(category) {
+    onOpenModal = () => {
+        this.setState({ showForm: true });
+    };
 
+    onCloseModal = () => {
+        this.setState({ showForm: false });
+    };
+
+    handleClick(category) {
         let remove = function(array, element) {
             return array.filter(e => e !== element);
         };
@@ -65,146 +83,152 @@ class Menu extends Component {
     updateActiveActivities() {
         if (this.state.categoryFilter.length > 0) {
             let contain = function(element) {
-
                 return this.state.categoryFilter.includes(element);
-
-            }
+            };
 
             let filtering = function(activity) {
+                return (
+                    activity.categories.filter(contain.bind(this)).length > 0
+                );
+            };
 
-                return activity.categories.filter(contain.bind(this)).length > 0;
-
-            }
-
-            var filtered = this.state.activities.filter(
+            var filtered = this.state.activities.filter(filtering.bind(this));
+            var filteredB = this.state.useractivities.filter(
                 filtering.bind(this)
             );
-
         } else {
             filtered = this.state.activities;
+            filteredB = this.state.useractivities;
         }
 
-        
-        this.setState({ currentActivities: filtered });
+        this.setState({
+            currentActivities: filtered,
+            currentuseractivities: filteredB
+        });
     }
 
     getActivities() {
-        let app = database.ref("activities/");
+        let app = database.ref("/");
 
         app.on(
             "value",
             function(snapshot) {
-                let filtered = snapshot.val();
+                let filtered = snapshot.child("activities").val();
+                let filteredB = snapshot.child("useractivities").val();
+
+                let arr = [];
+
+                Object.keys(filteredB).forEach(key => arr.push(filteredB[key]));
 
                 this.setState(
-                    { activities: filtered, currentActivities: filtered },
+                    {
+                        activities: filtered,
+                        currentActivities: filtered,
+                        useractivities: arr,
+                        currentuseractivities: arr
+                    },
+
                     this.updateActiveActivities()
                 );
             }.bind(this)
         );
     }
 
-
     componentDidMount() {
-
         this.getActivities();
     }
-
 
     render() {
         var categoryButtons = this.state.categories.map(category => {
             // Making first letters uppercase
-            var name = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+            var name =
+                category.name.charAt(0).toUpperCase() + category.name.slice(1);
             return (
                 <button
                     type="button"
                     className="btn btn-outline-dark"
                     onClick={() => this.handleClick(category.name)}
                     value={category.name}
-                    data-toggle="button"
-                    class-toggle="btn btn-outline-dark"
-                    aria-pressed="false"
-                    autocomplete="off"
-                    style={{marginTop: "20px", marginBottom: "20px"}}
+                
+                    style={{ marginTop: "20px", marginBottom: "20px" }}
                 >
                     {name}
                 </button>
             );
         });
 
+        console.log(this.state.currentActivities);
+        var activities = this.state.showrec ? this.state.currentActivities.map(activity => (
+            <ActivityBlock activity={activity} />
+        )) : null
 
-        var activities = this.state.currentActivities.map(activity => <ActivityBlock activity={activity}/>)
-                
+        var useractivities = this.state.showuser ? this.state.currentuseractivities.map(activity => (
+            <ActivityBlock activity={activity} user={true}/>
+        )) : null
 
-/*
-        var activities = this.state.currentActivities.map(activity => {
-            return (
-                <div className="card">
+        
 
-                    <div className="card-body">
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">
-                                <img src={activity.img} />
-                            </div>
-                            
-                            <div class="col-md-6 ml-auto">
-                                <h4> {activity.title} </h4>
-                                <p> Rating: {activity.rating} </p>
-                                <p> {activity.description} </p>
-                                <p> Frequency: {activity.frequency.join(" ")}, Duration: {activity.duration.join(" ")} </p>
-                            </div>
-
-                            <div class="col-md-3">
-                                <br/>
-                                <div className="row">
-                                    <button
-                                        type="button"
-                                        className="btn btn-lg btn-success"
-                                        href="#article"
-                                        onClick={() => this.props.updateScores(activity.categories)}
-                                    >
-                                        Complete 
-                                        <i class="fa fa-check" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                </div>
-
-                                <br/>
-                                <div className="row">
-                                    <button
-                                        type="button"
-                                        className="btn btn-warning"
-                                        style={{marginRight: "10px"}}
-                                        href={activity.link}
-                                    >
-                                        Explore
-                                        <i class="fa fa-search" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-primary"
-                                    >
-                                        Share
-                                        <i class="fa fa-share-alt" style={{marginLeft: "5px"}}></i>
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        });
-*/
         return (
-
             <div className="container">
                 <nav className="navbar navbar-light bg-faded">
-                    <div className="btn-group mx-auto" role="group" data-toggle="buttons">
+                    <div
+                        className="btn-group mx-auto"
+                        role="group"
+                        data-toggle="buttons"
+                    >
                         {categoryButtons}
+                    </div>
+
+                    <div
+                        className="btn-group mx-auto"
+                        role="group"
+                        data-toggle="buttons"
+                    >
+                        <button
+                            type="button"
+                            className="btn btn-primary active"
+                            style={{ marginTop: "20px", marginBottom: "20px" }}
+                            onClick={() => { let current = this.state.showrec; this.setState({showrec: !current})}}
+                        >
+                            Recommended Activities
+                        </button>
+                        <button
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ marginTop: "20px", marginBottom: "20px" }}
+                            onClick={() => { let current = this.state.showuser; this.setState({showuser: !current})}}
+                        >
+                            User Activities
+                        </button>
                     </div>
                 </nav>
 
-                {activities}
+
+
+                <button
+                    type="button"
+                    className="btn btn-sprout-dark"
+                    href="#article"
+                    style={{ width: "100%" }}
+                    onClick={this.onOpenModal}
+                >
+                    Create New Activity
+                </button>
+
+                <Modal
+                    open={this.state.showForm}
+                    onClose={this.onCloseModal}
+                    little
+                >
+                    <ActivityForm />
+                </Modal>
+
+                <br />
+                <br />
+
+                <div className="card-columns">
+                    {activities} 
+                    {useractivities}</div>
             </div>
         );
     }

@@ -10,6 +10,12 @@ h1, h2, h3, h4, h5, h6, p, a {
   color: rgba(50, 50, 50, 0.8);
 }
 
+.center-cropped {
+  padding-bottom:100%; 
+  overflow:hidden; 
+  position:relative
+}
+
 .card-img-left {
   border-bottom-left-radius: calc(.25rem - 1px);
   border-top-left-radius: calc(.25rem - 1px);
