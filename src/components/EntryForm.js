@@ -58,13 +58,12 @@ class EntryForm extends React.Component {
     e.preventDefault();
 
     var current_uid = firebase.auth().currentUser.uid;
-    var date = this.state.datetime.toString().split(" ")[4];
     var entry = {
       owner: current_uid,
       memo: this.state.memo,
       durationAmount: this.state.durationAmount,
       durationUnit: this.state.durationUnit,
-      datetime: date,
+      datetime: this.state.datetime,
       moods: this.state.moods,
       activity: this.props.activity
     };
