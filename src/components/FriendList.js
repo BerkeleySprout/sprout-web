@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FriendForm from "./FriendForm";
 import FriendBlock from "./FriendBlock";
-import Popup from "./Popup";
 import classNames from "classnames";
 
 import firebase, { auth, provider, database } from "../firebase.js";
