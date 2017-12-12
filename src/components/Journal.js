@@ -5,8 +5,6 @@ import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
 import AlertContainer from "react-alert";
-import AbosluteGrid from "../../node_modules/react-absolute-grid/lib/AbsoluteGrid.jsx";
-
 class Journal extends Component {
     constructor(props) {
         super(props);
