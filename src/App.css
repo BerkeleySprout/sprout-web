@@ -429,7 +429,7 @@ li.category.isActive {
 .btn-sprout-light {
   color: #9ecc3a;
   background: white;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #9ecc3a;
 }
 
@@ -445,7 +445,7 @@ li.category.isActive {
 .btn-sprout-dark {
   color: #64af22;
   background: white;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #64af22;
 }
 
@@ -487,8 +487,13 @@ li.category.isActive {
 
 .btn-outline-dark {
   color: #000;
-  background: rgba(145,145,145, 0.00);
+  background: rgba(145,145,145, 0.0);
   border-radius: 3px;
+}
+
+.btn-outline-dark:hover {
+  color: #000;
+  background: rgba(45,45,45, 0.08);
 }
 
 @keyframes fade {
