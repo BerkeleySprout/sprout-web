@@ -5,7 +5,8 @@ import classNames from "classnames";
 import EntryForm from "./EntryForm";
 import firebase, { auth, provider, database } from "../firebase.js";
 import AlertContainer from "react-alert";
-import AbosluteGrid from "../../node_modules/react-absolute-grid/lib/AbsoluteGrid.jsx";
+import InfiniteCalendar from 'react-infinite-calendar';
+import 'react-infinite-calendar/styles.css'; // Make sure to import the default stylesheet
 
 class Journal extends Component {
     constructor(props) {
@@ -63,14 +64,27 @@ class Journal extends Component {
             <SessionBlock session={this.state.sessions[sessionKey]} /> 
         )) 
 
-        var sampleItems = [
-          {key: 1, name: 'Test', sort: 0, filtered: 0},
-          {key: 2, name: 'Test 1', sort: 1, filtered: 0},
-        ];
+        var today = new Date();
 
         return (
-            <div class="container" style={{marginTop: "20px"}}>
-                {sessionBlocks}
+            <div className="container container-fluid" style={{marginTop: "20px"}}>
+                <div className="row">
+                    <div className="col-lg-4 offset-lg-2 mx-auto">
+                        <InfiniteCalendar
+                            width={400}
+                            height={400}
+                            selected={today}
+                            min={new Date(2017, 11, 1)}
+                            minDate={new Date(2017, 11, 1)}
+                            max={new Date(2018, 12, 13)}
+                            maxDate={new Date(2018, 12, 13)}
+
+                          />
+                    </div>
+                    <div className="col-lg-6 mx-auto">
+                        {sessionBlocks}
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classNames from "classnames";
-import Popup from "./Popup";
 import AlertContainer from 'react-alert';
 import firebase, { auth, provider, database } from "../firebase.js";
 
@@ -59,10 +58,7 @@ class EntryForm extends React.Component {
     e.preventDefault();
 
     var current_uid = firebase.auth().currentUser.uid;
-    var date = this.state.datetime.toString().split(" ")[0] + " " +
-               this.state.datetime.toString().split(" ")[1] + " " +
-               this.state.datetime.toString().split(" ")[2] + " " +
-               this.state.datetime.toString().split(" ")[3];
+    var date = this.state.datetime.toString().split(" ")[4];
     var entry = {
       owner: current_uid,
       memo: this.state.memo,

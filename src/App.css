@@ -117,7 +117,6 @@ w
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   padding-top: 5px;
-  margin-top: 15px;
   margin-right: 0px;
   border-top: 1px solid #666;
   color: #BCBD8B;
@@ -601,7 +600,6 @@ li.category.isActive {
   text-align: center;
   font-weight: 500;
   color: rgba(55, 55, 55, 0.8);
-  margin-top: -5px;
 }
 
 .sprout-tree {
@@ -679,4 +677,8 @@ li.category.isActive {
 
 .title {
   font-weight: 500;
+}
+
+#journal-container {
+
 }
