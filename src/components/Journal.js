@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import CategoryBlock from "./CategoryBlock";
 import SessionBlock from "./SessionBlock";
-import classNames from "classnames";
-import firebase, { auth, provider, database } from "../firebase.js";
-import AlertContainer from "react-alert";
+import firebase, { database } from "../firebase.js";
 import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
 
@@ -41,57 +38,26 @@ class Journal extends Component {
         return;
     }
 
-   
-
     componentDidMount() {
         var start = new Date();
         start.setHours(0,0,0,0);
         this.getFilteredSessions(start)
-        
     }
 
     getFilteredSessions(date) {
-
         var min = date
         var max = date + 86400000
-
-        console.log(min.getTime())
-
         database.ref(
             "users/" + firebase.auth().currentUser.uid + "/sessions"
         ).orderByChild("datetime").startAt(min.getTime()).endAt(max).on("value", (snapshot) => {
             console.log(snapshot.val())
-
             if (snapshot.val() != null){
-
                 this.setState({sessions: snapshot.val()})
-
             } else {
-
                 this.setState({sessions: null})
             }
-
         })
     }
-
-
-    
-
-/*
-    getFilteredSessions(date) {
-        var filteredSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
-         ?  <div class="card"> 
-                <div class="card-body">
-                    <h2> You have no entries on this day! </h2>
-                </div>
-            </div> 
-         :  Object.keys(this.state.sessions)
-         .filter(sessionKey => this.state.sessions.datetime == date)
-         .map(sessionKey => (
-                <SessionBlock session={this.state.sessions[sessionKey]} /> 
-            )); 
-    }
-    */
 
     render() {
         var allSessionBlocks = (typeof this.state.sessions === undefined || this.state.sessions === null)
@@ -104,8 +70,6 @@ class Journal extends Component {
                 <SessionBlock session={this.state.sessions[sessionKey]} /> 
             )); 
 
-        var today = new Date();
-
         var allDates = [];
         if (this.state.sessions != null) {
             var keys = Object.keys(this.state.sessions);
@@ -115,10 +79,10 @@ class Journal extends Component {
         }
 
         var selected = [];
-        for (var i = 0; i < allDates.length; i++) {
-            selected.push(new Date(parseInt(allDates[i].toString().split(" ")[1]), 
-                                   parseInt(allDates[i].toString().split(" ")[2]),
-                                   parseInt(allDates[i].toString().split(" ")[3])))
+        for (var j = 0; j < allDates.length; j++) {
+            selected.push(new Date(parseInt(allDates[j].toString().split(" ")[1], 10), 
+                                   parseInt(allDates[j].toString().split(" ")[2], 10),
+                                   parseInt(allDates[j].toString().split(" ")[3], 10)))
         }
 
         var monthNum = {"Jan" : "01",

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 
-import classNames from "classnames";
-import { Scrollbars } from "react-custom-scrollbars";
-
 class CategoryBlock extends Component {
   constructor(props) {
     super(props);
-
 
     this.state = {
       score: 0,
@@ -20,7 +16,8 @@ class CategoryBlock extends Component {
   }
 
   render() {
-    let { active, focused, shiftLeft, isLast } = this.props;
+    let score = this.props.score + 1;
+    let offset = 0;
     let color = {
         background: "rgb(" + (235-score*20).toString() + ", " + 
                             ((255-score)+offset).toString() + "," + 
@@ -28,12 +25,10 @@ class CategoryBlock extends Component {
         backgroundSize: "cover",
         height: "350px",
       }
-    let score = this.props.score + 1;
-    let offset = 0;
     if (score > 100) {
       offset = score - 100;
     }
-    if (this.props.category == "awe") {
+    if (this.props.category === "awe") {
       color = {
         background: "rgb(" + (235-score*20).toString() + ", " + 
                             ((255-score)+offset).toString() + "," + 
@@ -43,7 +38,7 @@ class CategoryBlock extends Component {
         position: "relative"
       }
     }
-    if (this.props.category == "gratitude") {
+    if (this.props.category === "gratitude") {
       color = {
         background: "rgb(" + 255 + ", " + 
                              (250-score*15) + "," + 
@@ -53,7 +48,7 @@ class CategoryBlock extends Component {
         position: "relative"
       }
     }
-    if (this.props.category == "kindness") {
+    if (this.props.category === "kindness") {
       color = {
         background: "rgb(" + 255 + ", " + 
                              255 + "," + 
@@ -63,7 +58,7 @@ class CategoryBlock extends Component {
         position: "relative"
       }
     }
-    if (this.props.category == "mindfulness") {
+    if (this.props.category === "mindfulness") {
       color = {
         background: "rgb(" + (245-score*15) + ", " + 
                              (245-score*15) + "," + 
@@ -73,7 +68,7 @@ class CategoryBlock extends Component {
         position: "relative"
       }
     }
-    if (this.props.category == "resilience") {
+    if (this.props.category === "resilience") {
       color = {
         background: "rgb(" + 255 + ", " + 
                             ((255-20-score)+offset).toString() + "," + 

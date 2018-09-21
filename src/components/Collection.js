@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
-import classNames from "classnames";
-import {Rectangle, Circle, Ellipse, Line, Polyline, CornerBox, Triangle} from 'react-shapes';
-import {Layer, Stage, Group, Text} from 'react-konva';
+import {Stage} from 'react-konva';
 import TreeLeaf from "./TreeLeaf";
 
 class Collection extends Component {
@@ -83,8 +81,7 @@ class Collection extends Component {
   }
 
   render() {
-    let categoryNodes = this.state.categories.map(this.createCategoryBlock);
-
+    
     return (
       
       <div className="jumbotron jumbotron-fluid"

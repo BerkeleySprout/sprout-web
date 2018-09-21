@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import classNames from "classnames";
 import AlertContainer from "react-alert";
-import firebase, { auth, provider, database } from "../firebase.js";
+import firebase from "../firebase.js";
 
-class ActivityForm extends React.Component {
+class ActivityForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +29,7 @@ class ActivityForm extends React.Component {
     this.msg.show("Activity Created!", {
       time: 2000,
       type: "success",
-      icon: <img src="path/to/some/img/32x32.png" />
+      icon: <img src="path/to/some/img/32x32.png" alt=""/>
     });
   };
 
@@ -73,12 +72,6 @@ class ActivityForm extends React.Component {
   }
 
   render() {
-    var image =
-      this.state.img.length > 0 ? (
-        <img src={this.state.image} />
-      ) : (
-        <img src="http://drpattydental.com/wp-content/uploads/2017/05/placeholder.png" />
-      );
 
     return (
       <div class="card " style={{ width: "35rem" }}>

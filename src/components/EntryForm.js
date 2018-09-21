@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import classNames from "classnames";
 import AlertContainer from 'react-alert';
-import firebase, { auth, provider, database } from "../firebase.js";
+import firebase from "../firebase.js";
 
-class EntryForm extends React.Component {
+class EntryForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,24 +34,19 @@ class EntryForm extends React.Component {
     transition: 'scale'
   }
  
-
  showAlertB = () => {
-
     for(var i = 0; i < this.props.activity.categories.length; i++) {
       this.msg.show(this.props.activity.categories[i].toUpperCase() + " + 1!", {
       time: 5000,
       type: 'success'
     })
-
   }}
   showAlert = () => { 
-
     this.msg.show('Activity Completed!', {
       time: 5000,
       type: 'success',
-      icon: <img src="path/to/some/img/32x32.png" />
+      icon: <img src="path/to/some/img/32x32.png" alt=""/>
     })
-
   }
 
   handleChange(e) {
@@ -65,9 +59,7 @@ class EntryForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     var current_uid = firebase.auth().currentUser.uid;
-    
     var entry = {
       owner: current_uid,
       memo: this.state.memo,
@@ -79,45 +71,36 @@ class EntryForm extends React.Component {
     };
 
     var pushKey = firebase.database().ref("sessions/").push().key
-
     var updates = {};
-
     updates['sessions/' + pushKey] = entry;
     updates['users/' + current_uid + '/sessions/' + pushKey] = entry;
 
-   firebase.database().ref().update(updates).then(() => {
-    firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").once("value", (snapshot) => {
+    firebase.database().ref().update(updates).then(() => {
+      firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").once("value", (snapshot) => {
 
-      var current_scores = snapshot.val()
+        var current_scores = snapshot.val()
 
-      var updates = {}
+        for (var i = 0; i < this.props.activity.categories.length; i++) {
+          var category = this.props.activity.categories[i]
 
-      for (var i = 0; i < this.props.activity.categories.length; i++) {
-        var category = this.props.activity.categories[i]
-
-        if (Object.keys(current_scores).includes(category)) {
-          current_scores[category] = current_scores[category] + 1
+          if (Object.keys(current_scores).includes(category)) {
+            current_scores[category] = current_scores[category] + 1
+          }
         }
-      }
 
-      console.log(current_scores)
+        firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").update(current_scores)
 
-      firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").update(current_scores)
-
-
-    })})}
-
-  
+      })
+    })
+  }
 
   render() {
-    var friends = this.props.friends.map(friend => {<option> friend.user.name </option>})
-
 
     return (
       <div class="card">
-      <div class="card-header text-center" >
-    <h2> {this.props.activity.title} </h2>
-  </div>
+      <div class="card-header text-center">
+      <h2> {this.props.activity.title} </h2>
+      </div>
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
             <div class="form-row">

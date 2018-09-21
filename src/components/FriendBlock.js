@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import classNames from "classnames";
-import { Scrollbars } from "react-custom-scrollbars";
-import {Layer, Stage, Group, Text} from 'react-konva';
+import {Stage} from 'react-konva';
 import TreeLeaf from "./TreeLeaf";
-import firebase, { auth, provider, database } from "../firebase.js";
 
 class FriendBlock extends Component {
   constructor(props) {
@@ -65,6 +62,7 @@ class FriendBlock extends Component {
                 src={this.getUserImage()}
                 className="no-padding"
                 style={{borderRadius: "50%"}}
+                alt=""
               />
             </div>
             <div className="col-lg-6">

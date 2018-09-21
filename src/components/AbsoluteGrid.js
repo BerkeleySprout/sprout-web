@@ -1,5 +1,3 @@
-'use strict';
-
 import PropTypes from 'prop-types'
 import React, {PureComponent, Component } from 'react';
 import { debounce, sortBy } from 'lodash';

@@ -1,16 +1,5 @@
 import React, { Component } from "react";
-
-import ReactStars from "react-stars";
-import EntryForm from "./EntryForm";
-import classNames from "classnames";
-import { Scrollbars } from "react-custom-scrollbars";
-
-import firebase, { auth, provider, database } from "../firebase.js";
-
 class SessionBlock extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   getActivityTitle() {
     if (this.props.session.activity) {
@@ -21,23 +10,21 @@ class SessionBlock extends Component {
   render() {
     var date = new Date(this.props.session.datetime)
     var hours   = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-
+    var minutes = date.getMinutes();
 
     var timeString = "" + ((hours > 12) ? hours - 12 : hours);
     timeString  += ((minutes < 10) ? ":0" : ":") + minutes;
-     timeString  += (hours >= 12) ? " PM" : " AM";
+    timeString  += (hours >= 12) ? " PM" : " AM";
 
     var mood = this.props.session.moods;
     var emoji;
-    if (mood == "happy") {
+    if (mood === "happy") {
       emoji = <i class="em em-smile" />
     }
-    if (mood == "sad") {
+    if (mood === "sad") {
       emoji = <i class="em em-cry" />
     }
-    if (mood == "angry") {
+    if (mood === "angry") {
       emoji = <i class="em em-angry" />
     }
 

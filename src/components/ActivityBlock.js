@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-
 import ReactStars from "react-stars";
-
 import EntryForm from "./EntryForm";
-import classNames from "classnames";
-import { Scrollbars } from "react-custom-scrollbars";
-
 import Modal from 'react-responsive-modal';
 
-import firebase, { auth, provider, database } from "../firebase.js";
-
-class ActivityBlock extends React.Component {
+class ActivityBlock extends Component {
   constructor(props) {
     super(props);
 
@@ -40,10 +33,7 @@ class ActivityBlock extends React.Component {
   }
 
   render() {
-    var form = this.state.showForm ? (
-      <EntryForm activity={this.props.activity} />
-    ) : null;
-   var credit = this.props.user ?  <h6> Created by: {this.props.activity.username} </h6> : null  
+    var credit = this.props.user ?  <h6> Created by: {this.props.activity.username} </h6> : null  
 
     return (
       <div>
@@ -51,7 +41,7 @@ class ActivityBlock extends React.Component {
           className="card" 
           style={{ width: "rem" }}
         >
-          <img class="card-img-top" src={this.props.activity.img} />
+          <img class="card-img-top" src={this.props.activity.img} alt=""/>
 
           <div className="card-body">
             <h4 className="card-title"> {this.props.activity.title} </h4>

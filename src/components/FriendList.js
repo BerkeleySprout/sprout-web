@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import FriendForm from "./FriendForm";
 import FriendBlock from "./FriendBlock";
-import classNames from "classnames";
 
-import firebase, { auth, provider, database } from "../firebase.js";
+import firebase, { database } from "../firebase.js";
 
 class FriendList extends Component {
   constructor(props) {
@@ -115,11 +114,9 @@ class FriendList extends Component {
   }
 
   render() {
-    const isVisible = this.state.isPopupVisible;
 
     var friendBlocks = this.state.friendList.length > 0 ? this.state.friendList.map(this.createFriendBlock) : <div class="card"> <div class="card-body"><h2> You have no friends! Better ask your neighbor to be friends! </h2></div></div>
   
-
     return (
       <div className="container">
         <div

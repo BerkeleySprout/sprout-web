@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import CategoryBlock from "./CategoryBlock";
 import ActivityForm from "./ActivityForm";
 import ActivityBlock from "./ActivityBlock";
-import createAbsoluteGrid from "./AbsoluteGrid";
-import Masonry from "react-masonry-component";
 import Modal from "react-responsive-modal";
-import classNames from "classnames";
-import EntryForm from "./EntryForm";
-import firebase, { auth, provider, database } from "../firebase.js";
-import AlertContainer from "react-alert";
-import SampleDisplay from "./SampleDisplay";
-import Infinite from "react-infinite";
+import firebase, { database } from "../firebase.js";
 
 class Menu extends Component {
     constructor(props) {

@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PureComponent, Component } from 'react';
 
 import LayoutManager from './LayoutManager.js';

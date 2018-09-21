@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import classNames from "classnames";
 import AlertContainer from 'react-alert';
-import firebase, { auth, provider, database } from "../firebase.js";
 
-class FriendForm extends React.Component {
+class FriendForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +25,7 @@ class FriendForm extends React.Component {
     this.msg.show('Friend added!', {
       time: 2000,
       type: 'success',
-      icon: <img src="path/to/some/img/32x32.png" />
+      icon: <img src="path/to/some/img/32x32.png" alt=""/>
     })
   }
 
@@ -35,7 +33,7 @@ class FriendForm extends React.Component {
     this.msg.show('That user doesn\'t exist yet!', {
       time: 2000,
       type: 'failure',
-      icon: <img src="path/to/some/img/32x32.png" />
+      icon: <img src="path/to/some/img/32x32.png" alt=""/>
     })
   }
 
@@ -69,7 +67,6 @@ class FriendForm extends React.Component {
   }
 
   render() {
-    const isVisible = this.state.isPopupVisible;
     return (
       <div className="container">
         <form className="row">
