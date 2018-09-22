@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import {Stage} from 'react-konva';
+import { Stage } from "react-konva";
 import TreeLeaf from "./TreeLeaf";
 
 class FriendBlock extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       score: 0
     };
     this.setActive = this.setActive.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
   }
 
   setActive() {
@@ -33,26 +32,24 @@ class FriendBlock extends Component {
     if (this.props.user != null) {
       return this.props.user.image;
     }
-    return ""
+    return "";
   }
 
   getUserName() {
     if (this.props.user != null) {
       return this.props.user.name;
     }
-    return ""
+    return "";
   }
 
   getUserScores() {
     if (this.props.user != null) {
       return this.props.user.scores;
     }
-    return ""
+    return "";
   }
 
   render() {
-    
-
     return (
       <div className="card">
         <div className="card-body">
@@ -61,7 +58,7 @@ class FriendBlock extends Component {
               <img
                 src={this.getUserImage()}
                 className="no-padding"
-                style={{borderRadius: "50%"}}
+                style={{ borderRadius: "50%" }}
                 alt=""
               />
             </div>
@@ -71,26 +68,42 @@ class FriendBlock extends Component {
             <div className="col-lg-4">
               <div className="category--miniimage-container">
                 <div class="container sprout-tree-mini">
-                <Stage width={500} height={300}>
-                    <TreeLeaf category={'awe'} score={this.getUserScores()['awe']} mini={1}/>
-                    <TreeLeaf category={'gratitude'} score={this.getUserScores()['awe']} mini={1}/>
-                    <TreeLeaf category={'kindness'} score={this.getUserScores()['awe']} mini={1}/>
-                    <TreeLeaf category={'mindfulness'} score={this.getUserScores()['awe']} mini={1}/>
-                    <TreeLeaf category={'resilience'} score={this.getUserScores()['awe']} mini={1}/>
-                </Stage>
-              </div>
+                  <Stage width={500} height={300}>
+                    <TreeLeaf
+                      category={"awe"}
+                      score={this.getUserScores()["awe"]}
+                      mini={1}
+                    />
+                    <TreeLeaf
+                      category={"gratitude"}
+                      score={this.getUserScores()["awe"]}
+                      mini={1}
+                    />
+                    <TreeLeaf
+                      category={"kindness"}
+                      score={this.getUserScores()["awe"]}
+                      mini={1}
+                    />
+                    <TreeLeaf
+                      category={"mindfulness"}
+                      score={this.getUserScores()["awe"]}
+                      mini={1}
+                    />
+                    <TreeLeaf
+                      category={"resilience"}
+                      score={this.getUserScores()["awe"]}
+                      mini={1}
+                    />
+                  </Stage>
+                </div>
 
-
-                { /*
+                {/*
                 <div className="category--miniimage" style={aweColor}></div>
                 <div className="category--miniimage" style={gratitudeColor}></div>
                 <div className="category--miniimage" style={kindnessColor}></div>
                 <div className="category--miniimage" style={mindfulnessColor}></div>
                 <div className="category--miniimage" style={resilienceColor}></div>
                 */}
-                
-                
-              
               </div>
             </div>
           </div>

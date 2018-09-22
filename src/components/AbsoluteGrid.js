@@ -1,34 +1,40 @@
-import PropTypes from 'prop-types'
-import React, {PureComponent, Component } from 'react';
-import { debounce, sortBy } from 'lodash';
+import PropTypes from "prop-types";
+import React, { PureComponent, Component } from "react";
+import { debounce, sortBy } from "lodash";
+import createDisplayObject from "./BaseDisplayObject.js";
+import DragManager from "./DragManager.js";
+import LayoutManager from "./LayoutManager.js";
 
-import createDisplayObject from './BaseDisplayObject.js';
-import DragManager from './DragManager.js';
-import LayoutManager from './LayoutManager.js';
-
-export default function createAbsoluteGrid(DisplayObject, displayProps = {}, forceImpure = false) {
-
+export default function createAbsoluteGrid(
+  DisplayObject,
+  displayProps = {},
+  forceImpure = false
+) {
   const Comp = forceImpure ? Component : PureComponent;
-  const WrappedDisplayObject = createDisplayObject(DisplayObject, displayProps, forceImpure);
+  const WrappedDisplayObject = createDisplayObject(
+    DisplayObject,
+    displayProps,
+    forceImpure
+  );
 
   return class extends Comp {
     static defaultProps = {
       items: [],
-      keyProp: 'key',
-      filterProp: 'filtered',
-      sortProp: 'sort',
+      keyProp: "key",
+      filterProp: "filtered",
+      sortProp: "sort",
       itemWidth: 128,
       itemHeight: 128,
       verticalMargin: -1,
       responsive: false,
       dragEnabled: false,
-      animation: 'transform 300ms ease',
+      animation: "transform 300ms ease",
       zoom: 1,
-      onMove: ()=>{},
-      onDragStart: ()=>{},
-      onDragMove: ()=>{},
-      onDragEnd: ()=>{}
-    }
+      onMove: () => {},
+      onDragStart: () => {},
+      onDragMove: () => {},
+      onDragEnd: () => {}
+    };
 
     static propTypes = {
       items: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -46,9 +52,9 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
       onDragStart: PropTypes.func,
       onDragMove: PropTypes.func,
       onDragEnd: PropTypes.func
-    }
+    };
 
-    constructor(props, context){
+    constructor(props, context) {
       super(props, context);
       this.onResize = debounce(this.onResize, 150);
       this.dragManager = new DragManager(
@@ -56,15 +62,16 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
         this.props.onDragStart,
         this.props.onDragEnd,
         this.props.onDragMove,
-        this.props.keyProp);
+        this.props.keyProp
+      );
       this.state = {
         layoutWidth: 0
       };
     }
 
     render() {
-      if(!this.state.layoutWidth || !this.props.items.length){
-        return <div ref={node => this.container = node}></div>;
+      if (!this.state.layoutWidth || !this.props.items.length) {
+        return <div ref={node => (this.container = node)} />;
       }
 
       let filteredIndex = 0;
@@ -77,7 +84,7 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
        eliminates gaps and duplicate sorts
        */
       sortBy(this.props.items, this.props.sortProp).forEach(item => {
-        if(!item[this.props.filterProp]){
+        if (!item[this.props.filterProp]) {
           const key = item[this.props.keyProp];
           sortedIndex[key] = filteredIndex;
           filteredIndex++;
@@ -116,8 +123,8 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
       };
       const layout = new LayoutManager(options, this.state.layoutWidth);
       const gridStyle = {
-        position: 'relative',
-        display: 'block',
+        position: "relative",
+        display: "block",
         height: layout.getTotalHeight(filteredIndex)
       };
 
@@ -125,7 +132,7 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
         <div
           style={gridStyle}
           className="absoluteGrid"
-          ref={node => this.container = node}
+          ref={node => (this.container = node)}
         >
           {gridItems}
         </div>
@@ -134,14 +141,14 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
 
     componentDidMount() {
       //If responsive, listen for resize
-      if(this.props.responsive){
-        window.addEventListener('resize', this.onResize);
+      if (this.props.responsive) {
+        window.addEventListener("resize", this.onResize);
       }
       this.onResize();
     }
 
     componentWillUnmount() {
-      window.removeEventListener('resize', this.onResize);
+      window.removeEventListener("resize", this.onResize);
     }
 
     onResize = () => {
@@ -150,17 +157,14 @@ export default function createAbsoluteGrid(DisplayObject, displayProps = {}, for
       } else {
         setTimeout(this.getDOMWidth, 66);
       }
-    }
+    };
 
     getDOMWidth = () => {
       const width = this.container && this.container.clientWidth;
 
-      if(this.state.layoutWidth !== width){
-        this.setState({layoutWidth: width});
+      if (this.state.layoutWidth !== width) {
+        this.setState({ layoutWidth: width });
       }
-
-    }
-
-
-  }
+    };
+  };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactStars from "react-stars";
 import EntryForm from "./EntryForm";
-import Modal from 'react-responsive-modal';
+import Modal from "react-responsive-modal";
 
 class ActivityBlock extends Component {
   constructor(props) {
@@ -33,15 +33,14 @@ class ActivityBlock extends Component {
   }
 
   render() {
-    var credit = this.props.user ?  <h6> Created by: {this.props.activity.username} </h6> : null  
+    var credit = this.props.user ? (
+      <h6> Created by: {this.props.activity.username} </h6>
+    ) : null;
 
     return (
       <div>
-        <div
-          className="card" 
-          style={{ width: "rem" }}
-        >
-          <img class="card-img-top" src={this.props.activity.img} alt=""/>
+        <div className="card" style={{ width: "rem" }}>
+          <img class="card-img-top" src={this.props.activity.img} alt="" />
 
           <div className="card-body">
             <h4 className="card-title"> {this.props.activity.title} </h4>
@@ -85,7 +84,10 @@ class ActivityBlock extends Component {
         </div>
 
         <Modal open={this.state.showForm} onClose={this.onCloseModal} little>
-           <EntryForm friends={this.props.friends} activity={this.props.activity} />
+          <EntryForm
+            friends={this.props.friends}
+            activity={this.props.activity}
+          />
         </Modal>
       </div>
     );

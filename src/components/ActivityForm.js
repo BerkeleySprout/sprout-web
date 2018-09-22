@@ -29,7 +29,7 @@ class ActivityForm extends Component {
     this.msg.show("Activity Created!", {
       time: 2000,
       type: "success",
-      icon: <img src="path/to/some/img/32x32.png" alt=""/>
+      icon: <img src="path/to/some/img/32x32.png" alt="" />
     });
   };
 
@@ -72,13 +72,11 @@ class ActivityForm extends Component {
   }
 
   render() {
-
     return (
       <div class="card " style={{ width: "35rem" }}>
         <div className="card-body">
           <h4> Create Activity </h4>
-          <form  onSubmit={this.handleSubmit}>
-
+          <form onSubmit={this.handleSubmit}>
             <div class="form-group row">
               <div className="col-md-3">
                 <label for="category"> Title </label>
@@ -100,7 +98,6 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <select
-              
                   class="form-control"
                   onChange={this.handleChange}
                   value={this.state.category}
@@ -133,8 +130,8 @@ class ActivityForm extends Component {
             <div class="form-group row">
               <div className="col-md-3">
                 <label> Link</label>
-                </div>
-                <div className="col-md-9">
+              </div>
+              <div className="col-md-9">
                 <input
                   type="text"
                   onChange={this.handleChange}
@@ -148,8 +145,8 @@ class ActivityForm extends Component {
             <div class="form-group row">
               <div className="col-md-3">
                 <label> Image URL </label>
-                </div>
-                <div className="col-md-9">
+              </div>
+              <div className="col-md-9">
                 <input
                   type="text"
                   onChange={this.handleChange}

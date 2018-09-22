@@ -20,8 +20,6 @@ class FriendList extends Component {
     this.getFriends = this.getFriends.bind(this);
 
     this.getFriends();
-
-
   }
 
   getFriends() {
@@ -41,13 +39,16 @@ class FriendList extends Component {
             return database
               .ref("users/")
               .child(uid)
-              .once("value").then(function(s) {
+              .once("value")
+              .then(function(s) {
                 return s.val();
               });
           });
 
           Promise.all(friendPromises).then(friendList => {
-            this.setState({ friendList: friendList }, () => {console.log(this.state.friendList)});
+            this.setState({ friendList: friendList }, () => {
+              console.log(this.state.friendList);
+            });
           });
         }
       }.bind(this)
@@ -110,18 +111,31 @@ class FriendList extends Component {
   }
 
   createFriendBlock(friend) {
-    return <FriendBlock user={friend}/>
+    return <FriendBlock user={friend} />;
   }
 
   render() {
+    var friendBlocks =
+      this.state.friendList.length > 0 ? (
+        this.state.friendList.map(this.createFriendBlock)
+      ) : (
+        <div class="card">
+          {" "}
+          <div class="card-body">
+            <h2>
+              {" "}
+              You have no friends! Better ask your neighbor to be friends!{" "}
+            </h2>
+          </div>
+        </div>
+      );
 
-    var friendBlocks = this.state.friendList.length > 0 ? this.state.friendList.map(this.createFriendBlock) : <div class="card"> <div class="card-body"><h2> You have no friends! Better ask your neighbor to be friends! </h2></div></div>
-  
     return (
       <div className="container">
         <div
           className="row"
-          style={{ marginTop: "30px", marginBottom: "30px"}}>
+          style={{ marginTop: "30px", marginBottom: "30px" }}
+        >
           <FriendForm addNewFriend={this.addNewFriend} />
         </div>
         {friendBlocks}

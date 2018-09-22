@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CategoryBlock from "./CategoryBlock";
-import {Stage} from 'react-konva';
+import { Stage } from "react-konva";
 import TreeLeaf from "./TreeLeaf";
 
 class Collection extends Component {
@@ -9,27 +9,28 @@ class Collection extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.focusOff = this.focusOff.bind(this);
-    this.createCategoryBlock = this.createCategoryBlock.bind(this)
+    this.createCategoryBlock = this.createCategoryBlock.bind(this);
 
     this.state = {
       score: 0,
       open: false,
       activityIndex: null,
-      categories: [ { 
-        name: "awe"
-      },
-      { 
-        name: "gratitude"
-      },
-      { 
-        name: "kindness"
-      },
-      { 
-        name: "mindfulness"
-      },
-      { 
-        name: "resilience"
-      }
+      categories: [
+        {
+          name: "awe"
+        },
+        {
+          name: "gratitude"
+        },
+        {
+          name: "kindness"
+        },
+        {
+          name: "mindfulness"
+        },
+        {
+          name: "resilience"
+        }
       ]
     };
   }
@@ -54,10 +55,10 @@ class Collection extends Component {
   createCategoryBlock(cat, i) {
     return (
       <CategoryBlock
-        category={cat['name']}
+        category={cat["name"]}
         key={"cat-" + i}
         handleClick={this.handleClick}
-        score={this.props.scores[cat['name']]}
+        score={this.props.scores[cat["name"]]}
         db={this.props.db}
         updateScore={() => this.updateScore()}
       />
@@ -67,8 +68,8 @@ class Collection extends Component {
   createTreeLeaf(cat, i) {
     return (
       <TreeLeaf
-        category={cat['name']}
-        score={this.props.scores[cat['name']]}
+        category={cat["name"]}
+        score={this.props.scores[cat["name"]]}
         db={this.props.db}
         updateScore={() => this.updateScore()}
       />
@@ -81,24 +82,39 @@ class Collection extends Component {
   }
 
   render() {
-    
     return (
-      
-      <div className="jumbotron jumbotron-fluid"
-           id="tree-jumbotron">
-
+      <div className="jumbotron jumbotron-fluid" id="tree-jumbotron">
         <h3 className="tree-title">Your Wellness Tree</h3>
         <div class="container sprout-tree">
           <Stage width={1300} height={500}>
-              <TreeLeaf category={'awe'} score={this.props.scores['awe']} mini={0}/>
-              <TreeLeaf category={'gratitude'} score={this.props.scores['gratitude']} mini={0}/>
-              <TreeLeaf category={'kindness'} score={this.props.scores['kindness']} mini={0}/>
-              <TreeLeaf category={'mindfulness'} score={this.props.scores['mindfulness']} mini={0}/>
-              <TreeLeaf category={'resilience'} score={this.props.scores['resilience']} mini={0}/>
+            <TreeLeaf
+              category={"awe"}
+              score={this.props.scores["awe"]}
+              mini={0}
+            />
+            <TreeLeaf
+              category={"gratitude"}
+              score={this.props.scores["gratitude"]}
+              mini={0}
+            />
+            <TreeLeaf
+              category={"kindness"}
+              score={this.props.scores["kindness"]}
+              mini={0}
+            />
+            <TreeLeaf
+              category={"mindfulness"}
+              score={this.props.scores["mindfulness"]}
+              mini={0}
+            />
+            <TreeLeaf
+              category={"resilience"}
+              score={this.props.scores["resilience"]}
+              mini={0}
+            />
           </Stage>
         </div>
       </div>
-      
     );
   }
 }

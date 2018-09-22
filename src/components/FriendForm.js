@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AlertContainer from 'react-alert';
+import AlertContainer from "react-alert";
 
 class FriendForm extends Component {
   constructor(props) {
@@ -9,44 +9,41 @@ class FriendForm extends Component {
       friendExists: false
     };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   alertOptions = {
     offset: 14,
-    position: 'bottom right',
-    theme: 'dark',
+    position: "bottom right",
+    theme: "dark",
     time: 5000,
-    transition: 'scale'
-  }
- 
+    transition: "scale"
+  };
+
   showAlertSuccess = () => {
-    this.msg.show('Friend added!', {
+    this.msg.show("Friend added!", {
       time: 2000,
-      type: 'success',
-      icon: <img src="path/to/some/img/32x32.png" alt=""/>
-    })
-  }
+      type: "success",
+      icon: <img src="path/to/some/img/32x32.png" alt="" />
+    });
+  };
 
   showAlertFail = () => {
-    this.msg.show('That user doesn\'t exist yet!', {
+    this.msg.show("That user doesn't exist yet!", {
       time: 2000,
-      type: 'failure',
-      icon: <img src="path/to/some/img/32x32.png" alt=""/>
-    })
-  }
+      type: "failure",
+      icon: <img src="path/to/some/img/32x32.png" alt="" />
+    });
+  };
 
   handleChange(e) {
-    this.setState({value: e.target.value});
+    this.setState({ value: e.target.value });
   }
 
-  
   handleClick(e) {
-    
     e.preventDefault();
     if (this.state.value != null) {
-
       this.props.addNewFriend(this.state.value);
 
       this.showAlertSuccess();
@@ -57,13 +54,12 @@ class FriendForm extends Component {
 
       setTimeout(() => {
         this.setState({
-        isPopupVisible: false
-      })
+          isPopupVisible: false
+        });
       }, 3000);
     } else {
       this.showAlertFail();
     }
-    
   }
 
   render() {
@@ -71,22 +67,26 @@ class FriendForm extends Component {
       <div className="container">
         <form className="row">
           <div className="col-lg-10">
-            <input type="text" 
-                   value={this.state.value} 
-                   onChange={this.handleChange} 
-                   placeholder="Add friend by email"/>
-            <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              placeholder="Add friend by email"
+            />
+            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
           </div>
           <div className="col-lg-2">
-            <button className="btn btn-sprout-dark" 
-                    onClick={this.handleClick.bind(this)}
-                    style={{marginBottom: "20px"}}>
-                    Add Friend
+            <button
+              className="btn btn-sprout-dark"
+              onClick={this.handleClick.bind(this)}
+              style={{ marginBottom: "20px" }}
+            >
+              Add Friend
             </button>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 

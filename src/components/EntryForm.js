@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AlertContainer from 'react-alert';
+import AlertContainer from "react-alert";
 import firebase from "../firebase.js";
 
 class EntryForm extends Component {
@@ -20,34 +20,35 @@ class EntryForm extends Component {
 
   alertOptions = {
     offset: 14,
-    position: 'bottom right',
-    theme: 'dark',
+    position: "bottom right",
+    theme: "dark",
     time: 5000,
-    transition: 'scale'
-  }
+    transition: "scale"
+  };
 
-   alertOptionsB = {
+  alertOptionsB = {
     offset: 14,
-    position: 'bottom right',
-    theme: 'green',
+    position: "bottom right",
+    theme: "green",
     time: 5000,
-    transition: 'scale'
-  }
- 
- showAlertB = () => {
-    for(var i = 0; i < this.props.activity.categories.length; i++) {
+    transition: "scale"
+  };
+
+  showAlertB = () => {
+    for (var i = 0; i < this.props.activity.categories.length; i++) {
       this.msg.show(this.props.activity.categories[i].toUpperCase() + " + 1!", {
+        time: 5000,
+        type: "success"
+      });
+    }
+  };
+  showAlert = () => {
+    this.msg.show("Activity Completed!", {
       time: 5000,
-      type: 'success'
-    })
-  }}
-  showAlert = () => { 
-    this.msg.show('Activity Completed!', {
-      time: 5000,
-      type: 'success',
-      icon: <img src="path/to/some/img/32x32.png" alt=""/>
-    })
-  }
+      type: "success",
+      icon: <img src="path/to/some/img/32x32.png" alt="" />
+    });
+  };
 
   handleChange(e) {
     this.setState({ [e.target.id]: e.target.value });
@@ -70,37 +71,47 @@ class EntryForm extends Component {
       activity: this.props.activity
     };
 
-    var pushKey = firebase.database().ref("sessions/").push().key
+    var pushKey = firebase
+      .database()
+      .ref("sessions/")
+      .push().key;
     var updates = {};
-    updates['sessions/' + pushKey] = entry;
-    updates['users/' + current_uid + '/sessions/' + pushKey] = entry;
+    updates["sessions/" + pushKey] = entry;
+    updates["users/" + current_uid + "/sessions/" + pushKey] = entry;
 
-    firebase.database().ref().update(updates).then(() => {
-      firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").once("value", (snapshot) => {
+    firebase
+      .database()
+      .ref()
+      .update(updates)
+      .then(() => {
+        firebase
+          .database()
+          .ref("users/" + firebase.auth().currentUser.uid + "/scores/")
+          .once("value", snapshot => {
+            var current_scores = snapshot.val();
 
-        var current_scores = snapshot.val()
+            for (var i = 0; i < this.props.activity.categories.length; i++) {
+              var category = this.props.activity.categories[i];
 
-        for (var i = 0; i < this.props.activity.categories.length; i++) {
-          var category = this.props.activity.categories[i]
+              if (Object.keys(current_scores).includes(category)) {
+                current_scores[category] = current_scores[category] + 1;
+              }
+            }
 
-          if (Object.keys(current_scores).includes(category)) {
-            current_scores[category] = current_scores[category] + 1
-          }
-        }
-
-        firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/scores/").update(current_scores)
-
-      })
-    })
+            firebase
+              .database()
+              .ref("users/" + firebase.auth().currentUser.uid + "/scores/")
+              .update(current_scores);
+          });
+      });
   }
 
   render() {
-
     return (
       <div class="card">
-      <div class="card-header text-center">
-      <h2> {this.props.activity.title} </h2>
-      </div>
+        <div class="card-header text-center">
+          <h2> {this.props.activity.title} </h2>
+        </div>
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
             <div class="form-row">
@@ -115,9 +126,11 @@ class EntryForm extends Component {
                 />
               </div>
 
-              <div class="btn-group-vertical col-sm-1"  role="group"
-                        data-toggle="buttons">
-
+              <div
+                class="btn-group-vertical col-sm-1"
+                role="group"
+                data-toggle="buttons"
+              >
                 <button
                   type="button"
                   onClick={() => {
@@ -149,8 +162,7 @@ class EntryForm extends Component {
                   <i class="em em-angry" />
                 </button>
               </div>
-           </div>
-       
+            </div>
 
             <div class="form-row">
               <div className="col-sm-3 form-group">
@@ -186,24 +198,22 @@ class EntryForm extends Component {
               </div>
             </div>
 
-            <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-            <AlertContainer ref={a => this.msg = a} {...this.alertOptionsB} />
+            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
+            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptionsB} />
             <button
               type="submit"
               onstyle={{ width: "100%" }}
-              onClick={() => {this.showAlert(); this.showAlertB()}}
+              onClick={() => {
+                this.showAlert();
+                this.showAlertB();
+              }}
               class="btn btn-sprout-dark"
             >
-
-              Complete <i
-                class="fa fa-check"
-                style={{ marginLeft: "5px" }}
-              />
+              Complete <i class="fa fa-check" style={{ marginLeft: "5px" }} />
             </button>
           </form>
         </div>
       </div>
-
     );
   }
 }

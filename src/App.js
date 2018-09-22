@@ -14,24 +14,24 @@ class App extends Component {
     this.state = {
       user: null,
       page: 0,
-      scores: { 
-      "awe" : 0,
-      "gratitude": 0,
-      "kindness": 0,
-      "mindfulness": 0,
-      "resilience": 0
+      scores: {
+        awe: 0,
+        gratitude: 0,
+        kindness: 0,
+        mindfulness: 0,
+        resilience: 0
       }
     };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.updateScores = this.updateScores.bind(this); 
-    this.handleClick = this.handleClick.bind(this); 
-    this.createNewUser = this.createNewUser.bind(this); 
+    this.updateScores = this.updateScores.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.createNewUser = this.createNewUser.bind(this);
   }
 
   handleClick(page) {
-    this.setState({"page" : page})
+    this.setState({ page: page });
   }
 
   login() {
@@ -41,33 +41,39 @@ class App extends Component {
         user: user
       });
 
-      function addUserIfNew (snapshot) {
-        var exists = (snapshot.val() !== null);
+      function addUserIfNew(snapshot) {
+        var exists = snapshot.val() !== null;
         if (!exists) {
-          this.createNewUser(user)
+          this.createNewUser(user);
         }
       }
 
-      firebase.database().ref('users/' + user.uid).once('value', addUserIfNew.bind(this))
-    })
+      firebase
+        .database()
+        .ref("users/" + user.uid)
+        .once("value", addUserIfNew.bind(this));
+    });
   }
 
   createNewUser() {
     var new_user = {
       uid: this.state.user.uid,
       name: this.state.user.displayName,
-      image: this.state.user.photoURL, 
-      email: this.state.user.email,  
+      image: this.state.user.photoURL,
+      email: this.state.user.email,
       createdAt: Date.now(),
       scores: {
-        "awe": 0, 
-        "resilience": 0,
-        "gratitude": 0,
-        "kindness": 0,
-        "mindfulness": 0
+        awe: 0,
+        resilience: 0,
+        gratitude: 0,
+        kindness: 0,
+        mindfulness: 0
       }
-    }
-    firebase.database().ref('users/' + this.state.user.uid).set(new_user)
+    };
+    firebase
+      .database()
+      .ref("users/" + this.state.user.uid)
+      .set(new_user);
   }
 
   logout() {
@@ -79,54 +85,67 @@ class App extends Component {
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user }, this.updateScores.bind(this));
       }
-    })
+    });
   }
 
   updateScores() {
-    firebase.database().ref("users/" + this.state.user.uid + "/scores").on("value", (snapshot) => 
-      {    
-        this.setState({scores : snapshot.val()}) 
-      } 
-    )
+    firebase
+      .database()
+      .ref("users/" + this.state.user.uid + "/scores")
+      .on("value", snapshot => {
+        this.setState({ scores: snapshot.val() });
+      });
   }
 
   render() {
     var login = this.state.user ? (
-      <a className="nav-link" onClick={this.logout} >
-      Sign Out
+      <a className="nav-link" onClick={this.logout}>
+        Sign Out
       </a>
-      ) : (
-      <a className="nav-link" onClick={this.login} >
-      Sign In
+    ) : (
+      <a className="nav-link" onClick={this.login}>
+        Sign In
       </a>
-      )
+    );
 
-    var greeting = this.state.user ? (<nav className="navbar-brand"> Welcome {this.state.user.displayName} </nav>) : (<nav className="navbar-brand"> Welcome </nav>)
-    var display
-      if (this.state.page === 0) {
-        display = <Collection scores={this.state.scores} db={firebase} />
-      } 
-      else if (this.state.page === 1) {
-        display = <Menu updateScores={this.updateScores}/>
-      }
-      else if (this.state.page === 2) {
-        display = <Journal />
-      }
-      else if (this.state.page === 3) {
-        display = <FriendList />
-      }
+    var greeting = this.state.user ? (
+      <nav className="navbar-brand">
+        {" "}
+        Welcome {this.state.user.displayName}{" "}
+      </nav>
+    ) : (
+      <nav className="navbar-brand"> Welcome </nav>
+    );
+    var display;
+    if (this.state.page === 0) {
+      display = <Collection scores={this.state.scores} db={firebase} />;
+    } else if (this.state.page === 1) {
+      display = <Menu updateScores={this.updateScores} />;
+    } else if (this.state.page === 2) {
+      display = <Journal />;
+    } else if (this.state.page === 3) {
+      display = <FriendList />;
+    }
 
     return (
       <div>
-        <nav className="navbar sticky-top navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse" data-spy="affix" data-offset-top="197" id="my-navbar">
-          <a className="navbar-brand" >
-            <img alt="Sprout" src="https://image.ibb.co/ihzJPb/sprout_logo_icon.png"/>
+        <nav
+          className="navbar sticky-top navbar-main navbar-expand-lg navbar-light navbar-toggleable-md navbar-inverse"
+          data-spy="affix"
+          data-offset-top="197"
+          id="my-navbar"
+        >
+          <a className="navbar-brand">
+            <img
+              alt="Sprout"
+              src="https://image.ibb.co/ihzJPb/sprout_logo_icon.png"
+            />
           </a>
-           {greeting}
+          {greeting}
           <button
             className="navbar-toggler"
             type="button"
@@ -141,43 +160,43 @@ class App extends Component {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul className="navbar-nav ml-auto navbar-center">
               <li className="nav-item">
-                <a className="nav-link nav-text" onClick={() => this.handleClick(0)}>
+                <a
+                  className="nav-link nav-text"
+                  onClick={() => this.handleClick(0)}
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(1)} >
+                <a className="nav-link" onClick={() => this.handleClick(1)}>
                   Activities
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(2)} >
+                <a className="nav-link" onClick={() => this.handleClick(2)}>
                   Journal
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(3)} >
+                <a className="nav-link" onClick={() => this.handleClick(3)}>
                   Friends
                 </a>
               </li>
             </ul>
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                { login }
-              </li>
+              <li className="nav-item">{login}</li>
             </ul>
           </div>
-
         </nav>
         {display}
-        </div>
-        );
-    }
-  }
-
-  ReactDOM.render(
-    React.createElement(App, null),
-    document.querySelector("#root")
+      </div>
     );
+  }
+}
 
-  export default App;
+ReactDOM.render(
+  React.createElement(App, null),
+  document.querySelector("#root")
+);
+
+export default App;
