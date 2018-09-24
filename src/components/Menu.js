@@ -241,9 +241,6 @@ class Menu extends Component {
           <ActivityForm />
         </Modal>
 
-        <br />
-        <br />
-
         <div className="card-columns">
           {activities}
           {useractivities}

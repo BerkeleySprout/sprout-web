@@ -38,11 +38,16 @@ class ActivityBlock extends Component {
     ) : null;
 
     return (
-      <div>
-        <div className="card" style={{ width: "rem" }}>
-          <img class="card-img-top" src={this.props.activity.img} alt="" />
+      <div className="card-container">
+        <div className="card" id="hover-raised">
+          <img
+            class="card-img-top"
+            src={this.props.activity.img}
+            alt=""
+            onClick={this.onOpenModal}
+          />
 
-          <div className="card-body">
+          <div className="card-body" onClick={this.onOpenModal}>
             <h4 className="card-title"> {this.props.activity.title} </h4>
 
             <div className="card-text">
@@ -52,7 +57,7 @@ class ActivityBlock extends Component {
           </div>
 
           <div className="card-footer">
-            <div style={{ width: "35%", margin: "0 auto" }}>
+            <div className="card-rating">
               <ReactStars
                 count={5}
                 value={Math.ceil(this.props.activity.rating / 20)}
@@ -61,6 +66,7 @@ class ActivityBlock extends Component {
               />
             </div>
 
+            {/*
             <a
               id="explore-button"
               className="btn btn-sprout-light"
@@ -70,6 +76,7 @@ class ActivityBlock extends Component {
               Explore
               <i class="fa fa-search" style={{ marginLeft: "5px" }} />
             </a>
+            
 
             <button
               type="button"
@@ -80,6 +87,8 @@ class ActivityBlock extends Component {
             >
               Complete
             </button>
+
+            */}
           </div>
         </div>
 
