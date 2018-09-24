@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "firebase": "^4.5.0",
+    "hoek": "^5.0.4",
     "konva": "^1.7.6",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -14,8 +15,8 @@
     "react-bootstrap": "^0.31.3",
     "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^16.0.0",
-    "react-infinite-calendar": "^2.3.1",
     "react-infinite": "^0.12.1",
+    "react-infinite-calendar": "^2.3.1",
     "react-konva": "^1.6.4",
     "react-masonry-component": "^6.0.1",
     "react-responsive-modal": "^2.0.0",
