@@ -85,7 +85,7 @@ class Collection extends Component {
     return (
       <div className="jumbotron jumbotron-fluid" id="tree-jumbotron">
         <h3 className="tree-title">Your Wellness Tree</h3>
-        <div class="container sprout-tree">
+        <div className="container sprout-tree">
           <Stage width={1300} height={500}>
             <TreeLeaf
               category={"awe"}
