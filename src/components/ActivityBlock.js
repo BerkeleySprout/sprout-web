@@ -49,7 +49,6 @@ class ActivityBlock extends Component {
 
           <div className="card-body" onClick={this.onOpenModal}>
             <h4 className="card-title"> {this.props.activity.title} </h4>
-
             <div className="card-text">
               <h6> {this.props.activity.description} </h6>
               {credit}
@@ -77,7 +76,6 @@ class ActivityBlock extends Component {
               <i class="fa fa-search" style={{ marginLeft: "5px" }} />
             </a>
             
-
             <button
               type="button"
               className="btn btn-sprout-dark"
