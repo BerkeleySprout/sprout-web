@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AlertContainer from "react-alert";
 import firebase from "../firebase.js";
 
 class EntryForm extends Component {
@@ -17,38 +16,6 @@ class EntryForm extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  alertOptions = {
-    offset: 14,
-    position: "bottom right",
-    theme: "dark",
-    time: 5000,
-    transition: "scale"
-  };
-
-  alertOptionsB = {
-    offset: 14,
-    position: "bottom right",
-    theme: "green",
-    time: 5000,
-    transition: "scale"
-  };
-
-  showAlertB = () => {
-    for (var i = 0; i < this.props.activity.categories.length; i++) {
-      this.msg.show(this.props.activity.categories[i].toUpperCase() + " + 1!", {
-        time: 5000,
-        type: "success"
-      });
-    }
-  };
-  showAlert = () => {
-    this.msg.show("Activity Completed!", {
-      time: 5000,
-      type: "success",
-      icon: <img src="path/to/some/img/32x32.png" alt="" />
-    });
-  };
 
   handleChange(e) {
     this.setState({ [e.target.id]: e.target.value });
@@ -198,15 +165,10 @@ class EntryForm extends Component {
               </div>
             </div>
 
-            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
-            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptionsB} />
             <button
               type="submit"
               onstyle={{ width: "100%" }}
-              onClick={() => {
-                this.showAlert();
-                this.showAlertB();
-              }}
+              onClick={() => {}}
               class="btn btn-sprout-dark"
             >
               Complete <i class="fa fa-check" style={{ marginLeft: "5px" }} />

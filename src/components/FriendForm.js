@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AlertContainer from "react-alert";
 
 class FriendForm extends Component {
   constructor(props) {
@@ -13,30 +12,6 @@ class FriendForm extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  alertOptions = {
-    offset: 14,
-    position: "bottom right",
-    theme: "dark",
-    time: 5000,
-    transition: "scale"
-  };
-
-  showAlertSuccess = () => {
-    this.msg.show("Friend added!", {
-      time: 2000,
-      type: "success",
-      icon: <img src="path/to/some/img/32x32.png" alt="" />
-    });
-  };
-
-  showAlertFail = () => {
-    this.msg.show("That user doesn't exist yet!", {
-      time: 2000,
-      type: "failure",
-      icon: <img src="path/to/some/img/32x32.png" alt="" />
-    });
-  };
-
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
@@ -45,8 +20,6 @@ class FriendForm extends Component {
     e.preventDefault();
     if (this.state.value != null) {
       this.props.addNewFriend(this.state.value);
-
-      this.showAlertSuccess();
 
       this.setState({
         isPopupVisible: true
@@ -57,8 +30,6 @@ class FriendForm extends Component {
           isPopupVisible: false
         });
       }, 3000);
-    } else {
-      this.showAlertFail();
     }
   }
 
@@ -73,7 +44,6 @@ class FriendForm extends Component {
               onChange={this.handleChange}
               placeholder="Add friend by email"
             />
-            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
           </div>
           <div className="col-lg-2">
             <button

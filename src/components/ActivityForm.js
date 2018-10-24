@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AlertContainer from "react-alert";
 import firebase from "../firebase.js";
 
 class ActivityForm extends Component {
@@ -16,22 +15,6 @@ class ActivityForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  alertOptions = {
-    offset: 14,
-    position: "bottom right",
-    theme: "dark",
-    time: 5000,
-    transition: "scale"
-  };
-
-  showAlert = () => {
-    this.msg.show("Activity Created!", {
-      time: 2000,
-      type: "success",
-      icon: <img src="path/to/some/img/32x32.png" alt="" />
-    });
-  };
 
   handleChange(e) {
     this.setState({ [e.target.id]: e.target.value });
@@ -157,11 +140,10 @@ class ActivityForm extends Component {
               </div>
             </div>
 
-            <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
             <button
               type="submit"
               style={{ width: "100%" }}
-              onClick={this.showAlert}
+              onClick={() => {}}
               class="btn btn-sprout-dark"
             >
               Create Activity{" "}
