@@ -26,13 +26,12 @@ class App extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.updateScores = this.updateScores.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.createNewUser = this.createNewUser.bind(this);
   }
 
-  handleClick(page) {
+  handleClick = page => {
     this.setState({ page: page });
-  }
+  };
 
   login() {
     auth.signInWithPopup(provider).then(result => {
@@ -112,17 +111,17 @@ class App extends Component {
       </a>
     );
 
-    var greeting = this.state.user ? (
-      <nav className="navbar-brand">
-        {" "}
-        Welcome {this.state.user.displayName}{" "}
-      </nav>
-    ) : (
-      <nav className="navbar-brand"> Welcome </nav>
-    );
+    var username = this.state.user ? this.state.user.displayName : null;
+
     var display;
     if (this.state.page === 0) {
-      display = <Collection scores={this.state.scores} db={firebase} />;
+      display = (
+        <Collection
+          scores={this.state.scores}
+          db={firebase}
+          username={username}
+        />
+      );
     } else if (this.state.page === 1) {
       display = <Menu updateScores={this.updateScores} />;
     } else if (this.state.page === 2) {
@@ -145,7 +144,7 @@ class App extends Component {
               src="https://image.ibb.co/ihzJPb/sprout_logo_icon.png"
             />
           </a>
-          {greeting}
+
           <button
             className="navbar-toggler"
             type="button"

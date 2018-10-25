@@ -56,9 +56,9 @@ class ActivityForm extends Component {
 
   render() {
     return (
-      <div class="card " style={{ width: "35rem" }}>
+      <div style={{ width: "35rem" }}>
         <div className="card-body">
-          <h4> Create Activity </h4>
+          <h4 className="modal-title">Create Activity</h4>
           <form onSubmit={this.handleSubmit}>
             <div class="form-group row">
               <div className="col-md-3">
@@ -66,6 +66,7 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <input
+                  className="input"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.title}
@@ -81,7 +82,7 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <select
-                  class="form-control"
+                  class="form-control input"
                   onChange={this.handleChange}
                   value={this.state.category}
                   id="category"
@@ -101,6 +102,7 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <textarea
+                  className="input"
                   onChange={this.handleChange}
                   value={this.state.description}
                   id="description"
@@ -116,6 +118,7 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <input
+                  className="input"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.link}
@@ -131,6 +134,7 @@ class ActivityForm extends Component {
               </div>
               <div className="col-md-9">
                 <input
+                  className="input"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.img}

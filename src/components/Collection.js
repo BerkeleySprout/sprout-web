@@ -84,7 +84,10 @@ class Collection extends Component {
   render() {
     return (
       <div className="jumbotron jumbotron-fluid" id="tree-jumbotron">
-        <h3 className="tree-title">Your Wellness Tree</h3>
+        <h3 className="tree-title">
+          {this.props.username}
+          's Wellness Tree
+        </h3>
         <div className="container sprout-tree">
           <Stage width={1300} height={500}>
             <TreeLeaf

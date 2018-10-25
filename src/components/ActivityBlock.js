@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactStars from "react-stars";
 import EntryForm from "./EntryForm";
 import Modal from "react-responsive-modal";
-import Tilt from "react-tilt";
 
 class ActivityBlock extends Component {
   constructor(props) {
@@ -40,14 +39,6 @@ class ActivityBlock extends Component {
 
     return (
       <div className="card-container">
-        <Tilt
-          className="Tilt"
-          options={{ max: 25 }}
-          style={{ height: 250, width: 250 }}
-        >
-          <div className="Tilt-inner"> 👽 </div>
-        </Tilt>
-
         <div className="card" id="hover-raised">
           <img
             class="card-img-top"

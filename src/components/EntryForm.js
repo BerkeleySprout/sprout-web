@@ -75,16 +75,14 @@ class EntryForm extends Component {
 
   render() {
     return (
-      <div class="card">
-        <div class="card-header text-center">
-          <h2> {this.props.activity.title} </h2>
-        </div>
+      <div>
         <div className="card-body">
+          <h2 className="modal-title">{this.props.activity.title}</h2>
           <form onSubmit={this.handleSubmit}>
-            <div class="form-row">
-              <div class="form-group col-sm-11">
+            <div className="form-row">
+              <div className="form-group col-sm-10">
                 <textarea
-                  class="form-control largeform"
+                  className="form-control largeform"
                   placeholder="How do you feel?"
                   onChange={this.handleChange}
                   value={this.state.memo}
@@ -94,7 +92,7 @@ class EntryForm extends Component {
               </div>
 
               <div
-                class="btn-group-vertical col-sm-1"
+                className="btn-group-vertical col-sm-2"
                 role="group"
                 data-toggle="buttons"
               >
@@ -104,9 +102,9 @@ class EntryForm extends Component {
                     this.handleClick("happy");
                   }}
                   name="happy"
-                  class="btn btn-outline-warning"
+                  className="btn btn-outline-warning"
                 >
-                  <i class="em em-smile" />
+                  <i className="em em-smile" />
                 </button>
                 <button
                   type="button"
@@ -114,9 +112,9 @@ class EntryForm extends Component {
                     this.handleClick("sad");
                   }}
                   name="sad"
-                  class="btn btn-outline-primary"
+                  className="btn btn-outline-primary"
                 >
-                  <i class="em em-cry" />
+                  <i className="em em-cry" />
                 </button>
                 <button
                   type="button"
@@ -124,14 +122,14 @@ class EntryForm extends Component {
                     this.handleClick("angry");
                   }}
                   name="angry"
-                  class="btn btn-outline-danger"
+                  className="btn btn-outline-danger"
                 >
-                  <i class="em em-angry" />
+                  <i className="em em-angry" />
                 </button>
               </div>
             </div>
 
-            <div class="form-row">
+            <div className="form-row">
               <div className="col-sm-3 form-group">
                 <input
                   type="text"
@@ -144,7 +142,7 @@ class EntryForm extends Component {
 
               <div className="col-sm-3 form-group">
                 <select
-                  class="form-control"
+                  className="form-control"
                   onChange={this.handleChange}
                   value={this.state.durationUnit}
                   id="durationUnit"
@@ -156,7 +154,7 @@ class EntryForm extends Component {
 
               <div className="col-sm-6 form-group">
                 <input
-                  class="form-control"
+                  className="form-control"
                   onChange={this.handleChange}
                   type="datetime-local"
                   value={this.state.datetime}
@@ -169,9 +167,10 @@ class EntryForm extends Component {
               type="submit"
               onstyle={{ width: "100%" }}
               onClick={() => {}}
-              class="btn btn-sprout-dark"
+              className="btn btn-sprout-dark"
             >
-              Complete <i class="fa fa-check" style={{ marginLeft: "5px" }} />
+              Complete{" "}
+              <i className="fa fa-check" style={{ marginLeft: "5px" }} />
             </button>
           </form>
         </div>

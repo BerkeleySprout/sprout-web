@@ -10,16 +10,17 @@ class Menu extends Component {
 
     this.state = {
       score: 0,
+      showCategories: false,
       activityIndex: null,
       showrec: true,
       showuser: false,
       activities: [],
       currentActivities: [],
-      useractivities: [],
-      currentuseractivities: [],
+      userActivities: [],
+      currentUserActivities: [],
       categoryFilter: [],
       showForm: false,
-      friendlist: [],
+      friendList: [],
       categories: [
         {
           name: "awe"
@@ -112,15 +113,15 @@ class Menu extends Component {
       };
 
       var filtered = this.state.activities.filter(filtering.bind(this));
-      var filteredB = this.state.useractivities.filter(filtering.bind(this));
+      var filteredB = this.state.userActivities.filter(filtering.bind(this));
     } else {
       filtered = this.state.activities;
-      filteredB = this.state.useractivities;
+      filteredB = this.state.userActivities;
     }
 
     this.setState({
       currentActivities: filtered,
-      currentuseractivities: filteredB
+      currentUserActivities: filteredB
     });
   };
 
@@ -141,8 +142,8 @@ class Menu extends Component {
           {
             activities: filtered,
             currentActivities: filtered,
-            useractivities: arr,
-            currentuseractivities: arr
+            userActivities: arr,
+            currentUserActivities: arr
           },
 
           this.updateActiveActivities()
@@ -175,14 +176,14 @@ class Menu extends Component {
 
     var activities = this.state.showrec
       ? this.state.currentActivities.map(activity => (
-          <ActivityBlock friends={this.state.friendlist} activity={activity} />
+          <ActivityBlock friends={this.state.friendList} activity={activity} />
         ))
       : null;
 
-    var useractivities = this.state.showuser
-      ? this.state.currentuseractivities.map(activity => (
+    var userActivities = this.state.showuser
+      ? this.state.currentUserActivities.map(activity => (
           <ActivityBlock
-            friends={this.state.friendlist}
+            friends={this.state.friendList}
             activity={activity}
             user={true}
           />
@@ -238,7 +239,7 @@ class Menu extends Component {
 
         <div className="card-columns">
           {activities}
-          {useractivities}
+          {userActivities}
         </div>
       </div>
     );
