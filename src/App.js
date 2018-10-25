@@ -130,6 +130,18 @@ class App extends Component {
       display = <FriendList />;
     }
 
+    var navbarArr = ["Home", "Activities"];
+    if (this.state.user) {
+      navbarArr = ["Home", "Activities", "Journal", "Friends"];
+    }
+    var navbar = navbarArr.map((item, index) => (
+      <li className="nav-item">
+        <a className="nav-link" onClick={() => this.handleClick(index)}>
+          {item}
+        </a>
+      </li>
+    ));
+
     return (
       <div>
         <nav
@@ -157,31 +169,7 @@ class App extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul className="navbar-nav ml-auto navbar-center">
-              <li className="nav-item">
-                <a
-                  className="nav-link nav-text"
-                  onClick={() => this.handleClick(0)}
-                >
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(1)}>
-                  Activities
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(2)}>
-                  Journal
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" onClick={() => this.handleClick(3)}>
-                  Friends
-                </a>
-              </li>
-            </ul>
+            <ul className="navbar-nav ml-auto navbar-center">{navbar}</ul>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">{login}</li>
             </ul>

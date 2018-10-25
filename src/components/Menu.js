@@ -154,7 +154,9 @@ class Menu extends Component {
 
   componentDidMount() {
     this.getActivities();
-    this.getFriends();
+    if (firebase.auth().currentUser) {
+      this.getFriends();
+    }
   }
 
   render() {
@@ -200,40 +202,42 @@ class Menu extends Component {
             {categoryButtons}
           </div>
 
-          <div
-            className="btn-group menu-category-group"
-            role="group"
-            data-toggle="buttons"
-          >
-            <button
-              type="button"
-              className="btn btn-primary active menu-category-item"
-              onClick={() => {
-                let current = this.state.showrec;
-                this.setState({ showrec: !current });
-              }}
+          <div>
+            <div
+              className="btn-group menu-category-group"
+              role="group"
+              data-toggle="buttons"
             >
-              Recommended Activities
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary menu-category-item"
-              onClick={() => {
-                let current = this.state.showuser;
-                this.setState({ showuser: !current });
-              }}
-            >
-              User Activities
-            </button>
-          </div>
-          <div className="menu-category-group">
-            <button
-              type="button"
-              className="btn btn-sprout-dark menu-category-item"
-              onClick={this.onOpenModal}
-            >
-              Create Activity
-            </button>
+              <button
+                type="button"
+                className="btn btn-primary active menu-category-item"
+                onClick={() => {
+                  let current = this.state.showrec;
+                  this.setState({ showrec: !current });
+                }}
+              >
+                Recommended Activities
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary menu-category-item"
+                onClick={() => {
+                  let current = this.state.showuser;
+                  this.setState({ showuser: !current });
+                }}
+              >
+                User Activities
+              </button>
+            </div>
+            <div className="menu-category-group">
+              <button
+                type="button"
+                className="btn btn-sprout-dark menu-category-item"
+                onClick={this.onOpenModal}
+              >
+                Create Activity
+              </button>
+            </div>
           </div>
         </div>
 
