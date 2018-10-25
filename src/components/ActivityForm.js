@@ -147,11 +147,11 @@ class ActivityForm extends Component {
             <button
               type="submit"
               style={{ width: "100%" }}
-              onClick={() => {}}
+              onClick={e => this.handleSubmit(e)}
               class="btn btn-sprout-dark"
             >
-              Create Activity{" "}
-              <i class="fa fa-check" style={{ marginLeft: "5px" }} />{" "}
+              Create Activity
+              <i class="fa fa-check" style={{ marginLeft: "5px" }} />
             </button>
           </form>
         </div>

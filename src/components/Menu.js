@@ -202,7 +202,7 @@ class Menu extends Component {
             {categoryButtons}
           </div>
 
-          <div>
+          {firebase.auth().currentUser && (
             <div
               className="btn-group menu-category-group"
               role="group"
@@ -229,6 +229,9 @@ class Menu extends Component {
                 User Activities
               </button>
             </div>
+          )}
+
+          {firebase.auth().currentUser && (
             <div className="menu-category-group">
               <button
                 type="button"
@@ -238,7 +241,7 @@ class Menu extends Component {
                 Create Activity
               </button>
             </div>
-          </div>
+          )}
         </div>
 
         <Modal open={this.state.showForm} onClose={this.onCloseModal} little>

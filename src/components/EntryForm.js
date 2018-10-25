@@ -170,7 +170,7 @@ class EntryForm extends Component {
               onClick={() => {}}
               className="btn btn-sprout-dark"
             >
-              Complete{" "}
+              Complete
               <i className="fa fa-check" style={{ marginLeft: "5px" }} />
             </button>
           </form>

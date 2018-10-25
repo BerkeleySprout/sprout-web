@@ -1,5 +1,6 @@
 // Variables
 $green: #2f9c49;
+$green-secondary: #dbebd5;
 
 html,
 body {
@@ -137,30 +138,40 @@ ul.categories {
   display: flex;
 }
 
-.card {
-  margin-bottom: 0 !important;
-  display: flex !important;
-  -webkit-transition: all 0.1s ease-out;
-  -moz-transition: all 0.1s ease-out;
-  -o-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
-}
-
-#hover-raised:hover {
-  top: -3px;
-  background: rgba(0, 0, 0, 0.02);
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px,
-    rgba(0, 0, 0, 0.08) 0px 8px 12px;
-}
-
 .activity-card {
-  margin: 0;
-}
+  flex-direction: column;
+  margin-bottom: 0;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+  border-radius: 8px;
+  top: 0;
+  transition: all 100ms ease-out;
 
-.activity-card-footer {
-  margin: 0;
-  bottom: 0;
+  &:hover {
+    top: -3px;
+    background: rgba(0, 0, 0, 0.02);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px,
+      rgba(0, 0, 0, 0.08) 0px 12px 15px;
+    transition: all 100ms ease-out;
+  }
+
+  .card-img-top {
+    max-height: 30vh;
+  }
+
+  .activity-card-body {
+    margin: 16px;
+  }
+
+  .activity-card-footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.03);
+    align-self: flex-end;
+    border-top: rgba(0, 0, 0, 0.1) solid 1px;
+  }
 }
 
 .full {
@@ -212,11 +223,13 @@ ul.categories {
   background: white;
   border-width: 1px;
   border-color: $green;
+  transition: all 200ms ease-out;
 }
 
 .btn-sprout-dark:hover {
-  color: white;
-  background: $green;
+  color: black;
+  background: #dbebd5;
+  transition: all 200ms ease-out;
 }
 
 .btn-success {
@@ -447,11 +460,22 @@ ul.categories {
 
 #menu-categories {
   display: flex;
+  justify-content: center;
   margin: 24px 24px 0 24px;
 }
 
 .menu-category-item {
   margin: 24px 0 24px 0;
+  outline: none !important;
+
+  &.btn-primary {
+    background-color: white;
+  }
+
+  &.btn-primary:hover {
+    color: black;
+    background-color: rgba(177, 215, 255, 0.4);
+  }
 }
 
 .menu-category-group {

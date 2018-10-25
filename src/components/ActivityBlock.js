@@ -39,23 +39,23 @@ class ActivityBlock extends Component {
 
     return (
       <div className="card-container">
-        <div className="card" id="hover-raised">
+        <div className="activity-card" id="hover-raised">
           <img
             class="card-img-top"
             src={this.props.activity.img}
-            alt=""
+            alt="https://i.imgur.com/613WTRK.jpg"
             onClick={this.onOpenModal}
           />
 
-          <div className="card-body" onClick={this.onOpenModal}>
-            <h4 className="card-title"> {this.props.activity.title} </h4>
+          <div className="activity-card-body" onClick={this.onOpenModal}>
+            <h5 className="card-title"> {this.props.activity.title} </h5>
             <div className="card-text">
               <h6> {this.props.activity.description} </h6>
               {credit}
             </div>
           </div>
 
-          <div className="card-footer">
+          <div className="activity-card-footer">
             <div className="card-rating">
               <ReactStars
                 count={5}
