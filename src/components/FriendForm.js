@@ -7,16 +7,13 @@ class FriendForm extends Component {
       isPopupVisible: false,
       friendExists: false
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({ value: e.target.value });
-  }
+  };
 
-  handleClick(e) {
+  handleClick = e => {
     e.preventDefault();
     if (this.state.value != null) {
       this.props.addNewFriend(this.state.value);
@@ -31,7 +28,7 @@ class FriendForm extends Component {
         });
       }, 3000);
     }
-  }
+  };
 
   render() {
     return (
@@ -48,7 +45,7 @@ class FriendForm extends Component {
           <div className="col-lg-2">
             <button
               className="btn btn-sprout-dark"
-              onClick={this.handleClick.bind(this)}
+              onClick={this.handleClick}
               style={{ marginBottom: "20px" }}
             >
               Add Friend

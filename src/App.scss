@@ -1,3 +1,6 @@
+// Variables
+$green: #2f9c49;
+
 html,
 body {
   background-color: white;
@@ -123,7 +126,7 @@ ul.categories {
 }
 
 .nav-link:hover {
-  box-shadow: inset 0 0px 0 white, inset 0 -4px 0 #64af22;
+  box-shadow: inset 0 0px 0 white, inset 0 -4px 0 $green;
 }
 
 .card-container {
@@ -203,15 +206,15 @@ ul.categories {
 }
 
 .btn-sprout-dark {
-  color: #64af22;
+  color: $green;
   background: white;
   border-width: 1px;
-  border-color: #64af22;
+  border-color: $green;
 }
 
 .btn-sprout-dark:hover {
   color: white;
-  background: #64af22;
+  background: $green;
 }
 
 .btn-success {

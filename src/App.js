@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import ReactDOM from "react-dom";
 import Menu from "./components/Menu";
 import FriendList from "./components/FriendList";

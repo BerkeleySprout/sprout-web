@@ -38,11 +38,6 @@ class Menu extends Component {
         }
       ]
     };
-    this.render = this.render.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.getActivities = this.getActivities.bind(this);
-    this.updateActiveActivities = this.updateActiveActivities.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   onOpenModal = () => {
@@ -53,7 +48,7 @@ class Menu extends Component {
     this.setState({ showForm: false });
   };
 
-  handleClick(category) {
+  handleClick = category => {
     let remove = function(array, element) {
       return array.filter(e => e !== element);
     };
@@ -71,7 +66,7 @@ class Menu extends Component {
         this.updateActiveActivities
       );
     }
-  }
+  };
 
   getFriends = () => {
     let app = database.ref(
@@ -106,7 +101,7 @@ class Menu extends Component {
     );
   };
 
-  updateActiveActivities() {
+  updateActiveActivities = () => {
     if (this.state.categoryFilter.length > 0) {
       let contain = function(element) {
         return this.state.categoryFilter.includes(element);
@@ -127,9 +122,9 @@ class Menu extends Component {
       currentActivities: filtered,
       currentuseractivities: filteredB
     });
-  }
+  };
 
-  getActivities() {
+  getActivities = () => {
     let app = database.ref("/");
 
     app.on(
@@ -154,7 +149,7 @@ class Menu extends Component {
         );
       }.bind(this)
     );
-  }
+  };
 
   componentDidMount() {
     this.getActivities();
