@@ -85,8 +85,8 @@ class Collection extends Component {
     return (
       <div className="jumbotron jumbotron-fluid" id="tree-jumbotron">
         <h3 className="tree-title">
-          {this.props.username}
-          's Wellness Tree
+          {this.props.username ? this.props.username + "'s " : "Your "}
+          Wellness Tree
         </h3>
         <div className="container sprout-tree">
           <Stage width={1300} height={500}>

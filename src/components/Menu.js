@@ -164,10 +164,9 @@ class Menu extends Component {
       return (
         <button
           type="button"
-          className="btn btn-outline-dark"
+          className="btn btn-outline-dark menu-category-item"
           onClick={() => this.handleClick(category.name)}
           value={category.name}
-          style={{ marginTop: "20px", marginBottom: "20px" }}
         >
           {name}
         </button>
@@ -192,16 +191,23 @@ class Menu extends Component {
 
     return (
       <div className="container">
-        <nav className="navbar navbar-light bg-faded">
-          <div className="btn-group mx-auto" role="group" data-toggle="buttons">
+        <div id="menu-categories">
+          <div
+            className="btn-group menu-category-group"
+            role="group"
+            data-toggle="buttons"
+          >
             {categoryButtons}
           </div>
 
-          <div className="btn-group mx-auto" role="group" data-toggle="buttons">
+          <div
+            className="btn-group menu-category-group"
+            role="group"
+            data-toggle="buttons"
+          >
             <button
               type="button"
-              className="btn btn-primary active"
-              style={{ marginTop: "20px", marginBottom: "20px" }}
+              className="btn btn-primary active menu-category-item"
               onClick={() => {
                 let current = this.state.showrec;
                 this.setState({ showrec: !current });
@@ -211,8 +217,7 @@ class Menu extends Component {
             </button>
             <button
               type="button"
-              className="btn btn-primary"
-              style={{ marginTop: "20px", marginBottom: "20px" }}
+              className="btn btn-primary menu-category-item"
               onClick={() => {
                 let current = this.state.showuser;
                 this.setState({ showuser: !current });
@@ -221,17 +226,16 @@ class Menu extends Component {
               User Activities
             </button>
           </div>
-        </nav>
-
-        <button
-          type="button"
-          className="btn btn-sprout-dark"
-          href="#article"
-          style={{ width: "100%" }}
-          onClick={this.onOpenModal}
-        >
-          Create New Activity
-        </button>
+          <div className="menu-category-group">
+            <button
+              type="button"
+              className="btn btn-sprout-dark menu-category-item"
+              onClick={this.onOpenModal}
+            >
+              Create Activity
+            </button>
+          </div>
+        </div>
 
         <Modal open={this.state.showForm} onClose={this.onCloseModal} little>
           <ActivityForm />

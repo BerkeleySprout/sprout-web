@@ -132,6 +132,7 @@ class EntryForm extends Component {
             <div className="form-row">
               <div className="col-sm-3 form-group">
                 <input
+                  className="input"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.durationAmount}
@@ -142,7 +143,7 @@ class EntryForm extends Component {
 
               <div className="col-sm-3 form-group">
                 <select
-                  className="form-control"
+                  className="form-control input"
                   onChange={this.handleChange}
                   value={this.state.durationUnit}
                   id="durationUnit"
@@ -154,7 +155,7 @@ class EntryForm extends Component {
 
               <div className="col-sm-6 form-group">
                 <input
-                  className="form-control"
+                  className="form-control input"
                   onChange={this.handleChange}
                   type="datetime-local"
                   value={this.state.datetime}
