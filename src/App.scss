@@ -27,6 +27,10 @@ a:hover > * {
   color: grey;
 }
 
+.container {
+  margin-top: 20px;
+}
+
 .largeform {
   font-size: 40px;
 }
@@ -126,9 +130,14 @@ ul.categories {
   padding: 5px;
 }
 
-.nav-link:hover {
-  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 $green;
-  transition: all 300ms;
+.nav-link {
+  box-shadow: none;
+  transition: all 200ms;
+
+  &:hover {
+    box-shadow: inset 0 0px 0 white, inset 0 -2px 0 $green;
+    transition: all 200ms;
+  }
 }
 
 .card-container {
@@ -151,8 +160,7 @@ ul.categories {
   &:hover {
     top: -3px;
     background: rgba(0, 0, 0, 0.02);
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px,
-      rgba(0, 0, 0, 0.08) 0px 12px 15px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 12px;
     transition: all 100ms ease-out;
   }
 
@@ -227,7 +235,6 @@ ul.categories {
 }
 
 .btn-sprout-dark:hover {
-  color: black;
   background: #dbebd5;
   transition: all 200ms ease-out;
 }
@@ -507,4 +514,16 @@ ul.categories {
 .form-control {
   font-size: 16px;
   padding: 16px;
+}
+
+// Journal
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.session-card {
+  margin: 8px;
+  padding: 8px;
 }

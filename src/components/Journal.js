@@ -30,34 +30,31 @@ class Journal extends Component {
       ]
     };
     this.render = this.render.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  handleClick(category) {
-    return;
-  }
-
-  componentDidMount() {
+  componentDidMount = () => {
     var start = new Date();
     start.setHours(0, 0, 0, 0);
     this.getFilteredSessions(start);
-  }
+  };
 
   getFilteredSessions(date) {
     var min = date;
-    var max = date + 86400000;
+    var max = date + 86400;
     database
       .ref("users/" + firebase.auth().currentUser.uid + "/sessions")
       .orderByChild("datetime")
       .startAt(min.getTime())
       .endAt(max)
       .on("value", snapshot => {
-        console.log(snapshot.val());
         if (snapshot.val() != null) {
-          this.setState({ sessions: snapshot.val() });
+          this.setState({
+            sessions: snapshot.val()
+          });
         } else {
-          this.setState({ sessions: null });
+          this.setState({
+            sessions: null
+          });
         }
       });
   }
@@ -68,7 +65,7 @@ class Journal extends Component {
       this.state.sessions === null ? (
         <div class="card">
           <div class="card-body">
-            <h2> You have no entries!</h2>
+            <h2> You have no entries! </h2>
           </div>
         </div>
       ) : (
@@ -96,23 +93,8 @@ class Journal extends Component {
       );
     }
 
-    var monthNum = {
-      Jan: "01",
-      Feb: "02",
-      Mar: "03",
-      Apr: "04",
-      May: "05",
-      Jun: "06",
-      Jul: "07",
-      Aug: "08",
-      Sep: "09",
-      Oct: "10",
-      Nov: "11",
-      Dec: "12"
-    };
-
     return (
-      <div className="container container-fluid" style={{ marginTop: "20px" }}>
+      <div className="container">
         <div className="row">
           <div className="col-lg-4 offset-lg-2 mx-auto">
             <InfiniteCalendar
@@ -142,12 +124,7 @@ class Journal extends Component {
               }}
             />
           </div>
-          <div className="col-lg-6 mx-auto">
-            {allSessionBlocks}
-            {allDates.toString().split(" ")[3]}
-            {monthNum[allDates.toString().split(" ")[1]]}
-            {allDates.toString().split(" ")[2]}
-          </div>
+          <div className="col-lg-6 mx-auto"> {allSessionBlocks} </div>
         </div>
       </div>
     );

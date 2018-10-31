@@ -1,11 +1,10 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "https://github.com/BerkeleySprout/sprout-web",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
   }
-  
 }

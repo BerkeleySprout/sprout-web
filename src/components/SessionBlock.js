@@ -26,22 +26,25 @@ class SessionBlock extends Component {
     if (mood === "angry") {
       emoji = <i class="em em-angry" />;
     }
+    var memo;
+    memo = this.props.session.memo
+      ? this.props.session.memo
+      : "There was no reflection included for this activity";
 
     return (
       <div>
-        <div className="card">
+        <div className="card session-card">
           <div className="card-body">
-            <div class="row">
-              <div class="col-md-4">
-                <h1> {timeString} </h1>
-              </div>
+            <div className="title-container">
+              <h2> {this.getActivityTitle()} </h2>
               <div class="col">{emoji}</div>
             </div>
-            <h4> {this.getActivityTitle()}</h4>
-
-            <h5> {this.props.session.memo} </h5>
-
-            <h6> Duration: {this.props.session.durationAmount} Minutes </h6>
+            <h6>
+              {timeString + " -- "} {this.props.session.durationAmount} Minutes
+            </h6>
+            <hr />
+            <h5>Reflection:</h5>
+            <h6> {memo} </h6>
           </div>
         </div>
       </div>
