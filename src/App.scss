@@ -378,9 +378,9 @@ ul.categories {
 }
 
 #tree-jumbotron {
-  background: #e9ffde;
+  background-color: #e9ffde;
   height: 90%;
-  margin: 0;
+  padding-top: 10vh;
 }
 
 .tree-title {
@@ -391,10 +391,8 @@ ul.categories {
 
 .sprout-tree {
   background: url("./images/sprout-tree.png") no-repeat;
-  background-position: center;
+  background-position: center bottom;
   background-size: 17%;
-  height: 100%;
-  position: relative;
 }
 
 .sprout-tree-mini {
