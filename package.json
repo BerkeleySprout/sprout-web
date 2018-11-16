@@ -41,6 +41,7 @@
     "macaddress": "^0.2.9",
     "mime": "^2.3.1",
     "mini-css-extract-plugin": "0.4.3",
+    "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
