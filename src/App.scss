@@ -118,6 +118,10 @@ ul.categories {
   text-align: center;
 }
 
+.navbar-brand {
+  width: 40px;
+}
+
 .nav-item {
   padding: 5px;
 }
@@ -129,6 +133,10 @@ ul.categories {
   &:hover {
     box-shadow: inset 0 0px 0 white, inset 0 -2px 0 $green;
     transition: all 200ms;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -349,7 +357,9 @@ ul.categories {
 
 .menu-category-item {
   margin: 24px 0 24px 0;
+  padding: 7px 20px;
   outline: none !important;
+  border-radius: 30px;
 
   &.btn-primary {
     background-color: white;

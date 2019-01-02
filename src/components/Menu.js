@@ -194,54 +194,9 @@ class Menu extends Component {
     return (
       <div className="container">
         <div id="menu-categories">
-          <div
-            className="btn-group menu-category-group"
-            role="group"
-            data-toggle="buttons"
-          >
+          <div className="btn-group" role="group" data-toggle="buttons">
             {categoryButtons}
           </div>
-
-          {firebase.auth().currentUser && (
-            <div
-              className="btn-group menu-category-group"
-              role="group"
-              data-toggle="buttons"
-            >
-              <button
-                type="button"
-                className="btn btn-primary active menu-category-item"
-                onClick={() => {
-                  let current = this.state.showrec;
-                  this.setState({ showrec: !current });
-                }}
-              >
-                Recommended Activities
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary menu-category-item"
-                onClick={() => {
-                  let current = this.state.showuser;
-                  this.setState({ showuser: !current });
-                }}
-              >
-                User Activities
-              </button>
-            </div>
-          )}
-
-          {firebase.auth().currentUser && (
-            <div className="menu-category-group">
-              <button
-                type="button"
-                className="btn btn-sprout-dark menu-category-item"
-                onClick={this.onOpenModal}
-              >
-                Create Activity
-              </button>
-            </div>
-          )}
         </div>
 
         <Modal open={this.state.showForm} onClose={this.onCloseModal} little>

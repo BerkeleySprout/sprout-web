@@ -102,13 +102,13 @@ class App extends Component {
 
   render() {
     var login = this.state.user ? (
-      <a className="nav-link" onClick={this.logout}>
+      <button className="nav-link" onClick={this.logout}>
         Sign Out
-      </a>
+      </button>
     ) : (
-      <a className="nav-link" onClick={this.login}>
+      <button className="nav-link" onClick={this.login}>
         Sign In
-      </a>
+      </button>
     );
 
     var username = this.state.user ? this.state.user.displayName : null;
@@ -136,9 +136,9 @@ class App extends Component {
     }
     var navbar = navbarArr.map((item, index) => (
       <li className="nav-item">
-        <a className="nav-link" onClick={() => this.handleClick(index)}>
+        <button className="nav-link" onClick={() => this.handleClick(index)}>
           {item}
-        </a>
+        </button>
       </li>
     ));
 
@@ -150,12 +150,12 @@ class App extends Component {
           data-offset-top="197"
           id="my-navbar"
         >
-          <a className="navbar-brand">
+          <button className="navbar-brand">
             <img
               alt="Sprout"
               src="https://image.ibb.co/ihzJPb/sprout_logo_icon.png"
             />
-          </a>
+          </button>
 
           <button
             className="navbar-toggler"
