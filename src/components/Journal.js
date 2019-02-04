@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import SessionBlock from "./SessionBlock";
 import firebase, { database } from "../firebase.js";
-import InfiniteCalendar from "react-infinite-calendar";
-import "react-infinite-calendar/styles.css";
 
 class Journal extends Component {
   constructor(props) {
@@ -10,26 +8,8 @@ class Journal extends Component {
 
     this.state = {
       sessions: [],
-      filteredSessions: [],
-      categories: [
-        {
-          name: "awe"
-        },
-        {
-          name: "gratitude"
-        },
-        {
-          name: "kindness"
-        },
-        {
-          name: "mindfulness"
-        },
-        {
-          name: "resilience"
-        }
-      ]
+      filteredSessions: []
     };
-    this.render = this.render.bind(this);
   }
 
   componentDidMount = () => {
@@ -95,37 +75,7 @@ class Journal extends Component {
 
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-lg-4 offset-lg-2 mx-auto">
-            <InfiniteCalendar
-              theme={{
-                selectionColor: "#64af22",
-                textColor: {
-                  default: "#333",
-                  active: "#FFF"
-                },
-                weekdayColor: "#64af22",
-                headerColor: "#64af22",
-                floatingNav: {
-                  background: "#006400",
-                  color: "#FFF",
-                  chevron: "#FFA726"
-                }
-              }}
-              width={window.innerWidth <= 450 ? window.innerWidth : 450}
-              height={window.innerHeight - 300}
-              rowHeight={70}
-              min={new Date(2017, 11, 1)}
-              minDate={new Date(2017, 11, 1)}
-              max={new Date(2018, 12, 13)}
-              maxDate={new Date(2018, 12, 13)}
-              onSelect={date => {
-                this.getFilteredSessions(date);
-              }}
-            />
-          </div>
-          <div className="col-lg-6 mx-auto"> {allSessionBlocks} </div>
-        </div>
+        <div className="col-lg-6 mx-auto"> {allSessionBlocks} </div>
       </div>
     );
   }
